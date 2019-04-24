@@ -141,7 +141,7 @@ public class PageIndex
             RocksDB.loadLibrary();
 
             // modify the path to your database
-            String path = "/Users/chunyinfok/Downloads/comp4321_project/db";
+            String path = "db";
 
 
 

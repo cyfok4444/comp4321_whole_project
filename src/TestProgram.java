@@ -4,7 +4,8 @@ import java.util.ArrayList;
 
 public class TestProgram {
     public static void main(String[] args){
-        String path = "/Users/chunyinfok/Downloads/db";
+        //String path = "/Users/chunyinfok/Downloads/db";
+        String path = "db";
         PageIndex.set(path);
         Page page = Spider.go("https://www.cse.ust.hk/");
          for ( int i = 0 ; i < 40 ; i ++ ){
