@@ -3,7 +3,7 @@ import java.util.HashMap;
 
 public class ProcessString {
 
-    public static HashMap<String,Integer> keyWord (ArrayList<String> input){
+    /*public static HashMap<String,Integer> keyWord (ArrayList<String> input){
         HashMap<String,Integer> process = new HashMap<>();
         for (int i = 0 ; i < input.size() ; i ++){
             if (!process.containsKey(input.get(i))){
@@ -14,9 +14,8 @@ public class ProcessString {
                 process.put(input.get(i), process.get(input.get(i)) + 1);
             }
         }
-        //System.out.println("Hello");
         return process;
-    }
+    }*/
 
     public static ArrayList<String> removeRubbish(ArrayList<String> input){
         for (int i = 0 ; i < input.size() ; i ++) {
@@ -49,7 +48,7 @@ public class ProcessString {
     }
 
     public static ArrayList<String> stopWordRemove(ArrayList<String> input){
-        StopStem stopStem = new StopStem("/Users/chunyinfok/Downloads/comp4321_project/src/stopword");
+        StopStem stopStem = new StopStem("/Users/tszmoonhung/IdeaProjects/comp4321_project/src/stopword");
         for (int i = 0 ; i < input.size() ; i++){
             if (stopStem.isStopWord(input.get(i))){
                 input.remove(i);
@@ -59,23 +58,32 @@ public class ProcessString {
         return input;
     }
 
+    public static HashMap<String,Integer> keyWord (ArrayList<String> input){
+        HashMap<String,Integer> process = new HashMap<>();
+        for (int i = 0 ; i < input.size() ; i++){
+            StopStem stopStem = new StopStem("/Users/tszmoonhung/IdeaProjects/comp4321_project/src/stopword");
+            String word = stopStem.stem(input.get(i));
+            if (!process.containsKey(word)){
+                process.put(input.get(i), 1);
+            }
+
+            else{
+                process.put(word, process.get(word) + 1);
+            }
+
+        }
+        return process;
+    }
+
 
     public static void main (String [] args){
         ArrayList<String> k = new ArrayList<>();
-        k.add("a");
-        k.add("b");
-        k.add("This");
-        k.add(",,,");
-        k.add("hiiiii");
-        k.add(",,");
-        k.add(",,");
-        k.add(",,");
-        k.add("神奇");
-        k.add("jjjjjjjjjj");
-        k.add("jjjjjjjjjj");
-        k.add("lo");
-        k.add("lo");
-        k.add("你");
+
+        k.add("love");
+        k.add("loves");
+        k.add("loving");
+
+
 
 
         k = removeRubbish(k);
