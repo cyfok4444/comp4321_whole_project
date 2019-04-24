@@ -3,19 +3,6 @@ import java.util.HashMap;
 
 public class ProcessString {
 
-    /*public static HashMap<String,Integer> keyWord (ArrayList<String> input){
-        HashMap<String,Integer> process = new HashMap<>();
-        for (int i = 0 ; i < input.size() ; i ++){
-            if (!process.containsKey(input.get(i))){
-                process.put(input.get(i), 1);
-            }
-
-            else{
-                process.put(input.get(i), process.get(input.get(i)) + 1);
-            }
-        }
-        return process;
-    }*/
 
     public static ArrayList<String> removeRubbish(ArrayList<String> input){
         for (int i = 0 ; i < input.size() ; i ++) {
@@ -48,7 +35,7 @@ public class ProcessString {
     }
 
     public static ArrayList<String> stopWordRemove(ArrayList<String> input){
-        StopStem stopStem = new StopStem("/Users/tszmoonhung/IdeaProjects/comp4321_project/src/stopword");
+        StopStem stopStem = new StopStem("stopword.txt");
         for (int i = 0 ; i < input.size() ; i++){
             if (stopStem.isStopWord(input.get(i))){
                 input.remove(i);
