@@ -11,7 +11,6 @@ public class KeyWordToID {
                 wordToid.put(keyword, id);
                 id++;
             }
-            //System.out.println("Good");
     }
 
     public static void remove(String keyword){
