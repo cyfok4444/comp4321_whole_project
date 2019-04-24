@@ -61,7 +61,7 @@ public class ProcessString {
     public static HashMap<String,Integer> keyWord (ArrayList<String> input){
         HashMap<String,Integer> process = new HashMap<>();
         for (int i = 0 ; i < input.size() ; i++){
-            StopStem stopStem = new StopStem("/Users/tszmoonhung/IdeaProjects/comp4321_project/src/stopword");
+            StopStem stopStem = new StopStem("stopword.txt");
             String word = stopStem.stem(input.get(i));
             if (!process.containsKey(word)){
                 process.put(input.get(i), 1);
