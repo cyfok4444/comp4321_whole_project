@@ -14,6 +14,7 @@ public class ProcessString {
                 process.put(input.get(i), process.get(input.get(i)) + 1);
             }
         }
+        //System.out.println("Hello");
         return process;
     }
 
