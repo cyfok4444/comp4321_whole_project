@@ -5,6 +5,7 @@ import java.util.ArrayList;
 import java.util.Date;
 
 public class Page {
+
     String title;
     String url ;
     Date lastModificationDate ;
@@ -39,6 +40,7 @@ public class Page {
     public void setSize(Integer size){
         this.size=size;
     }
+
     public void setTitle(String title){
         this.title = title;
     }

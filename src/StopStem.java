@@ -22,12 +22,7 @@ public class StopStem
 		super();
 		porter = new Porter();
 		stopWords = new java.util.HashSet();
-				
-		// stopWords.add("is");
-		// stopWords.add("am");
-		// stopWords.add("are");
-		// stopWords.add("was");
-		// stopWords.add("were");
+
 
 		try {
 			BufferedReader reader = new BufferedReader(new FileReader(str));

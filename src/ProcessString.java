@@ -25,10 +25,6 @@ public class ProcessString {
                 }
             }
         }
-        //else
-        // System.out.println("Keep: " + input.get(i));
-
-
 
         return input;
 
