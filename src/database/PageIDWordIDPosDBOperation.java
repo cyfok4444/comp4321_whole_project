@@ -72,7 +72,7 @@ public class PageIDWordIDPosDBOperation {
     }
 
     public static void main(String [] args) throws RocksDBException{
-        PageIDWordIDPosDBOperation pageIDdBOperation = new PageIDWordIDPosDBOperation("/Users/tszmoonhung/IdeaProjects/comp4321_whole_project/PageIDKeyword");
+        PageIDWordIDPosDBOperation pageIDdBOperation = new PageIDWordIDPosDBOperation("/Users/tszmoonhung/IdeaProjects/comp4321_whole_project/function.PageIDKeyword");
         HashMap<Integer,ArrayList<Integer> > hashMap = new HashMap<>();
         ArrayList<Integer> arrayList = new ArrayList<>();
         arrayList.add(1);

@@ -1,3 +1,4 @@
+package function;
 import javax.print.DocFlavor;
 import java.net.URL;
 import java.util.HashMap;
@@ -12,6 +13,9 @@ public class Page {
     Integer size;
     HashMap<String,Integer> mostFreqKeywords = new HashMap<String,Integer>();
     ArrayList<Integer> parentLinks = new ArrayList<Integer>();
+    Integer maxTf;
+
+    public Integer getMaxTf() { return maxTf; }
 
     public String getTitle(){
         return title;
@@ -24,6 +28,7 @@ public class Page {
     public ArrayList<Integer> getParentLinks(){
         return parentLinks;
     }
+
     public long getLastModificationDate(){
         return lastModificationDate;
     }
@@ -39,6 +44,9 @@ public class Page {
     public void addParentLinks(Integer pageID){
         parentLinks.add(pageID);
     }
+
+    public void setMaxTf(Integer maxTf) { this.maxTf=maxTf; }
+
     public void setSize(Integer size){
         this.size=size;
     }
