@@ -1,7 +1,7 @@
 import org.rocksdb.RocksDBException;
 import java.io.*;
 import java.util.ArrayList;
-
+/*
 public class TestProgram {
     public static void main(String[] args){
         //String path = "/Users/chunyinfok/Downloads/db";
@@ -36,3 +36,4 @@ public class TestProgram {
         }
     }
 }
+*/
