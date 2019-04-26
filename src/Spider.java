@@ -12,12 +12,11 @@ public class Spider {
             ArrayList<String> keywords = Crawler.extractWords(url);
             ProcessString.removeRubbish(keywords);
             ProcessString.stopWordRemove(keywords);
-            page.setKeywords(ProcessString.keyWord(keywords));
-            page.setChilds(Crawler.getChild(url));
+            // page.setMostFreqKeywords(ProcessString.keyWord(keywords));
             page.setLastModificationDate(Crawler.getLastModifiedDate
                     (url));
             page.setTitle(Crawler.getTitle(url));
-            page.setURL(url);
+            page.setUrl(url);
             page.setSize(Crawler.getSize(url));
 
             try {
