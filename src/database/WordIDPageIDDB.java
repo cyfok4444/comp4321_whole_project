@@ -28,8 +28,7 @@ public class WordIDPageIDDB {
         }
     }
 
-    //every word need seperate How to seperate
-    //PageID: KeywordID Pos
+
     public HashMap<Integer, HashMap<Integer,Integer>> getHashMapTable() throws RocksDBException{
 
         HashMap<Integer,HashMap<Integer,Integer>> hashMap = new HashMap<>();

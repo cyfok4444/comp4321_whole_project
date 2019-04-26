@@ -1,4 +1,4 @@
-package function;
+/*package function;
 
 import java.util.HashMap;
 
@@ -28,3 +28,4 @@ public class KeyWordToID {
 
 
 }
+*/

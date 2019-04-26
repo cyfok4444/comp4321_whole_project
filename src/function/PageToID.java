@@ -1,5 +1,5 @@
 package function;
-
+/*
 import java.util.HashMap;
 
 public class PageToID {
@@ -28,3 +28,4 @@ public class PageToID {
 
 
 }
+*/

@@ -127,67 +127,49 @@ public class Crawler
 
 
     public Integer getSize() throws ParserException{
-        try {
-            Parser parser = new Parser(url);
-            int length = parser.getConnection().getContentLength();
-            return length;
 
-        }
-        catch (ParserException e){
+        Parser parser = new Parser(url);
+        int length = parser.getConnection().getContentLength();
+        if (length == -1 ) {
 
+            ArrayList<String> arr = extractWords(url);
+            Integer i = 0;
+            for (String s : arr) i += s.length();
+            return i;
         }
-        //get the num of char;
-        ArrayList<String> arr = extractWords();
-        Integer i = 0;
-        for (String s : arr)  i += s.length();
-        return i;
+        else return length;
 
     }
 
     public static Integer getSize(String url) throws ParserException{
-        try {
             Parser parser = new Parser(url);
             int length = parser.getConnection().getContentLength();
-            return length;
+            if (length == -1 ) {
 
-        }
-        catch (ParserException e){
-
-        }
-        ArrayList<String> arr = extractWords(url);
-        Integer i = 0;
-        for (String s : arr)  i += s.length();
-        return i;
+                ArrayList<String> arr = extractWords(url);
+                Integer i = 0;
+                for (String s : arr) i += s.length();
+                return i;
+            }
+            else return length;
     }
 
-    public long getLastModifiedDate(){
-        try {
+    public long getLastModifiedDate() throws ParserException{
+
 
             Parser parser = new Parser(url);
             long date = parser.getConnection().getLastModified();
-            return date;
-
-        }
-        catch (ParserException e){
-
-        }
-
-        return 0;
+            if (date == 0 )return System.currentTimeMillis();
+            else return date;
     }
 
-    public static long getLastModifiedDate(String url){
-        try {
+    public static long getLastModifiedDate(String url) throws ParserException{
 
             Parser parser = new Parser(url);
             long date = parser.getConnection().getLastModified();
-            return date;
+            if (date == 0 )return System.currentTimeMillis();
+            else return date;
 
-        }
-        catch (ParserException e){
-
-        }
-
-        return 0;
     }
 
 
@@ -196,7 +178,8 @@ public class Crawler
     {
         try
         {
-            Crawler crawler = new Crawler("https://stackoverflow.com/questions/5902306/in-java-its-possible-determine-the-size-of-a-web-page-before-download");
+            //Crawler crawler = new Crawler("https://stackoverflow.com/questions/5902306/in-java-its-possible-determine-the-size-of-a-web-page-before-download");
+            Crawler crawler = new Crawler("https://www.cse.ust.hk");
 
 
             ArrayList<String> words = crawler.extractWords();
@@ -209,10 +192,8 @@ public class Crawler
             for(int i = 0; i < words.size(); i++)
                 System.out.print(words.get(i)+" ");
             System.out.println("\n\n");
-            //System.out.println(crawler.getTitle());
-            //System.out.println("Size: " + crawler.getSize());
             if (crawler.getLastModifiedDate() != 0) {
-                System.out.println("Last: " + new Date(crawler.getLastModifiedDate()).toString());
+                System.out.println("Last: " + new Date(crawler.getLastModifiedDate()).toString() + "size: " + crawler.getSize());
             }
             ArrayList<String> child = getChild("https://stackoverflow.com/questions/5902306/in-java-its-possible-determine-the-size-of-a-web-page-before-download");
             for (int i = 0 ; i < child.size() ; i++){
