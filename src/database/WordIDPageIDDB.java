@@ -51,7 +51,7 @@ public class WordIDPageIDDB {
         }
         return hashMap;
     }
-    public boolean addEntry (HashMap<Integer,Integer> hashMap , String key) throws RocksDBException {
+    public boolean addEntry (HashMap<Integer,Integer> hashMap , Integer key) throws RocksDBException {
         String s = "";
         for (Map.Entry<Integer, Integer> item : hashMap.entrySet()) {
             Integer key1 = item.getKey();
@@ -61,7 +61,7 @@ public class WordIDPageIDDB {
             s+=Integer.toString(key2);
             s+="Sep";
         }
-        rocksDB.put(key.getBytes(),s.getBytes());
+        rocksDB.put(key.toString().getBytes(),s.getBytes());
         return true;
     }
 
@@ -93,7 +93,7 @@ public class WordIDPageIDDB {
         hm2.put(1,3);
         System.out.println(hm2);
         try{
-            wp.addEntry(hm2,"5");
+            wp.addEntry(hm2,5);
             String s = new String(wp.rocksDB.get("5".getBytes()));
             String s2 = wp.getEntry("5").toString();
             System.out.println(s);

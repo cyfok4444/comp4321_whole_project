@@ -7,12 +7,12 @@ import org.rocksdb.RocksIterator;
 import java.util.*;
 import java.util.HashMap;
 
-public class PageIDWordIDPosDBOperation {
+public class PageIDWordIDPosDB2 {
     protected RocksDB rocksDB;
     protected Options options;
     protected  String dbpath;
 
-    public PageIDWordIDPosDBOperation (String dbpath){
+    public PageIDWordIDPosDB2 (String dbpath){
 
         this.dbpath = dbpath;
         options = new Options();
@@ -72,7 +72,7 @@ public class PageIDWordIDPosDBOperation {
     }
 
     public static void main(String [] args) throws RocksDBException{
-        PageIDWordIDPosDBOperation pageIDdBOperation = new PageIDWordIDPosDBOperation("/Users/tszmoonhung/IdeaProjects/comp4321_whole_project/function.PageIDKeyword");
+        PageIDWordIDPosDB2 pageIDWordIDPosDB2 = new PageIDWordIDPosDB2("/Users/tszmoonhung/IdeaProjects/comp4321_whole_project/function.PageIDKeyword");
         HashMap<Integer,ArrayList<Integer> > hashMap = new HashMap<>();
         ArrayList<Integer> arrayList = new ArrayList<>();
         arrayList.add(1);
@@ -90,16 +90,16 @@ public class PageIDWordIDPosDBOperation {
         arrayList2.add(5);
         arrayList2.add(6);
         hashMap.put(10000,arrayList2);
-        pageIDdBOperation.addEntry(hashMap,10000);
-        pageIDdBOperation.addEntry(hashMap,100);
+        pageIDWordIDPosDB2.addEntry(hashMap,10000);
+        pageIDWordIDPosDB2.addEntry(hashMap,100);
 
-        RocksIterator iterator = pageIDdBOperation.rocksDB.newIterator();
+        RocksIterator iterator = pageIDWordIDPosDB2.rocksDB.newIterator();
         for(iterator.seekToFirst(); iterator.isValid(); iterator.next()){
             //System.out.println(new String(iterator.key()) + " " + new String(iterator.value()));
 
         }
 
-        HashMap<Integer,HashMap<Integer,ArrayList<Integer>> > h = pageIDdBOperation.getHashMapTable();
+        HashMap<Integer,HashMap<Integer,ArrayList<Integer>> > h = pageIDWordIDPosDB2.getHashMapTable();
         for (Map.Entry<Integer,HashMap<Integer,ArrayList<Integer>> > item : h.entrySet()) {
             Integer key = item.getKey();
 

@@ -69,10 +69,10 @@ public class Page {
     }
 
     public byte[] getBytes(){
-        return (title+"JOHNMAVISOSCAR"+url+"JOHNMAVISOSCAR"+new Date(lastModificationDate).toString()+"JOHNMAVISOSCAR"+size.toString()+"JOHNMAVISOSCAR"+mostFreqKeywords.toString()+"JOHNMAVISOSCAR"+parentLinks.toString()).getBytes();
+        return (title+"JOHNMAVISOSCAR"+url+"JOHNMAVISOSCAR"+lastModificationDate.toString()+"JOHNMAVISOSCAR"+size.toString()+"JOHNMAVISOSCAR"+mostFreqKeywords.toString()+"JOHNMAVISOSCAR"+parentLinks.toString()).getBytes();
     }
     public String toString(){
-        return (title.toString()+url.toString()+new Date(lastModificationDate).toString()+size.toString()+mostFreqKeywords.toString()+parentLinks.toString());
+        return (title.toString()+url.toString()+lastModificationDate.toString()+size.toString()+mostFreqKeywords.toString()+parentLinks.toString());
     }
     public static void main(String[] args){
         ;

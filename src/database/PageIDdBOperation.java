@@ -13,6 +13,8 @@ public class PageIDdBOperation{
     protected RocksDB rocksDB;
     protected Options options;
     protected  String dbpath;
+    public Integer availableID;
+    public HashMap<String,Integer> hm = new HashMap<>();
 
 
         /**
@@ -25,6 +27,8 @@ public class PageIDdBOperation{
             options.setCreateIfMissing(true);
             try {
                 rocksDB = RocksDB.open(options,dbpath);
+                hm = getHashMapTable();
+                availableID = getMaxId()+1;
             }
             catch (RocksDBException e){
                e.printStackTrace();
@@ -41,14 +45,14 @@ public class PageIDdBOperation{
          */
         public HashMap getHashMapTable() throws RocksDBException{
 
-            HashMap<Integer,String> hashMap = new HashMap<>();
+            HashMap<String,Integer> hashMap = new HashMap<>();
             RocksIterator iterator = rocksDB.newIterator();
 
 
             for (iterator.seekToFirst(); iterator.isValid(); iterator.next()) {
                 String key = new String(iterator.key());
                 String value = new String(rocksDB.get(key.getBytes()));
-                hashMap.put(Integer.parseInt(key),value);
+                hashMap.put(key,Integer.parseInt(value));
             }
 
             return hashMap;
@@ -57,60 +61,61 @@ public class PageIDdBOperation{
         /**
          * if there is the same data in the database return false
          * else return true
-         * @param hashMap is the hashmap the data we have in the db
+         * @param  is the hashmap the data we have in the db
          * @param info
          * @return
          */
-        public boolean isEntryExists (HashMap<Integer,String> hashMap, String info){
-            if (hashMap.containsValue(info)) return true;
+        public boolean isEntryExists (String info){
+            if (hm.containsValue(info)) return true;
             return false;
         }
 
         /**
          * get the Highest ID num in hashMap
          */
-        public int getMaxId (HashMap<Integer,String> hashMap){
+        public int getMaxId (){
             int max = 0;
-            for (Integer i : hashMap.keySet())
-                if (max < i ) max = i;
+            for (String s : hm.keySet())
+                if (max < hm.get(s) ) max = hm.get(s);
             return max;
         }
 
         public int getPageId(String url) throws RocksDBException {
-            PageIDdBOperation pageIDdBOperation = new PageIDdBOperation(PathForDB.path);
-            return new Integer(Integer.parseInt(pageIDdBOperation.rocksDB.get(url.getBytes()).toString()));
+            String PageId = new String(rocksDB.get(url.toString().getBytes()));
+
+            return Integer.parseInt(PageId);
         }
 
         /**
          * basic operation of addEntry
          * will be override for some of the dbOperation subclass
-         * @param hashMap
+         * @param
          * @param info
          * @return
          * @throws RocksDBException
          */
-        public boolean addEntry (HashMap<Integer,String> hashMap, String info) throws RocksDBException{
-            if (isEntryExists(hashMap,info)) return false;
+        public boolean addEntry (String info) throws RocksDBException{
+            if (isEntryExists(info)) return false;
             else{
-                Integer max = getMaxId(hashMap);
-                max++;
-                System.out.println("Adding Key: " + max + " info: " + info);
-                rocksDB.put(max.toString().getBytes(),info.getBytes());
+                System.out.println("Adding Key: " + availableID + " info: " + info);
+                rocksDB.put(info.getBytes(),availableID.toString().getBytes());
+                availableID++;
                 return true;
             }
         }
 
         public static void main(String [] args) throws RocksDBException{
-            PageIDdBOperation pageIDdBOperation = new PageIDdBOperation("/Users/tszmoonhung/IdeaProjects/comp4321_whole_project/db");
-            HashMap<Integer,String> hashMap = pageIDdBOperation.getHashMapTable();
-            pageIDdBOperation.addEntry(hashMap,"hiii");
-            pageIDdBOperation.addEntry(hashMap,"hy");
-            pageIDdBOperation.addEntry(hashMap,"hiiiiiiii");
-            pageIDdBOperation.addEntry(hashMap,"hiiiiiiiippppp");
+            PageIDdBOperation pageIDdBOperation = new PageIDdBOperation(PathForDB.path);
+            pageIDdBOperation.addEntry("hiii");
+            pageIDdBOperation.addEntry("hy");
+            pageIDdBOperation.addEntry("hiiiiiiii");
+            pageIDdBOperation.addEntry("hiiiiiiiippppp");
             RocksIterator iterator = pageIDdBOperation.rocksDB.newIterator();
             for (iterator.seekToFirst(); iterator.isValid(); iterator.next()) {
                System.out.println(new String(iterator.key()) + " " + new String(iterator.value()));
             }
+
+            System.out.println(pageIDdBOperation.getPageId("hy"));
 
         }
 
