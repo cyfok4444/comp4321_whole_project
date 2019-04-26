@@ -9,13 +9,7 @@ import java.util.*;
 public class PageContentDBOperation{
 
     /**
-     * Constructor of DataBaseoperation
-     * Structure of the PageContent
-     * PageID
-     * tile
-     * url
-     * lastModificationDate
-     * Size
+     *
      * @param dbpath
      */
     protected RocksDB rocksDB;
