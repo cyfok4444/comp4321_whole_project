@@ -73,6 +73,9 @@ public class ProcessString {
 
         k = removeRubbish(k);
         k = stopWordRemove(k);
+        for (String s : k){
+            System.out.println(s);
+        }
         HashMap<String, Integer> a = keyWord(k);
         for (HashMap.Entry<String, Integer> entry : a.entrySet()) {
             String key = entry.getKey();

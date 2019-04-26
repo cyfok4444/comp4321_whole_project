@@ -41,7 +41,7 @@ public class PageContentDBOperation{
      * @throws RocksDBException
      */
 
-    public HashMap getHashMapTable() throws RocksDBException{
+    /*public HashMap getHashMapTable() throws RocksDBException{
         HashMap<Integer,ArrayList<String>>  hashMap = new HashMap<>();
         RocksIterator iterator = rocksDB.newIterator();
 
@@ -57,7 +57,7 @@ public class PageContentDBOperation{
 
         }
         return hashMap;
-    }
+    }*/
 
 
     /**
