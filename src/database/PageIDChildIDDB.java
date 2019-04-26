@@ -1,5 +1,4 @@
 package database;
-
 import org.rocksdb.Options;
 import org.rocksdb.RocksDB;
 import org.rocksdb.RocksDBException;

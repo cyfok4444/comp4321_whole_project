@@ -126,7 +126,7 @@ public class Crawler
     }
 
 
-    public Integer getSize(){
+    public Integer getSize() throws ParserException{
         try {
             Parser parser = new Parser(url);
             int length = parser.getConnection().getContentLength();
@@ -136,11 +136,15 @@ public class Crawler
         catch (ParserException e){
 
         }
+        //get the num of char;
+        ArrayList<String> arr = extractWords();
+        Integer i = 0;
+        for (String s : arr)  i += s.length();
+        return i;
 
-        return -1;
     }
 
-    public static Integer getSize(String url){
+    public static Integer getSize(String url) throws ParserException{
         try {
             Parser parser = new Parser(url);
             int length = parser.getConnection().getContentLength();
@@ -150,8 +154,10 @@ public class Crawler
         catch (ParserException e){
 
         }
-
-        return -1;
+        ArrayList<String> arr = extractWords(url);
+        Integer i = 0;
+        for (String s : arr)  i += s.length();
+        return i;
     }
 
     public long getLastModifiedDate(){
