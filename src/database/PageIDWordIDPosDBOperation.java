@@ -106,27 +106,6 @@ public class PageIDWordIDPosDBOperation {
             System.out.println(key);
             System.out.println(item.getValue());
         }
-        /*
-        String s = "";
-        for (Map.Entry<Integer, ArrayList<Integer>> item : hashMap.entrySet()) {
-            Integer key = item.getKey();
-            s+=Integer.toString(key);
-            s+=" ";
-            ArrayList<Integer> value = item.getValue();
-            for (int i = 0 ; i < value.size() ; i++){
-                if (i != value.size()-1) {
-                    s += value.get(i).toString();
-                    s += " ";
-                }
-                else s += value.get(i).toString();
 
-            }
-            s+="Seperate";
-        }
-        System.out.println(s);
-        String[] separte = s.split("Seperate");
-        for (String k : separte)
-        System.out.println(k);
-        */
     }
 }
