@@ -196,8 +196,8 @@ public class Crawler
             ArrayList<String> words = crawler.extractWords();
 
             ProcessString.removeRubbish(words);
-            ProcessString.keyWord(words);
-            ProcessString.stopWordRemove(words);
+            ProcessString.keyWordTf(words);
+            ProcessString.stopWordRemoveTf(words);
 
             System.out.println("Words in "+crawler.url+":");
             for(int i = 0; i < words.size(); i++)

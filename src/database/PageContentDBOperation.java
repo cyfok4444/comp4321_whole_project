@@ -41,8 +41,8 @@ public class PageContentDBOperation{
      * @throws RocksDBException
      */
 
-    public HashMap getHashMapTable() throws RocksDBException{
-        HashMap<Integer,ArrayList<String>>  hashMap = new HashMap<>();
+    public HashMap<String,Long> getDateHashMapTable() throws RocksDBException{
+        HashMap<String,Long>  hashMap = new HashMap<>();
         RocksIterator iterator = rocksDB.newIterator();
 
         for(iterator.seekToFirst(); iterator.isValid(); iterator.next()) {
@@ -50,10 +50,9 @@ public class PageContentDBOperation{
             String key = new String(iterator.key());
             String value = new String(rocksDB.get(key.getBytes()));
             String[]s2 = value.split("JOHNMAVISOSCAR");
-            ArrayList<String> arrayList = new ArrayList<>();
-            arrayList.addAll(Arrays.asList(s2));
-
-            hashMap.put(Integer.parseInt(key),arrayList);
+            String url = s2[1];
+            Long date = Long.parseLong(s2[2]);
+            hashMap.put(url,date);
 
         }
         return hashMap;
@@ -99,15 +98,17 @@ public class PageContentDBOperation{
     }
 
     public static void main (String args[]){
-        Page page = Spider.go("https://www.ust.hk/zh-hant/");
-        System.out.println(page);
-        PageContentDBOperation pc = new PageContentDBOperation("/Users/chunyinfok/Downloads/comp4321_pj/comp4321_whole_project/db");
-        try{
-            pc.rocksDB.put("1".getBytes(),page.getBytes());
-            System.out.println(new String(pc.rocksDB.get("1".getBytes())));
-        }
-        catch ( RocksDBException e ){
+        ArrayList<String> x = new ArrayList<>();
+        x.add("ZZZZ");
+        x.add("AAAA");
+        x.add("CCC");
+        System.out.println(x.get(0));
+        System.out.println("1"+x);
+        x.remove(0);
+        System.out.println(x.get(0));
+        System.out.println("2"+x);
 
-        }
+
+
     }
 }
