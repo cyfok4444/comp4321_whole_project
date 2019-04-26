@@ -24,11 +24,12 @@ public class PageIDdBOperation{
         public PageIDdBOperation(String dbpath){
             this.dbpath = dbpath;
             options = new Options();
+            options.setCreateIfMissing(true);
             try {
                 rocksDB = RocksDB.open(options,dbpath);
             }
             catch (RocksDBException e){
-                e.printStackTrace();
+               e.printStackTrace();
             }
         }
 
@@ -90,10 +91,26 @@ public class PageIDdBOperation{
             if (isEntryExists(hashMap,info)) return false;
             else{
                 Integer max = getMaxId(hashMap);
+                max++;
+                System.out.println("Key: " + max + " info: " + info);
                 rocksDB.put(max.toString().getBytes(),info.getBytes());
                 return true;
             }
         }
+
+        public static void main(String [] args) throws RocksDBException{
+            PageIDdBOperation pageIDdBOperation = new PageIDdBOperation("/Users/tszmoonhung/IdeaProjects/comp4321_whole_project/db");
+            HashMap<Integer,String> hashMap = pageIDdBOperation.getHashMapTable();
+            pageIDdBOperation.addEntry(hashMap,"hiii");
+            pageIDdBOperation.addEntry(hashMap,"hy");
+
+            RocksIterator iterator = pageIDdBOperation.rocksDB.newIterator();
+            for (iterator.seekToFirst(); iterator.isValid(); iterator.next()) {
+               System.out.println(new String(iterator.key()) + " " + new String(iterator.value()));
+            }
+
+        }
+
 
 
 }

@@ -258,7 +258,7 @@ Department of Computer Science and Engineering - HKUST
 https://www.cse.ust.hk/
 Thu Jan 01 08:00:00 HKT 1970
 -1
-{Postgraduate=1, Assurance=1, Apr=1, Hong=1, Query=1, Staff=1, Approximate=1, Laboratory=1, Congregation=1, Towards=1, Alumni=1, Seekers=1, Forum=1, via=2, Privacy=1, Department=1, December=1, Follow=1, Intranet=1, Profiles=1, Network=1, Computer=1, Kong=1, Nowcasting=1, Women=1, Crowdsourcing=1, Google=1, Platforms=1, lives=1, Workshops=1, received=1, Deep=1, Student=1, Joint=1, Code=1, YouTube=1, LinkedIn=1, Mood=1, Academics=1, Dive=1, Privileges=1, Finding=1, reality=1, Models=1, Amazon=1, Map=1, tackling=1, Centers=1, Undergraduates=1, WeChat=1, Qian=1, Spotlights=1, March=1, Academic=1, Research=1, Computing=1, Machine=1, Stepping=1, October=1, Precipitation=1, Employers=1, Events=1, Modulation=1, Forums=1, rights=1, Graduate=1, Fast=1, Faculty=1, Quick=1, set=2, Publications=1, Ahead=1, predictive=1, medicine=1, transformation=1, Smart=1, Facilities=1, Awards=1, meet=2, Reasoning=1, future=1, Music=1, Predictive=1, fake=2, Day=1, Augmented=1, Postgraduates=1, Labs=1, Creating=1, data=4, Facilitating=1, Using=1, Exclusive=1, Sensing=1, HKUST=1, Mapping=1, Spatiotemporal=1, Devices=1, Vulnerabilities=1, World=1, Awarded=1, research=15, Industry=1, Learning=1, Copyright=1, Visualizing=1, MXNet=1, Technology=1, Real=1, Mission=1, Job=1, Facebook=1, Testing=1, Programs=1, Interaction=1, remedy=1, City=1, finding=1, April=1, KIM=1, University=1, Nov=1, Vision=1, Instagram=1, Class=1, Software=1, Library=1, updated=1, Enrichment=1, Qifeng=1, Recruiting=1, Directions=1, Science=1, destination=1, Projects=1, augmented=1, Influential=1, simpler=2, Optimization=1, Processing=1, Videos=1, Engineering=1, CHEN=1, Engagement=1, School=1, CSE=1, Quality=1, ICSM=1, News=1, Admissions=1, Understanding=1, Cognitive=1, February=1, November=1, news=1, Activities=1, Departments=1, practical=1, Dec=1, Applications=1, Panoramic=1, People=1, Zhang=1, Sunghun=1, Launch=1, View=1, Analytics=1, Contact=1, Sitemap=1, Openings=1, ICSME=1, Collaboration=1, Award=1, PG=1, Placements=1, Securing=1, Links=1, Previous=1, Paper=1, Welcome=1, realm=2, locations=1, Undergraduate=1, Location=1}
+{Postgraduate=1, Assurance=1, Apr=1, Hong=1, Query=1, Staff=1, Approximate=1, Laboratory=1, Congregation=1, Towards=1, Alumni=1, Seekers=1, Forum=1, via=2, Privacy=1, Department=1, December=1, Follow=1, Intranet=1, Profiles=1, Network=1, Computer=1, Kong=1, Nowcasting=1, Women=1, Crowdsourcing=1, Google=1, Platforms=1, lives=1, Workshops=1, received=1, Deep=1, Student=1, Joint=1, Code=1, YouTube=1, LinkedIn=1, Mood=1, Academics=1, Dive=1, Privileges=1, Finding=1, reality=1, Models=1, Amazon=1, Map=1, tackling=1, Centers=1, Undergraduates=1, WeChat=1, Qian=1, Spotlights=1, March=1, Academic=1, Research=1, Computing=1, Machine=1, Stepping=1, October=1, Precipitation=1, Employers=1, Events=1, Modulation=1, Forums=1, rights=1, Graduate=1, Fast=1, Faculty=1, Quick=1, set=2, Publications=1, Ahead=1, predictive=1, medicine=1, transformation=1, Smart=1, Facilities=1, Awards=1, meet=2, Reasoning=1, future=1, Music=1, Predictive=1, fake=2, Day=1, Augmented=1, Postgraduates=1, Labs=1, Creating=1, data=4, Facilitating=1, Using=1, Exclusive=1, Sensing=1, HKUST=1, Mapping=1, Spatiotemporal=1, Vulnerabilities=1, World=1, Devices=1, Awarded=1, research=15, Industry=1, Learning=1, Copyright=1, Visualizing=1, MXNet=1, Technology=1, Real=1, Mission=1, Job=1, Facebook=1, Testing=1, Programs=1, Interaction=1, remedy=1, City=1, finding=1, April=1, KIM=1, University=1, Nov=1, Vision=1, Instagram=1, Class=1, Software=1, Library=1, updated=1, Enrichment=1, Qifeng=1, Recruiting=1, Directions=1, Science=1, destination=1, Projects=1, augmented=1, Influential=1, simpler=2, Optimization=1, Processing=1, Videos=1, Engineering=1, CHEN=1, Engagement=1, School=1, CSE=1, Quality=1, ICSM=1, News=1, Admissions=1, Understanding=1, Cognitive=1, February=1, November=1, news=1, Activities=1, Departments=1, practical=1, Dec=1, Applications=1, Panoramic=1, People=1, Zhang=1, Sunghun=1, Launch=1, View=1, Analytics=1, Contact=1, Sitemap=1, Openings=1, ICSME=1, Collaboration=1, Award=1, PG=1, Placements=1, Securing=1, Links=1, Previous=1, Paper=1, Welcome=1, realm=2, locations=1, Undergraduate=1, Location=1}
 [https://www.ust.hk/news
 https://www.ust.hk/academics/list
 https://www.ust.hk/lifehkust
@@ -311,20 +311,20 @@ https://www.cse.ust.hk/pg/admissions/recruiting/
 https://www.cse.ust.hk/pg/ourgraduates/
 https://www.cse.ust.hk/admin/search/
 https://www.seng.ust.hk/
+https://www.chinadailyhk.com/articles/14/65/28/1541125674562.html?newsId=52460
 https://www.seng.ust.hk/web/eng/news_detail.php?id=942
+https://pgnews.ust.hk/feb-2017-feature-stories-part-2
+https://www.scmp.com/presented/business/topics/hkust-25th-anniversary/article/1884178/creating-predictive-future-big-data
 http://epublish.ust.hk/cgi-bin/eng/story.php?id=96&amp;catid=97&amp;keycode=88b7aae0ae45ddb0e6e000ee2682721a&amp;token=17b43a00aeb0f8f8f08df16ae664909f
 https://www.techinasia.com/weseer-smarter-censorship-china
-https://www.scmp.com/presented/business/topics/hkust-25th-anniversary/article/1884178/creating-predictive-future-big-data
-https://pgnews.ust.hk/feb-2017-feature-stories-part-2
+https://www.cse.ust.hk/#spotlight-slides
+https://www.cse.ust.hk/#spotlight-slides
 https://www.chinadailyhk.com/articles/14/65/28/1541125674562.html?newsId=52460
-https://www.cse.ust.hk/#spotlight-slides
-https://www.cse.ust.hk/#spotlight-slides
 https://www.seng.ust.hk/web/eng/news_detail.php?id=942
+https://pgnews.ust.hk/feb-2017-feature-stories-part-2
+https://www.scmp.com/presented/business/topics/hkust-25th-anniversary/article/1884178/creating-predictive-future-big-data
 http://epublish.ust.hk/cgi-bin/eng/story.php?id=96&amp;catid=97&amp;keycode=88b7aae0ae45ddb0e6e000ee2682721a&amp;token=17b43a00aeb0f8f8f08df16ae664909f
 https://www.techinasia.com/weseer-smarter-censorship-china
-https://www.scmp.com/presented/business/topics/hkust-25th-anniversary/article/1884178/creating-predictive-future-big-data
-https://pgnews.ust.hk/feb-2017-feature-stories-part-2
-https://www.chinadailyhk.com/articles/14/65/28/1541125674562.html?newsId=52460
 https://www.cse.ust.hk/ug/
 https://www.cse.ust.hk/pg/
 https://www.cse.ust.hk/Restricted/
@@ -347,30 +347,30 @@ https://www.cse.ust.hk/News/ICSME2018/
 https://www.cse.ust.hk/News/GoogleResearchAward2018/
 https://www.seng.ust.hk/web/eng/news_detail.php?id=1119
 https://www.cse.ust.hk/News/
+https://www.cse.ust.hk/pg/research/projects/leichen/stc/
+https://www.cse.ust.hk/pg/research/projects/charlesz/pinpoint/
+https://www.cse.ust.hk/pg/research/projects/gchan/lst/
+https://www.cse.ust.hk/pg/research/projects/horner/mmm/
+https://www.cse.ust.hk/pg/research/projects/mxj/hri/
+https://www.cse.ust.hk/pg/research/projects/lzhang/aipano/
+https://www.cse.ust.hk/pg/research/projects/kaichen/coda/
 https://www.cse.ust.hk/pg/research/projects/yike/aqp/
 https://www.cse.ust.hk/pg/research/projects/qianzh/sds/
-https://www.cse.ust.hk/pg/research/projects/gchan/lst/
-https://www.cse.ust.hk/pg/research/projects/dyyeung/ml-hko/
-https://www.cse.ust.hk/pg/research/projects/kaichen/coda/
-https://www.cse.ust.hk/pg/research/projects/horner/mmm/
 https://www.cse.ust.hk/pg/research/projects/scc/castle/
-https://www.cse.ust.hk/pg/research/projects/mxj/hri/
-https://www.cse.ust.hk/pg/research/projects/charlesz/pinpoint/
-https://www.cse.ust.hk/pg/research/projects/leichen/stc/
 https://www.cse.ust.hk/pg/research/projects/dyyeung/ml-ed/
+https://www.cse.ust.hk/pg/research/projects/dyyeung/ml-hko/
+https://www.cse.ust.hk/pg/research/projects/leichen/stc/
+https://www.cse.ust.hk/pg/research/projects/charlesz/pinpoint/
+https://www.cse.ust.hk/pg/research/projects/gchan/lst/
+https://www.cse.ust.hk/pg/research/projects/horner/mmm/
+https://www.cse.ust.hk/pg/research/projects/mxj/hri/
 https://www.cse.ust.hk/pg/research/projects/lzhang/aipano/
+https://www.cse.ust.hk/pg/research/projects/kaichen/coda/
 https://www.cse.ust.hk/pg/research/projects/yike/aqp/
 https://www.cse.ust.hk/pg/research/projects/qianzh/sds/
-https://www.cse.ust.hk/pg/research/projects/gchan/lst/
-https://www.cse.ust.hk/pg/research/projects/dyyeung/ml-hko/
-https://www.cse.ust.hk/pg/research/projects/kaichen/coda/
-https://www.cse.ust.hk/pg/research/projects/horner/mmm/
 https://www.cse.ust.hk/pg/research/projects/scc/castle/
-https://www.cse.ust.hk/pg/research/projects/mxj/hri/
-https://www.cse.ust.hk/pg/research/projects/charlesz/pinpoint/
-https://www.cse.ust.hk/pg/research/projects/leichen/stc/
 https://www.cse.ust.hk/pg/research/projects/dyyeung/ml-ed/
-https://www.cse.ust.hk/pg/research/projects/lzhang/aipano/
+https://www.cse.ust.hk/pg/research/projects/dyyeung/ml-hko/
 https://www.cse.ust.hk/admin/welcome/
 https://www.cse.ust.hk/admin/mission/
 https://www.cse.ust.hk/admin/about/
@@ -414,7 +414,7 @@ Department of Computer Science and Engineering - HKUST
 https://www.cse.ust.hk/#
 Thu Jan 01 08:00:00 HKT 1970
 -1
-{Postgraduate=1, Assurance=1, Apr=1, Hong=1, Query=1, Staff=1, Approximate=1, Laboratory=1, Congregation=1, Towards=1, Alumni=1, Seekers=1, Forum=1, via=2, Privacy=1, Department=1, December=1, Follow=1, Intranet=1, Profiles=1, Network=1, Computer=1, Kong=1, Nowcasting=1, Women=1, Crowdsourcing=1, Google=1, Platforms=1, lives=1, Workshops=1, received=1, Deep=1, Student=1, Joint=1, Code=1, YouTube=1, LinkedIn=1, Mood=1, Academics=1, Dive=1, Privileges=1, Finding=1, reality=1, Models=1, Amazon=1, Map=1, tackling=1, Centers=1, Undergraduates=1, WeChat=1, Qian=1, Spotlights=1, March=1, Academic=1, Research=1, Computing=1, Machine=1, Stepping=1, October=1, Precipitation=1, Employers=1, Events=1, Modulation=1, Forums=1, rights=1, Graduate=1, Fast=1, Faculty=1, Quick=1, set=2, Publications=1, Ahead=1, predictive=1, medicine=1, transformation=1, Smart=1, Facilities=1, Awards=1, meet=2, Reasoning=1, future=1, Music=1, Predictive=1, fake=2, Day=1, Augmented=1, Postgraduates=1, Labs=1, Creating=1, data=4, Facilitating=1, Using=1, Exclusive=1, Sensing=1, HKUST=1, Mapping=1, Spatiotemporal=1, Vulnerabilities=1, World=1, Devices=1, Awarded=1, research=15, Industry=1, Learning=1, Copyright=1, Visualizing=1, MXNet=1, Technology=1, Real=1, Mission=1, Job=1, Facebook=1, Testing=1, Programs=1, Interaction=1, remedy=1, City=1, finding=1, April=1, KIM=1, University=1, Nov=1, Vision=1, Instagram=1, Class=1, Software=1, Library=1, updated=1, Enrichment=1, Qifeng=1, Recruiting=1, Directions=1, Science=1, destination=1, Projects=1, augmented=1, Influential=1, simpler=2, Optimization=1, Processing=1, Videos=1, Engineering=1, CHEN=1, Engagement=1, School=1, CSE=1, Quality=1, ICSM=1, News=1, Admissions=1, Understanding=1, Cognitive=1, February=1, November=1, news=1, Activities=1, Departments=1, practical=1, Dec=1, Applications=1, Panoramic=1, People=1, Zhang=1, Sunghun=1, Launch=1, View=1, Analytics=1, Contact=1, Sitemap=1, Openings=1, ICSME=1, Collaboration=1, Award=1, PG=1, Placements=1, Securing=1, Links=1, Previous=1, Paper=1, Welcome=1, locations=1, realm=2, Undergraduate=1, Location=1}
+{Postgraduate=1, Assurance=1, Apr=1, Hong=1, Query=1, Staff=1, Approximate=1, Laboratory=1, Congregation=1, Towards=1, Alumni=1, Seekers=1, Forum=1, via=2, Privacy=1, Department=1, December=1, Follow=1, Intranet=1, Profiles=1, Network=1, Computer=1, Kong=1, Nowcasting=1, Women=1, Crowdsourcing=1, Google=1, Platforms=1, lives=1, Workshops=1, received=1, Deep=1, Student=1, Joint=1, Code=1, YouTube=1, LinkedIn=1, Mood=1, Academics=1, Dive=1, Privileges=1, Finding=1, reality=1, Models=1, Amazon=1, Map=1, tackling=1, Centers=1, Undergraduates=1, WeChat=1, Qian=1, Spotlights=1, March=1, Academic=1, Research=1, Computing=1, Machine=1, Stepping=1, October=1, Precipitation=1, Employers=1, Events=1, Modulation=1, Forums=1, rights=1, Graduate=1, Fast=1, Faculty=1, Quick=1, set=2, Publications=1, Ahead=1, predictive=1, medicine=1, transformation=1, Smart=1, Facilities=1, Awards=1, meet=2, Reasoning=1, future=1, Music=1, Predictive=1, fake=2, Day=1, Augmented=1, Postgraduates=1, Labs=1, Creating=1, data=4, Facilitating=1, Using=1, Exclusive=1, Sensing=1, HKUST=1, Mapping=1, Spatiotemporal=1, Devices=1, Vulnerabilities=1, World=1, Awarded=1, research=15, Industry=1, Learning=1, Copyright=1, Visualizing=1, MXNet=1, Technology=1, Real=1, Mission=1, Job=1, Facebook=1, Testing=1, Programs=1, Interaction=1, remedy=1, City=1, finding=1, April=1, KIM=1, University=1, Nov=1, Vision=1, Instagram=1, Class=1, Software=1, Library=1, updated=1, Enrichment=1, Qifeng=1, Recruiting=1, Directions=1, Science=1, destination=1, Projects=1, augmented=1, Influential=1, simpler=2, Optimization=1, Processing=1, Videos=1, Engineering=1, CHEN=1, Engagement=1, School=1, CSE=1, Quality=1, ICSM=1, News=1, Admissions=1, Understanding=1, Cognitive=1, February=1, November=1, news=1, Activities=1, Departments=1, practical=1, Dec=1, Applications=1, Panoramic=1, People=1, Zhang=1, Sunghun=1, Launch=1, View=1, Analytics=1, Contact=1, Sitemap=1, Openings=1, ICSME=1, Collaboration=1, Award=1, PG=1, Placements=1, Securing=1, Links=1, Previous=1, Paper=1, Welcome=1, locations=1, realm=2, Undergraduate=1, Location=1}
 [https://www.ust.hk/news
 https://www.ust.hk/academics/list
 https://www.ust.hk/lifehkust
@@ -467,19 +467,19 @@ https://www.cse.ust.hk/pg/admissions/recruiting/
 https://www.cse.ust.hk/pg/ourgraduates/
 https://www.cse.ust.hk/admin/search/
 https://www.seng.ust.hk/
+https://pgnews.ust.hk/feb-2017-feature-stories-part-2
+https://www.chinadailyhk.com/articles/14/65/28/1541125674562.html?newsId=52460
 https://www.techinasia.com/weseer-smarter-censorship-china
 https://www.scmp.com/presented/business/topics/hkust-25th-anniversary/article/1884178/creating-predictive-future-big-data
-https://pgnews.ust.hk/feb-2017-feature-stories-part-2
 http://epublish.ust.hk/cgi-bin/eng/story.php?id=96&amp;catid=97&amp;keycode=88b7aae0ae45ddb0e6e000ee2682721a&amp;token=17b43a00aeb0f8f8f08df16ae664909f
-https://www.chinadailyhk.com/articles/14/65/28/1541125674562.html?newsId=52460
 https://www.seng.ust.hk/web/eng/news_detail.php?id=942
 https://www.cse.ust.hk/#spotlight-slides
 https://www.cse.ust.hk/#spotlight-slides
+https://pgnews.ust.hk/feb-2017-feature-stories-part-2
+https://www.chinadailyhk.com/articles/14/65/28/1541125674562.html?newsId=52460
 https://www.techinasia.com/weseer-smarter-censorship-china
 https://www.scmp.com/presented/business/topics/hkust-25th-anniversary/article/1884178/creating-predictive-future-big-data
-https://pgnews.ust.hk/feb-2017-feature-stories-part-2
 http://epublish.ust.hk/cgi-bin/eng/story.php?id=96&amp;catid=97&amp;keycode=88b7aae0ae45ddb0e6e000ee2682721a&amp;token=17b43a00aeb0f8f8f08df16ae664909f
-https://www.chinadailyhk.com/articles/14/65/28/1541125674562.html?newsId=52460
 https://www.seng.ust.hk/web/eng/news_detail.php?id=942
 https://www.cse.ust.hk/ug/
 https://www.cse.ust.hk/pg/
@@ -503,30 +503,30 @@ https://www.cse.ust.hk/News/ICSME2018/
 https://www.cse.ust.hk/News/GoogleResearchAward2018/
 https://www.seng.ust.hk/web/eng/news_detail.php?id=1119
 https://www.cse.ust.hk/News/
-https://www.cse.ust.hk/pg/research/projects/kaichen/coda/
 https://www.cse.ust.hk/pg/research/projects/dyyeung/ml-ed/
-https://www.cse.ust.hk/pg/research/projects/mxj/hri/
-https://www.cse.ust.hk/pg/research/projects/yike/aqp/
-https://www.cse.ust.hk/pg/research/projects/qianzh/sds/
-https://www.cse.ust.hk/pg/research/projects/gchan/lst/
-https://www.cse.ust.hk/pg/research/projects/horner/mmm/
+https://www.cse.ust.hk/pg/research/projects/dyyeung/ml-hko/
+https://www.cse.ust.hk/pg/research/projects/kaichen/coda/
 https://www.cse.ust.hk/pg/research/projects/scc/castle/
 https://www.cse.ust.hk/pg/research/projects/leichen/stc/
-https://www.cse.ust.hk/pg/research/projects/dyyeung/ml-hko/
-https://www.cse.ust.hk/pg/research/projects/lzhang/aipano/
-https://www.cse.ust.hk/pg/research/projects/charlesz/pinpoint/
-https://www.cse.ust.hk/pg/research/projects/kaichen/coda/
-https://www.cse.ust.hk/pg/research/projects/dyyeung/ml-ed/
-https://www.cse.ust.hk/pg/research/projects/mxj/hri/
-https://www.cse.ust.hk/pg/research/projects/yike/aqp/
-https://www.cse.ust.hk/pg/research/projects/qianzh/sds/
-https://www.cse.ust.hk/pg/research/projects/gchan/lst/
 https://www.cse.ust.hk/pg/research/projects/horner/mmm/
+https://www.cse.ust.hk/pg/research/projects/mxj/hri/
+https://www.cse.ust.hk/pg/research/projects/lzhang/aipano/
+https://www.cse.ust.hk/pg/research/projects/gchan/lst/
+https://www.cse.ust.hk/pg/research/projects/yike/aqp/
+https://www.cse.ust.hk/pg/research/projects/charlesz/pinpoint/
+https://www.cse.ust.hk/pg/research/projects/qianzh/sds/
+https://www.cse.ust.hk/pg/research/projects/dyyeung/ml-ed/
+https://www.cse.ust.hk/pg/research/projects/dyyeung/ml-hko/
+https://www.cse.ust.hk/pg/research/projects/kaichen/coda/
 https://www.cse.ust.hk/pg/research/projects/scc/castle/
 https://www.cse.ust.hk/pg/research/projects/leichen/stc/
-https://www.cse.ust.hk/pg/research/projects/dyyeung/ml-hko/
+https://www.cse.ust.hk/pg/research/projects/horner/mmm/
+https://www.cse.ust.hk/pg/research/projects/mxj/hri/
 https://www.cse.ust.hk/pg/research/projects/lzhang/aipano/
+https://www.cse.ust.hk/pg/research/projects/gchan/lst/
+https://www.cse.ust.hk/pg/research/projects/yike/aqp/
 https://www.cse.ust.hk/pg/research/projects/charlesz/pinpoint/
+https://www.cse.ust.hk/pg/research/projects/qianzh/sds/
 https://www.cse.ust.hk/admin/welcome/
 https://www.cse.ust.hk/admin/mission/
 https://www.cse.ust.hk/admin/about/
@@ -2768,7 +2768,7 @@ Research Projects | HKUST CSE
 https://www.cse.ust.hk/pg/research/projects/
 Thu Jan 01 08:00:00 HKT 1970
 -1
-{Postgraduate=1, Assurance=1, Hong=1, Query=1, Staff=1, Approximate=1, Towards=1, Alumni=1, Seekers=1, via=2, Privacy=1, Follow=1, Intranet=1, Profiles=1, Network=1, Kong=1, Nowcasting=1, Crowdsourcing=1, Platforms=1, Code=1, YouTube=1, LinkedIn=1, Mood=1, Academics=1, Finding=1, Models=1, Map=1, Centers=1, Undergraduates=1, Research=1, Academic=1, Computing=1, Machine=1, Precipitation=1, Employers=1, Events=1, Modulation=1, rights=1, Graduate=1, Fast=1, Faculty=1, Quick=1, Publications=1, Smart=1, Facilities=1, Music=1, Predictive=1, Postgraduates=1, Labs=1, Facilitating=1, Sensing=1, HKUST=1, Spatiotemporal=1, Devices=1, Vulnerabilities=1, World=1, Learning=1, Copyright=1, Real=1, Mission=1, Job=1, Facebook=1, Testing=1, Programs=1, Interaction=1, City=1, University=1, Vision=1, Instagram=1, Software=1, Library=1, updated=1, Enrichment=1, Recruiting=1, Directions=1, Science=1, Projects=1, Optimization=1, Processing=1, Engineering=1, Engagement=1, School=1, CSE=1, Quality=1, News=1, Admissions=1, Understanding=1, Departments=1, Navigation=1, Applications=1, Panoramic=1, People=1, Data=1, View=1, Analytics=1, Contact=1, Sitemap=1, Openings=1, PG=1, Placements=1, Securing=1, Links=1, Welcome=1, Undergraduate=1, Location=1}
+{Postgraduate=1, Assurance=1, Hong=1, Query=1, Staff=1, Approximate=1, Towards=1, Alumni=1, Seekers=1, via=2, Privacy=1, Follow=1, Intranet=1, Profiles=1, Network=1, Kong=1, Nowcasting=1, Crowdsourcing=1, Platforms=1, Code=1, YouTube=1, LinkedIn=1, Mood=1, Academics=1, Finding=1, Models=1, Map=1, Centers=1, Undergraduates=1, Research=1, Academic=1, Computing=1, Machine=1, Precipitation=1, Employers=1, Events=1, Modulation=1, rights=1, Graduate=1, Fast=1, Faculty=1, Quick=1, Publications=1, Smart=1, Facilities=1, Music=1, Predictive=1, Postgraduates=1, Labs=1, Facilitating=1, Sensing=1, HKUST=1, Spatiotemporal=1, Vulnerabilities=1, World=1, Devices=1, Learning=1, Copyright=1, Real=1, Mission=1, Job=1, Facebook=1, Testing=1, Programs=1, Interaction=1, City=1, University=1, Vision=1, Instagram=1, Software=1, Library=1, updated=1, Enrichment=1, Recruiting=1, Directions=1, Science=1, Projects=1, Optimization=1, Processing=1, Engineering=1, Engagement=1, School=1, CSE=1, Quality=1, News=1, Admissions=1, Understanding=1, Departments=1, Navigation=1, Applications=1, Panoramic=1, People=1, Data=1, View=1, Analytics=1, Contact=1, Sitemap=1, Openings=1, PG=1, Placements=1, Securing=1, Links=1, Welcome=1, Undergraduate=1, Location=1}
 [https://www.ust.hk/news
 https://www.ust.hk/academics/list
 https://www.ust.hk/lifehkust
@@ -2821,30 +2821,30 @@ https://www.cse.ust.hk/pg/admissions/recruiting/
 https://www.cse.ust.hk/pg/ourgraduates/
 https://www.cse.ust.hk/admin/search/
 https://www.seng.ust.hk/
+https://www.cse.ust.hk/pg/research/projects/leichen/stc/
 https://www.cse.ust.hk/pg/research/projects/scc/castle/
 https://www.cse.ust.hk/pg/research/projects/gchan/lst/
-https://www.cse.ust.hk/pg/research/projects/leichen/stc/
-https://www.cse.ust.hk/pg/research/projects/lzhang/aipano/
-https://www.cse.ust.hk/pg/research/projects/dyyeung/ml-ed/
-https://www.cse.ust.hk/pg/research/projects/yike/aqp/
-https://www.cse.ust.hk/pg/research/projects/kaichen/coda/
-https://www.cse.ust.hk/pg/research/projects/horner/mmm/
-https://www.cse.ust.hk/pg/research/projects/mxj/hri/
 https://www.cse.ust.hk/pg/research/projects/qianzh/sds/
 https://www.cse.ust.hk/pg/research/projects/dyyeung/ml-hko/
+https://www.cse.ust.hk/pg/research/projects/kaichen/coda/
+https://www.cse.ust.hk/pg/research/projects/dyyeung/ml-ed/
 https://www.cse.ust.hk/pg/research/projects/charlesz/pinpoint/
+https://www.cse.ust.hk/pg/research/projects/mxj/hri/
+https://www.cse.ust.hk/pg/research/projects/yike/aqp/
+https://www.cse.ust.hk/pg/research/projects/horner/mmm/
+https://www.cse.ust.hk/pg/research/projects/lzhang/aipano/
+https://www.cse.ust.hk/pg/research/projects/leichen/stc/
 https://www.cse.ust.hk/pg/research/projects/scc/castle/
 https://www.cse.ust.hk/pg/research/projects/gchan/lst/
-https://www.cse.ust.hk/pg/research/projects/leichen/stc/
-https://www.cse.ust.hk/pg/research/projects/lzhang/aipano/
-https://www.cse.ust.hk/pg/research/projects/dyyeung/ml-ed/
-https://www.cse.ust.hk/pg/research/projects/yike/aqp/
-https://www.cse.ust.hk/pg/research/projects/kaichen/coda/
-https://www.cse.ust.hk/pg/research/projects/horner/mmm/
-https://www.cse.ust.hk/pg/research/projects/mxj/hri/
 https://www.cse.ust.hk/pg/research/projects/qianzh/sds/
 https://www.cse.ust.hk/pg/research/projects/dyyeung/ml-hko/
+https://www.cse.ust.hk/pg/research/projects/kaichen/coda/
+https://www.cse.ust.hk/pg/research/projects/dyyeung/ml-ed/
 https://www.cse.ust.hk/pg/research/projects/charlesz/pinpoint/
+https://www.cse.ust.hk/pg/research/projects/mxj/hri/
+https://www.cse.ust.hk/pg/research/projects/yike/aqp/
+https://www.cse.ust.hk/pg/research/projects/horner/mmm/
+https://www.cse.ust.hk/pg/research/projects/lzhang/aipano/
 https://www.cse.ust.hk/admin/welcome/
 https://www.cse.ust.hk/admin/mission/
 https://www.cse.ust.hk/admin/about/
@@ -3115,7 +3115,7 @@ Thu Sep 15 15:03:48 HKT 2016
 HKUST - Hong Kong University of Science and Technology
 https://www.ust.hk/
 Thu Jan 01 08:00:00 HKT 1970
-29571
+29570
 {ADMISSIONS=1, Postgraduate=1, leading=1, Staff=1, recognized=1, HIGHLIGHTS=1, FIGHT=1, Alumni=1, Success=1, Students=1, Profiles=1, Counseling=1, Celebrates=1, Guangzhou=1, Foundation=1, Agreements=1, Story=1, Kong=1, knowledge=1, Space=1, Mainland=1, RESEARCH=1, QS=1, Provost=1, received=1, CONNECTIONS=1, CULTURE=1, Exchange=1, Stanford=1, Experience=1, investigational=1, Transfer=1, London=1, Rankings=1, Tung=1, SOLID=1, Key=1, Amenities=1, Office=1, Centers=1, aTyr=1, BOOST=1, Communal=1, Website=1, Innovation=1, FOUNDATION=1, Institute=1, Jobs=1, Questionnaires=1, Graduate=1, Vice=1, Chart=1, Directory=1, Faculty=1, Multimedia=1, Social=1, Motion=1, Center=1, address=1, Novel=1, Publications=1, Calendar=1, AGING=1, STORY=1, Facilities=1, Services=1, Awards=1, Cover=1, Statutes=1, Croucher=1, Collaborations=1, Career=1, CORNER=1, ADMINISTRATION=1, Communities=1, RELEASES=1, Giving=1, Partnerships=1, Wellness=1, INNOVATION=1, Photo=1, Global=1, Court=1, Teaching=1, Arts=1, Jockey=1, Learning=1, UG=1, Glance=1, Clusters=1, Visiting=1, Business=1, Programs=1, Fok=1, Program=1, campus=1, Financial=1, Continuing=1, Dean=1, PRESS=1, Diseases=1, Brand=1, University=1, Donors=1, Vision=1, Video=1, Gallery=1, College=1, scholars=1, Pangu=1, Press=1, Ying=1, Directions=1, EMBA=1, Council=1, remove=1, Guidelines=1, School=1, Harvard=1, China=1, Admissions=1, GLOBAL=1, Biography=1, Stories=1, Schools=1, International=1, Activities=1, Fellowship=1, disease=1, Affairs=1, Rare=1, People=1, Registry=1, print=1, Signs=1, Club=1, Catering=1, Community=1, Advancement=1, Connections=1, Regulations=1, Hong=1, Spot=1, Lung=1, Interdisciplinary=1, Prospective=1, therapeutic=1, President=1, Privacy=1, Purchasing=1, Ranks=1, Network=1, Development=1, Aid=1, Shenzhen=1, Human=1, Google=1, Campus=1, Platforms=1, double=1, testing=1, Relations=1, Student=1, Studies=1, innovative=1, lung=1, Academics=1, Top=1, million=1, Senior=1, Institutional=1, Life=1, Level=1, Medical=1, Resources=1, Current=1, Map=1, Site=1, Organization=1, Advanced=1, Explore=1, Laboratories=1, Ordinance=1, Research=1, Academic=1, Shaw=1, smart=1, Donation=1, Aesthetics=1, TOUGH=1, MENTAL=1, Administration=1, Study=1, Humanities=1, include=1, Groundbreaking=1, Government=1, Living=1, errorMessage=1, Text=1, Governance=1, Plan=1, Housing=1, Smart=1, Entrepreneurship=1, Insurance=1, advancing=1, Policy=1, INSPIRING=1, Scholarly=1, Institutes=1, transforms=1, Summer=1, pioneering=1, HKUST=1, Central=1, Secretariat=1, FUTURE=1, Knowledge=1, EVENT=1, ACADEMICS=1, Releases=1, Technology=1, Education=1, Strategic=1, Sustainability=1, TELL=1, Mission=1, Culture=1, Sports=1, Media=1, SUSTAINABILITY=1, ideas=1, Visitors=1, Public=1, Systems=1, establish=2, Truly=1, Senate=1, Professional=1, Receives=1, Auditorium=1, true=1, Environment=1, ground=1, Library=1, BioPharma=1, launches=1, myPortal=1, option=1, Basic=1, MAJOR=1, Accessibility=1, Science=1, Courses=1, Information=1, Engineering=1, Engagement=1, Publishing=1, Feedback=1, Translating=1, Safety=1, Drug=1, Neurodegenerative=1, Finance=1, Opportunities=1, Management=1, Figures=1, distinguished=1, Contact=1, Milestones=1, Tell=1, Pharma=1, Collaboration=1, PG=1, Strategy=1, Offices=1, Contribution=1, Undergraduate=1, Integrity=1}
 [https://www.ust.hk
 https://www.ust.hk/prospective-students/
@@ -3411,7 +3411,7 @@ https://ucalendar.ust.hk/cgi-bin/week.php
 https://www.ust.hk/lifehkust/a-good-story-to-tell/
 https://www.ust.hk/about-hkust/media-relations/hkust-in-the-media/
 https://www.ust.hk/cover-stories/
-http://www.thestandard.com.hk/section-news.php?id=206573
+http://www.thestandard.com.hk/section-news.php?id=207123
 https://www.ust.hk/about-hkust/publications-multimedia/annual-report/
 https://stem.ust.hk/
 http://www.vprg.ust.hk/rgs/eng/RP/2nd_issue/files/assets/basic-html/index.html#1
@@ -3420,7 +3420,7 @@ http://strategicplan.ust.hk/
 http://www.ust.hk/lifehkust/a-good-story-to-tell/
 https://www.web-accessibility.hk/en
 https://president.ust.hk/en/
-http://www.thestandard.com.hk/section-news.php?id=206573
+http://www.thestandard.com.hk/section-news.php?id=207123
 https://www.ust.hk/about-hkust/publications-multimedia/annual-report/
 https://stem.ust.hk/
 http://www.vprg.ust.hk/rgs/eng/RP/2nd_issue/files/assets/basic-html/index.html#1
@@ -3547,7 +3547,7 @@ https://www.web-accessibility.hk/en]
 HKUST - About
 https://www.ust.hk/about-hkust
 Thu Jan 01 08:00:00 HKT 1970
-22870
+22868
 {Water=1, prepare=1, hands=1, leading=1, recognized=1, oversee=1, Alumni=1, Success=1, advance=1, offer=1, Profiles=1, diverse=1, Story=1, knowledge=1, Space=1, Mainland=1, excellent=1, pool=1, community=1, click=1, Exchange=1, senior=3, planning=1, Experience=1, globe=1, trying=1, Transfer=1, Rankings=1, formed=1, drive=1, Tung=1, East=1, Amenities=1, Stipulated=1, Centers=1, providing=1, achieve=1, bodies=1, Website=1, Newsletter=1, MESSAGE=1, October=1, Institute=1, Jobs=1, term=1, departments=1, Graduate=1, Chart=1, Directory=1, humanity=1, Faculty=1, Multimedia=1, Social=1, fostering=1, Center=1, committed=1, address=1, business=1, learn=6, endeavors=1, namely=1, Facilities=1, Shyy=1, Awards=1, regarded=1, information=1, thrive=1, Collaborations=1, Career=1, citizens=1, eager=1, beauty=1, Communities=1, Giving=1, official=1, Global=1, Teaching=1, faculty=1, institution=1, Glance=1, Visiting=1, ITSC=1, mindful=1, Business=1, dedicated=1, Fok=1, Financial=1, list=1, Dean=1, Brand=1, vision=1, risen=1, external=1, Donors=1, University=1, Sik=1, Vision=1, Video=1, Gallery=1, Press=1, Ying=1, Directions=1, Corporate=1, directory=1, breeds=1, School=1, Annual=1, provides=1, Admissions=1, Biography=1, Home=1, International=1, Activities=1, conducive=1, Report=1, caliber=1, People=1, multiple=1, Wise=1, print=1, environment=1, Asia=1, Club=1, VPs=1, Catering=1, comprehensive=1, Community=1, Advancement=1, Regulations=1, Hong=1, education=1, Interdisciplinary=1, Prospective=1, thanks=1, President=1, Purchasing=1, join=2, Aid=1, Shenzhen=1, Human=1, Google=1, Platforms=1, energizing=1, period=1, Ho=1, understand=1, educating=1, Student=1, Academics=1, Senior=1, Map=1, Organization=1, Advanced=1, Laboratories=1, serves=1, pursuit=2, Academic=1, local=1, world=2, Aesthetics=1, share=1, map=5, outcome=1, Study=1, Booklet=1, Living=1, change=1, spirit=1, Text=1, intellectual=1, draw=1, Governance=1, opportunities=1, respectful=1, Insurance=1, able=1, governance=1, Scholarly=1, feel=1, HKUST=1, Secretariat=1, photos=1, decorated=1, amongst=1, Education=1, Sustainability=1, academic=1, relentless=1, international=1, administrators=1, enquiries=1, Public=1, Truly=1, directions=1, focused=1, true=1, Library=1, university=1, media=5, Information=1, Engagement=1, Publishing=1, ranked=1, Safety=1, highly=1, Brochure=1, Reports=1, Opportunities=1, entrepreneurial=1, Figures=1, occupies=1, structure=1, rapidly=1, horizons=1, awards=1, PG=1, Strategy=1, online=1, objectives=1, forms=1, Undergraduate=1, Postgraduate=1, strategic=1, Staff=1, led=2, professional=1, cover=1, beautiful=1, reflect=1, Students=1, Counseling=1, welcome=1, Kong=1, based=1, Provost=1, mission=1, IAS=1, Key=1, sweeping=1, Office=1, Communal=1, students=1, global=6, stakeholders=1, Administrative=1, Innovation=1, current=1, desired=1, Questionnaires=1, creation=1, Motion=1, Publications=1, Calendar=1, team=1, fortunate=1, people=1, closer=1, peninsula=1, Services=1, Statutes=1, afraid=1, Learn=1, relations=1, chart=2, excellence=1, Partnerships=1, Wellness=1, Photo=1, individuals=1, challenging=1, research=14, Court=1, Arts=1, Jockey=1, Learning=1, UG=1, view=1, Clusters=1, attracts=1, dynamic=1, passion=1, five=2, Programs=1, offers=1, Program=1, campus=1, widely=1, develop=7, look=1, Continuing=1, name=1, region=2, fields=1, support=2, allow=1, Expert=1, aspects=1, Council=1, Guidelines=1, China=1, News=1, Schools=1, Notes=1, overview=1, Affairs=1, securing=1, recently=1, Registry=1, short=1, talents=1, Connections=1, issues=1, Privacy=1, measures=1, priorities=1, identified=1, universities=1, Network=1, Development=1, Established=1, generation=1, Campus=1, welcomes=1, natural=1, linking=1, Ting=1, Relations=1, Studies=1, innovative=1, Institutional=1, Life=1, Level=1, Wei=1, Resources=1, Current=1, societal=1, Explore=1, Visitor=1, Ordinance=1, Research=1, foundation=1, elite=1, identity=1, Prof=1, established=1, meant=1, Administration=1, Humanities=1, explore=1, Plan=1, Housing=1, transformation=1, nurture=1, help=2, site=3, Entrepreneurship=1, culture=1, devotion=1, organization=1, matured=1, immersed=1, statistics=1, Policy=1, Institutes=1, Summer=1, Central=1, constantly=1, Knowledge=1, Releases=1, major=1, Technology=1, Strategic=1, emphasis=1, create=1, strives=1, Mission=1, Culture=1, Sports=1, Environmental=1, proud=1, Channel=1, Media=1, Visitors=1, Systems=1, keen=1, Senate=1, Professional=1, veteran=1, Environment=1, myPortal=1, gauging=1, critical=1, Accessibility=1, challenges=1, Science=1, Courses=1, eBookshelf=1, Engineering=1, operations=1, public=4, Feedback=1, ready=1, value=1, Finance=1, Management=1, approaches=1, Contact=1, educated=1, Milestones=1, Tell=1, various=1, Genesis=1, Welcome=1, visit=4, Bay=1, Offices=1, Contribution=1, Integrity=1}
 [https://www.ust.hk
 https://www.ust.hk/prospective-students/
@@ -3942,7 +3942,7 @@ https://www.web-accessibility.hk/en]
 Department List - HKUST
 https://www.ust.hk/academics/list
 Thu Jan 01 08:00:00 HKT 1970
-18284
+18282
 {Connections=1, Postgraduate=1, Regulations=1, Staff=1, Interdisciplinary=1, Alumni=1, Success=1, Prospective=1, President=1, Privacy=1, Department=1, Purchasing=1, Students=1, Profiles=1, Network=1, Counseling=1, Development=1, Aid=1, Story=1, Shenzhen=1, Space=1, Human=1, Mainland=1, Google=1, Campus=1, Platforms=1, Provost=1, Relations=1, Student=1, Studies=1, Exchange=1, Experience=1, Academics=1, Senior=1, Institutional=1, Transfer=1, Life=1, Rankings=1, Level=1, Resources=1, Current=1, Map=1, Tung=1, Key=1, Amenities=1, Office=1, Site=1, Centers=1, Organization=1, Advanced=1, Explore=1, Laboratories=1, Ordinance=1, Communal=1, Website=1, Research=1, Academic=1, Innovation=1, Institute=1, Jobs=1, Questionnaires=1, Aesthetics=1, Graduate=1, Chart=1, Directory=1, Faculty=1, Multimedia=1, Social=1, Motion=1, Administration=1, Study=1, Humanities=1, Center=1, Publications=1, Living=1, Calendar=1, Text=1, Governance=1, Plan=1, Housing=1, Facilities=1, Services=1, Awards=1, Statutes=1, Entrepreneurship=1, Insurance=1, Collaborations=1, Career=1, Policy=1, Scholarly=1, Communities=1, Institutes=1, Giving=1, Summer=1, Partnerships=1, Wellness=1, HKUST=1, Central=1, Secretariat=1, Knowledge=1, Global=1, Court=1, Teaching=1, Arts=1, Jockey=1, Learning=1, Releases=1, UG=1, Glance=1, Education=1, Technology=1, Strategic=1, Sustainability=1, Clusters=1, Visiting=1, List=1, Mission=1, Culture=1, Business=1, Sports=1, Programs=1, Fok=1, Program=1, Media=1, Financial=1, Visitors=1, Public=1, Continuing=1, Dean=1, Systems=1, Brand=1, Truly=1, Senate=1, Donors=1, University=1, Professional=1, Vision=1, true=1, Environment=1, Library=1, Press=1, myPortal=1, Ying=1, Accessibility=1, Directions=1, Science=1, Courses=1, Information=1, Council=1, Guidelines=1, Engineering=1, Engagement=1, School=1, Publishing=1, Feedback=1, China=1, Admissions=1, Safety=1, Schools=1, Home=1, International=1, Activities=1, Affairs=1, Finance=1, People=1, Opportunities=1, Management=1, Registry=1, Figures=1, Contact=1, print=1, Milestones=1, Club=1, Tell=1, PG=1, Strategy=1, Catering=1, Community=1, Offices=1, Advancement=1, Contribution=1, Undergraduate=1, Integrity=1}
 [https://www.ust.hk
 https://www.ust.hk/prospective-students/
@@ -4243,7 +4243,7 @@ https://www.web-accessibility.hk/en]
 HKUST - Life@HKUST
 https://www.ust.hk/lifehkust
 Thu Jan 01 08:00:00 HKT 1970
-22234
+22235
 {developmental=1, prepare=1, Alumni=1, Success=1, advance=1, begins=1, Physical=1, Profiles=1, awaiting=1, understanding=1, promotes=1, Story=1, Space=1, Mainland=1, grow=1, opportunity=1, personal=1, Discover=1, inspired=1, community=1, Exchange=1, cultural=1, extend=1, senior=2, Experience=1, exposure=1, selection=1, Transfer=1, Rankings=1, Tung=1, Amenities=1, Centers=1, amenities=1, turf=1, sustainable=1, Website=1, civic=2, swimming=1, communications=1, involvement=1, Institute=1, Jobs=1, offered=1, responsibility=1, integral=1, Graduate=1, Chart=1, Directory=1, Faculty=1, Multimedia=1, Social=1, mind=1, Center=1, staff=1, eating=1, faced=1, integrate=1, Organizing=1, Facilities=1, Awards=1, meet=1, exciting=1, information=1, Collaborations=1, Career=1, eager=1, curricular=1, Communities=1, Giving=1, recreational=1, developed=1, Global=1, Teaching=1, Glance=1, scholarship=1, Visiting=1, ITSC=1, SHO=1, creativity=1, Business=1, contributed=1, dedicated=1, parcel=1, Fok=1, Financial=1, benevolent=1, Dean=1, mainland=5, Brand=1, Donors=1, University=1, Vision=1, exchange=1, Press=1, Ying=1, Directions=1, importance=1, searching=1, introductory=1, School=1, related=1, provides=1, Admissions=1, Home=1, views=1, International=1, Activities=1, living=1, People=1, rich=1, tuition=1, home=2, schedule=1, print=2, form=1, management=1, Club=1, Catering=1, Community=1, Advancement=1, promotion=1, Regulations=1, education=1, advanced=1, Interdisciplinary=1, Users=1, collaborate=1, Prospective=1, President=1, Purchasing=1, join=3, portal=1, Aid=1, Shenzhen=1, Human=1, Google=1, Platforms=1, classroom=1, Student=1, traditional=1, Academics=1, Senior=1, Map=1, wider=1, Organization=1, Advanced=1, Laboratories=1, Academic=1, login=1, summer=3, valid=1, electronic=1, Aesthetics=1, share=1, energetic=1, Study=1, counseling=1, Living=1, health=1, Text=1, intellectual=1, Governance=1, aesthetics=1, opportunities=1, Insurance=1, facilities=1, Scholarly=1, intercultural=1, nourishes=1, pools=1, HKUST=1, Secretariat=1, stimulates=1, Enjoy=1, Education=1, Sustainability=1, academic=1, raise=1, international=1, frontiers=1, plenty=1, Public=1, experiences=1, sustainability=1, transforming=1, friends=1, Browse=1, Truly=1, convenient=1, true=1, Library=1, student=34, university=1, financial=1, Information=1, Engagement=1, effective=1, total=2, Publishing=1, pursue=1, rented=1, Safety=1, sports=1, Opportunities=1, Figures=1, horizons=1, perspectives=1, activities=1, engage=1, PG=1, accommodation=1, Strategy=1, online=1, Undergraduate=1, handles=1, Postgraduate=1, Staff=1, enrichment=1, encouraged=1, Students=1, Counseling=1, events=1, vibrant=3, using=1, Provost=1, recognize=1, secondary=1, thereby=1, unique=1, Key=1, Office=1, Art=1, housing=1, Communal=1, students=1, global=6, believe=1, seek=1, promote=1, Innovation=1, variety=1, Questionnaires=1, supports=1, takes=1, cornerstone=1, demonstrating=1, broaden=1, calendar=3, Motion=1, art=2, Publications=1, Calendar=1, makes=1, services=1, Services=1, residential=1, Statutes=1, assist=3, undergraduate=1, insurance=1, engagement=1, available=1, Partnerships=1, Wellness=1, enhancement=1, research=15, Court=1, Arts=1, Jockey=1, Learning=1, UG=1, view=1, awareness=1, school=2, Clusters=1, Programs=1, courses=1, Program=1, campus=1, develop=9, collection=1, Continuing=1, laboratory=1, shop=1, idea=1, sponsorship=1, learning=1, Council=1, life=8, Guidelines=1, experiential=1, China=1, themselves=1, throughout=1, emphasize=1, Schools=1, enhance=1, characteristics=1, green=1, Affairs=1, wide=2, reading=1, Registry=1, artificial=1, healthy=1, deepen=1, catering=1, Connections=1, leader=1, Support=1, program=14, beyond=3, required=1, Privacy=1, measures=1, Network=1, Development=1, plan=3, Campus=1, Relations=1, insightful=1, Studies=1, enriches=1, provide=1, Institutional=1, Life=1, indoor=2, Level=1, Resources=1, sensitivity=1, Current=1, care=1, Site=1, study=1, Explore=1, signature=1, Ordinance=1, enjoy=2, Research=1, partnerships=1, continues=1, enables=1, wealth=1, Administration=1, Humanities=1, include=1, explore=1, Plan=1, Housing=1, tennis=1, excel=1, help=4, Entrepreneurship=1, culture=1, Policy=1, friendly=1, Institutes=1, own=1, fee=1, Summer=1, Central=1, section=1, treasures=1, experience=1, Knowledge=1, Releases=1, Technology=1, Strategic=1, create=1, strives=1, Mission=1, Culture=1, Sports=1, discover=1, individual=1, goes=1, Media=1, Visitors=1, Systems=1, August=1, Senate=1, Professional=1, refers=1, person=4, outside=1, Environment=1, myPortal=1, Accessibility=1, challenges=1, Science=1, Courses=1, Engineering=1, Feedback=1, array=1, organize=1, track=2, designed=1, soccer=1, orientation=1, stories=1, Finance=1, Service=1, resources=1, Management=1, Contact=1, Milestones=1, matters=1, Tell=1, various=1, Welcome=1, Offices=1, Contribution=1, Integrity=1}
 [https://www.ust.hk
 https://www.ust.hk/prospective-students/
@@ -4566,7 +4566,7 @@ https://www.web-accessibility.hk/en]
 Map &amp; Directions - HKUST
 https://www.ust.hk/map-directions
 Thu Jan 01 08:00:00 HKT 1970
-18227
+18226
 {Connections=1, Postgraduate=1, Regulations=1, Staff=1, Interdisciplinary=1, Alumni=1, Success=1, Prospective=1, President=1, Privacy=1, Purchasing=1, Students=1, Profiles=1, Network=1, Counseling=1, Development=1, Aid=1, Story=1, Shenzhen=1, Space=1, Human=1, Mainland=1, Google=1, Campus=1, Platforms=1, Provost=1, Relations=1, Student=1, Studies=1, Exchange=1, Experience=1, Academics=1, Senior=1, Institutional=1, Transfer=1, Life=1, Rankings=1, Level=1, Resources=1, Map=1, Current=1, Tung=1, Key=1, Amenities=1, Office=1, Site=1, Centers=1, Organization=1, Advanced=1, Explore=1, Laboratories=1, Ordinance=1, Communal=1, Website=1, Research=1, Academic=1, Innovation=1, Institute=1, Jobs=1, Questionnaires=1, Aesthetics=1, Graduate=1, Chart=1, Directory=1, Faculty=1, Multimedia=1, Social=1, Motion=1, Administration=1, Study=1, Humanities=1, Center=1, Publications=1, Living=1, Calendar=1, Text=1, Governance=1, Plan=1, Housing=1, Facilities=1, Services=1, Awards=1, Statutes=1, Entrepreneurship=1, Insurance=1, Collaborations=1, Career=1, Policy=1, Scholarly=1, Communities=1, Institutes=1, Giving=1, Summer=1, Partnerships=1, Wellness=1, HKUST=1, Central=1, Secretariat=1, Knowledge=1, Global=1, Court=1, Teaching=1, Arts=1, Jockey=1, Learning=1, Releases=1, UG=1, Glance=1, Education=1, Technology=1, Strategic=1, Sustainability=1, Clusters=1, Visiting=1, Mission=1, Culture=1, Business=1, Sports=1, Programs=1, Fok=1, Program=1, Media=1, Financial=1, Visitors=1, Public=1, Continuing=1, Dean=1, Systems=1, Brand=1, Truly=1, Senate=1, Donors=1, University=1, Professional=1, Vision=1, true=1, Environment=1, Library=1, Press=1, myPortal=1, Ying=1, Accessibility=1, Directions=1, Science=1, Courses=1, Information=1, Council=1, Guidelines=1, Engineering=1, Engagement=1, School=1, Publishing=1, Feedback=1, China=1, Admissions=1, Safety=1, Schools=1, Home=1, International=1, Activities=1, Affairs=1, Finance=1, People=1, Opportunities=1, Management=1, Registry=1, Figures=1, Contact=1, print=1, Milestones=1, Club=1, Tell=1, PG=1, Strategy=1, Catering=1, Community=1, Offices=1, Advancement=1, Contribution=1, Undergraduate=1, Integrity=1}
 [https://www.ust.hk
 https://www.ust.hk/prospective-students/
@@ -4866,8 +4866,8 @@ https://www.web-accessibility.hk/en]
 News - HKUST
 https://www.ust.hk/news
 Thu Jan 01 08:00:00 HKT 1970
-22749
-{Postgraduate=1, Staff=1, Alumni=1, Success=1, Month=1, Students=1, Profiles=1, Counseling=1, Celebrates=1, Foundation=1, July=1, Story=1, January=1, Space=1, Mainland=1, QS=1, Provost=1, Aerodynamics=1, Exchange=1, Experience=1, Transfer=1, Rankings=1, Tung=1, Key=1, Amenities=1, Office=1, Centers=1, June=1, Communal=1, March=1, Website=1, Kwok=1, Innovation=1, October=1, Institute=1, Jobs=1, Questionnaires=1, Team=1, Graduate=1, Chart=1, Directory=1, Faculty=1, Multimedia=1, Social=1, Motion=1, Center=1, Cycling=1, Publications=1, Calendar=1, Facilities=1, Services=1, Awards=1, Statutes=1, Collaborations=1, Career=1, Communities=1, Giving=1, Partnerships=1, Wellness=1, Global=1, Court=1, Teaching=1, Arts=1, Jockey=1, Learning=1, acid=1, UG=1, Glance=1, Clusters=1, Visiting=1, Business=1, Programs=1, Fok=1, Program=1, Eyes=1, test=1, Financial=1, Continuing=1, Dean=1, Brand=1, Donors=1, University=1, Vision=1, HKSI=1, Press=1, Ying=1, September=1, Directions=1, EMBA=1, Council=1, Guidelines=1, techies=1, School=1, China=1, News=1, Admissions=1, Schools=1, Home=1, International=1, November=1, Activities=1, Kung=1, Affairs=1, People=1, Title=1, Registry=1, Buzz=1, Initiative=1, print=1, Filter=1, Club=1, Catering=1, Community=1, Advancement=1, Connections=1, Regulations=1, Spot=1, Interdisciplinary=1, groundbreaking=1, Prospective=1, President=1, Privacy=1, December=1, Purchasing=1, Ranks=1, Network=1, Development=1, Aid=1, Shenzhen=1, Human=1, Google=1, Campus=1, Platforms=1, Enhance=1, Relations=1, Student=1, drink=1, Studies=1, Academics=1, million=1, Top=1, Senior=1, Institutional=1, Life=1, Level=1, Resources=1, Performance=1, Current=1, Map=1, Site=1, wider=1, Organization=1, Advanced=1, Explore=1, Laboratories=1, Ordinance=1, Research=1, Academic=1, Shaw=1, Target=1, Donation=1, Aesthetics=1, Administration=1, Study=1, Humanities=1, Groundbreaking=1, Living=1, celebrates=1, Join=1, Text=1, draw=1, Governance=1, Plan=1, Housing=1, Entrepreneurship=1, Insurance=1, Lam=1, pseudoscience=1, Policy=1, door=1, Scholarly=1, Institutes=1, Summer=1, HKUST=1, Central=1, Secretariat=1, Knowledge=1, Keeping=1, Releases=1, Education=1, Technology=1, Strategic=1, Sustainability=1, Mission=1, Culture=1, Sports=1, Media=1, Visitors=1, Public=1, Systems=1, April=1, August=1, Truly=1, Senate=1, Professional=1, Receives=1, Auditorium=1, true=1, Environment=1, Sai=1, Library=1, myPortal=1, Accessibility=1, Science=1, Courses=1, Information=1, Engineering=1, Engagement=1, Publishing=1, Feedback=1, Safety=1, February=1, Hands=1, Finance=1, Opportunities=1, Management=1, Figures=1, Date=1, Contact=1, Milestones=1, Tell=1, PG=1, Strategy=1, Bay=1, Offices=1, Contribution=1, Undergraduate=1, Integrity=1}
+22650
+{Postgraduate=1, Staff=1, Alumni=1, Success=1, Month=1, Students=1, Profiles=1, Counseling=1, Celebrates=1, Pi=1, Foundation=1, July=1, Story=1, January=1, Space=1, Mainland=1, QS=1, Provost=1, Exchange=1, Experience=1, Transfer=1, Rankings=1, Tung=1, Key=1, Amenities=1, Office=1, Centers=1, June=1, Communal=1, March=1, Website=1, Innovation=1, October=1, Institute=1, Jobs=1, Questionnaires=1, Graduate=1, Chart=1, Directory=1, Faculty=1, Multimedia=1, Social=1, Motion=1, Center=1, Publications=1, Calendar=1, barcodes=1, Facilities=1, Services=1, Awards=1, Statutes=1, Collaborations=1, Career=1, Communities=1, Giving=1, Partnerships=1, Wellness=1, Global=1, Court=1, Teaching=1, Arts=1, Jockey=1, Learning=1, acid=1, UG=1, Glance=1, Clusters=1, Visiting=1, Business=1, Programs=1, Fok=1, Program=1, Eyes=1, test=1, Financial=1, Continuing=1, Dean=1, Brand=1, Donors=1, University=1, Vision=1, Press=1, Ying=1, September=1, Directions=1, EMBA=1, Council=1, Guidelines=1, techies=1, School=1, China=1, News=1, Admissions=1, Schools=1, Home=1, International=1, November=1, Activities=1, Kung=1, Bigger=1, Affairs=1, People=1, Title=1, Registry=1, Buzz=1, print=1, Filter=1, Club=1, Catering=1, Community=1, Advancement=1, Connections=1, Regulations=1, Spot=1, Interdisciplinary=1, groundbreaking=1, Prospective=1, President=1, Privacy=1, December=1, Purchasing=1, Ranks=1, Network=1, Development=1, Aid=1, Shenzhen=1, Human=1, Google=1, Campus=1, Platforms=1, Relations=1, Student=1, drink=1, Studies=1, Academics=1, million=1, Top=1, Senior=1, Institutional=1, Life=1, Level=1, Resources=1, Current=1, Map=1, Site=1, wider=1, Organization=1, Advanced=1, Explore=1, Laboratories=1, Ordinance=1, Research=1, Academic=1, Shaw=1, Target=1, Donation=1, Aesthetics=1, Administration=1, Study=1, Humanities=1, Groundbreaking=1, Living=1, celebrates=1, Text=1, draw=1, Governance=1, Plan=1, Housing=1, Entrepreneurship=1, Insurance=1, Lam=1, pseudoscience=1, Policy=1, door=1, Scholarly=1, Institutes=1, Summer=1, HKUST=1, Central=1, Secretariat=1, Knowledge=1, Keeping=1, Releases=1, Education=1, Technology=1, Strategic=1, Sustainability=1, Mission=1, Culture=1, Sports=1, Media=1, Visitors=1, Public=1, Systems=1, April=1, August=1, Truly=1, Senate=1, Professional=1, Receives=1, Auditorium=1, true=1, Environment=1, Sai=1, Library=1, myPortal=1, Accessibility=1, Science=1, Courses=1, Information=1, Engineering=1, Engagement=1, Publishing=1, Feedback=1, Safety=1, February=1, Finance=1, Opportunities=1, Management=1, Figures=1, Date=1, Contact=1, Milestones=1, Tell=1, PG=1, Strategy=1, Bay=1, Offices=1, Contribution=1, Undergraduate=1, Integrity=1}
 [https://www.ust.hk
 https://www.ust.hk/prospective-students/
 https://www.ust.hk/current-students/
@@ -5046,6 +5046,7 @@ https://www.ust.hk/visitors/
 https://www.ust.hk/media/
 https://www.ust.hk/community/
 https://www.ust.hk/
+https://www.ust.hk/hkust-in-the-media/bigger-pi-new-barcodes/
 https://www.ust.hk/agoodstory/keeping-eyes-target/
 https://www.ust.hk/hkust-in-the-media/%e9%9d%9e%e6%b4%b2%e7%b8%bd%e7%b5%b1%e8%ae%8a%e8%ae%8a%e8%ae%8a-%e5%8d%bb%e9%83%bd%e6%98%af%e3%80%8c%e4%b8%ad%e5%9c%8b%e4%ba%ba%e6%b0%91%e7%9a%84%e8%80%81%e6%9c%8b%e5%8f%8b%e3%80%8d%e9%97%9c%e9%8d%b5/
 https://www.ust.hk/hkust-in-the-media/sai-kung-buzz-hkust-celebrates-groundbreaking-150-million-shaw-auditorium/
@@ -5065,7 +5066,6 @@ https://www.ust.hk/hkust-in-the-media/%e6%b8%af%e5%9c%98%e9%9a%8a%e7%a0%94%e5%8f
 https://www.ust.hk/hkust-in-the-media/%e5%a4%a7%e7%81%a3%e6%a9%9f%e9%81%87%e5%8a%a9%e6%b8%af%e7%94%9f%e6%8a%95%e8%ba%ab%e7%a0%94%e7%a9%b6%e5%89%b5%e7%a7%91/
 https://www.ust.hk/hkust-in-the-media/%e7%a7%91%e5%a4%a7%e7%94%9f%e6%b1%b6%e8%90%8a%e5%af%a6%e7%bf%92-%e6%94%80%e5%b1%b1%e6%b6%89%e6%b0%b4%e8%80%83%e5%af%9f%e7%94%b0%e9%87%8e/
 https://www.ust.hk/hkust-in-the-media/%e6%a8%b9%e6%9e%97%e9%87%8e%e5%a4%96%e5%af%a6%e7%bf%92-%e9%ab%94%e9%a9%97%e9%9d%9e%e5%87%a1%e8%87%aa%e7%84%b6/
-https://www.ust.hk/about-hkust/media-relations/press-releases/kwok-sports-aerodynamics-science-initiative-hkust-hksi-join-hands-enhance-performance-cycling-team/
 https://www.ust.hk/news/page/2/?smonth%5B01%5D=January&#038;smonth%5B02%5D=February&#038;smonth%5B03%5D=March&#038;smonth%5B04%5D=April&#038;smonth%5B05%5D=May&#038;smonth%5B06%5D=June&#038;smonth%5B07%5D=July&#038;smonth%5B08%5D=August&#038;smonth%5B09%5D=September&#038;smonth%5B10%5D=October&#038;smonth%5B11%5D=November&#038;smonth%5B12%5D=December&#038;syear=0
 https://www.ust.hk/news/page/3/?smonth%5B01%5D=January&#038;smonth%5B02%5D=February&#038;smonth%5B03%5D=March&#038;smonth%5B04%5D=April&#038;smonth%5B05%5D=May&#038;smonth%5B06%5D=June&#038;smonth%5B07%5D=July&#038;smonth%5B08%5D=August&#038;smonth%5B09%5D=September&#038;smonth%5B10%5D=October&#038;smonth%5B11%5D=November&#038;smonth%5B12%5D=December&#038;syear=0
 https://www.ust.hk/news/page/287/?smonth%5B01%5D=January&#038;smonth%5B02%5D=February&#038;smonth%5B03%5D=March&#038;smonth%5B04%5D=April&#038;smonth%5B05%5D=May&#038;smonth%5B06%5D=June&#038;smonth%5B07%5D=July&#038;smonth%5B08%5D=August&#038;smonth%5B09%5D=September&#038;smonth%5B10%5D=October&#038;smonth%5B11%5D=November&#038;smonth%5B12%5D=December&#038;syear=0

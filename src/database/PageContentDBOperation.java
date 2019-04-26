@@ -92,7 +92,8 @@ public class PageContentDBOperation{
      */
     public boolean addEntry (HashMap<Integer,ArrayList<String>> hashMap, String info , String key) throws RocksDBException{
         if (isEntryExists(hashMap,info)) {
-            //need to check particular info
+            //need to check particular info !!!!
+            //if (change than update)
             updateDB(key,info,hashMap);
             return false;
         }
