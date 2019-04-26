@@ -8,10 +8,7 @@ import org.rocksdb.RocksIterator;
 import java.util.HashMap;
 
 public class PageIDdBOperation{
-
-    /**
-     * For basic operation of the database
-     */
+    
     protected RocksDB rocksDB;
     protected Options options;
     protected  String dbpath;
