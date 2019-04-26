@@ -1,4 +1,4 @@
-/* --
+package function;/* --
 COMP4321 Lab1 Exercise
 Student Name:
 Student ID:
@@ -11,11 +11,8 @@ import org.rocksdb.Options;
 import org.rocksdb.RocksDBException;
 import org.rocksdb.RocksIterator;
 
-import javax.imageio.IIOException;
 import java.io.BufferedWriter;
-import java.io.FileWriter;
 import java.io.IOException;
-import java.io.OutputStream;
 
 
 public class PageIndex
@@ -23,7 +20,7 @@ public class PageIndex
     private static RocksDB db ;
     private static Options options;
     private static String dbpath;
-   /* PageIndex(String dbPath) throws RocksDBException
+   /* function.PageIndex(String dbPath) throws RocksDBException
     {
         // the Options class contains a set of configurable DB options
         // that determines the behaviour of the database.

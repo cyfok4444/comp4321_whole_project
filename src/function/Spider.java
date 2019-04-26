@@ -1,8 +1,9 @@
+package function;
+
 import org.htmlparser.util.ParserException;
 import org.rocksdb.RocksDBException;
 
 import java.util.ArrayList;
-import java.util.Date;
 
 
 public class Spider {
@@ -12,7 +13,7 @@ public class Spider {
             ArrayList<String> keywords = Crawler.extractWords(url);
             ProcessString.removeRubbish(keywords);
             ProcessString.stopWordRemove(keywords);
-            // page.setMostFreqKeywords(ProcessString.keyWord(keywords));
+            // page.setMostFreqKeywords(function.ProcessString.keyWord(keywords));
             page.setLastModificationDate(Crawler.getLastModifiedDate
                     (url));
             page.setTitle(Crawler.getTitle(url));
