@@ -4,8 +4,6 @@ import org.rocksdb.Options;
 import org.rocksdb.RocksDB;
 import org.rocksdb.RocksDBException;
 import org.rocksdb.RocksIterator;
-
-import java.lang.reflect.Array;
 import java.util.*;
 import java.util.HashMap;
 
