@@ -8,10 +8,10 @@ public class Page {
 
     String title;
     String url ;
-    Date lastModificationDate ;
+    long lastModificationDate ;
     Integer size;
-    HashMap<String,Integer> keywords = new HashMap<String, Integer>();
-    ArrayList <String> childs = new ArrayList<>();
+    HashMap<String,Integer> mostFreqKeywords = new HashMap<String,Integer>();
+    ArrayList<Integer> parentLinks = new ArrayList<Integer>();
 
     public String getTitle(){
         return title;
@@ -21,22 +21,24 @@ public class Page {
         return url;
     }
 
-    public ArrayList<String> getChilds(){
-        return childs;
+    public ArrayList<Integer> getParentLinks(){
+        return parentLinks;
     }
-
-    public Date getLastModificationDate(){
+    public long getLastModificationDate(){
         return lastModificationDate;
     }
 
     public HashMap<String,Integer> getKeywords(){
-        return keywords;
+        return mostFreqKeywords;
     }
 
     public Integer getSize(){
         return size;
     }
 
+    public void addParentLinks(Integer pageID){
+        parentLinks.add(pageID);
+    }
     public void setSize(Integer size){
         this.size=size;
     }
@@ -45,27 +47,24 @@ public class Page {
         this.title = title;
     }
 
-    public void setURL(String url){
+    public void setUrl(String url){
         this.url = url;
     }
 
-    public void setChilds(ArrayList<String> childs){
-        this.childs = childs;
-    }
 
-    public void setLastModificationDate(Date lastModificationDate){
+    public void setLastModificationDate(long lastModificationDate){
         this.lastModificationDate = lastModificationDate;
     }
 
-    public void setKeywords(HashMap<String,Integer> keywords){
-        this.keywords=keywords;
+    public void setMostFreqKeywords(HashMap<String,Integer> keywords){
+        this.mostFreqKeywords=keywords;
     }
 
     public byte[] getBytes(){
-        return (title+"JOHNMAVISOSCAR"+url+"JOHNMAVISOSCAR"+lastModificationDate.toString()+"JOHNMAVISOSCAR"+size.toString()+"JOHNMAVISOSCAR"+keywords.toString()+"JOHNMAVISOSCAR"+childs.toString()).getBytes();
+        return (title+"JOHNMAVISOSCAR"+url+"JOHNMAVISOSCAR"+new Date(lastModificationDate).toString()+"JOHNMAVISOSCAR"+size.toString()+"JOHNMAVISOSCAR"+mostFreqKeywords.toString()+"JOHNMAVISOSCAR"+parentLinks.toString()).getBytes();
     }
     public String toString(){
-        return (title.toString()+url.toString()+lastModificationDate.toString()+size.toString()+keywords.toString()+childs.toString());
+        return (title.toString()+url.toString()+new Date(lastModificationDate).toString()+size.toString()+mostFreqKeywords.toString()+parentLinks.toString());
     }
     public static void main(String[] args){
         ;

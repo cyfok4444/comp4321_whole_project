@@ -10,7 +10,7 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Downloads/htmlparser-1.6p.jar!/" />
+          <root url="jar://$USER_HOME$/note/comp4321/comp4321pj/htmlparser-1.6p.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />
@@ -19,7 +19,7 @@
     <orderEntry type="module-library" exported="">
       <library>
         <CLASSES>
-          <root url="jar://$USER_HOME$/Downloads/rocksdbjni-4.9.0.jar!/" />
+          <root url="jar://$USER_HOME$/note/comp4321/comp4321pj/rocksdbjni-3.5.1.jar!/" />
         </CLASSES>
         <JAVADOC />
         <SOURCES />

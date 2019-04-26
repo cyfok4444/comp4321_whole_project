@@ -1,11 +1,8 @@
 import org.htmlparser.Node;
 import org.htmlparser.Parser;
 import java.util.ArrayList;
-import java.util.Vector;
+
 import org.htmlparser.beans.StringBean;
-import org.htmlparser.filters.AndFilter;
-import org.htmlparser.filters.NodeClassFilter;
-import org.htmlparser.tags.LinkTag;
 import org.htmlparser.tags.TitleTag;
 import org.htmlparser.util.NodeList;
 import org.htmlparser.util.ParserException;
@@ -155,36 +152,34 @@ public class Crawler
         return -1;
     }
 
-    public Date getLastModifiedDate(){
+    public long getLastModifiedDate(){
         try {
 
             Parser parser = new Parser(url);
             long date = parser.getConnection().getLastModified();
-            Date date1 = new Date(date);
-            return date1;
+            return date;
 
         }
         catch (ParserException e){
 
         }
 
-        return null;
+        return 0;
     }
 
-    public static Date getLastModifiedDate(String url){
+    public static long getLastModifiedDate(String url){
         try {
 
             Parser parser = new Parser(url);
             long date = parser.getConnection().getLastModified();
-            Date date1 = new Date(date);
-            return date1;
+            return date;
 
         }
         catch (ParserException e){
 
         }
 
-        return null;
+        return 0;
     }
 
 
@@ -208,8 +203,8 @@ public class Crawler
             System.out.println("\n\n");
             //System.out.println(crawler.getTitle());
             //System.out.println("Size: " + crawler.getSize());
-            if (crawler.getLastModifiedDate() != null) {
-                System.out.println("Last: " + crawler.getLastModifiedDate().toString());
+            if (crawler.getLastModifiedDate() != 0) {
+                System.out.println("Last: " + new Date(crawler.getLastModifiedDate()).toString());
             }
             ArrayList<String> child = getChild("https://stackoverflow.com/questions/5902306/in-java-its-possible-determine-the-size-of-a-web-page-before-download");
             for (int i = 0 ; i < child.size() ; i++){
