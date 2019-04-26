@@ -99,7 +99,7 @@ public class Crawler
 
         }
         catch (ParserException e){
-
+            e.printStackTrace();
         }
 
         return "";
@@ -119,7 +119,7 @@ public class Crawler
 
         }
         catch (ParserException e){
-
+            e.printStackTrace();
         }
 
         return "";
