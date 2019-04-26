@@ -92,7 +92,7 @@ public class PageIDdBOperation{
             else{
                 Integer max = getMaxId(hashMap);
                 max++;
-                System.out.println("Key: " + max + " info: " + info);
+                System.out.println("Adding Key: " + max + " info: " + info);
                 rocksDB.put(max.toString().getBytes(),info.getBytes());
                 return true;
             }
@@ -103,6 +103,8 @@ public class PageIDdBOperation{
             HashMap<Integer,String> hashMap = pageIDdBOperation.getHashMapTable();
             pageIDdBOperation.addEntry(hashMap,"hiii");
             pageIDdBOperation.addEntry(hashMap,"hy");
+            pageIDdBOperation.addEntry(hashMap,"hiiiiiiii");
+            pageIDdBOperation.addEntry(hashMap,"hiiiiiiiippppp");
 
             RocksIterator iterator = pageIDdBOperation.rocksDB.newIterator();
             for (iterator.seekToFirst(); iterator.isValid(); iterator.next()) {
