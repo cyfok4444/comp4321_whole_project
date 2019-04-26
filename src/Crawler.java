@@ -211,18 +211,6 @@ public class Crawler
                 System.out.println("Child: " + child.get(i));
             }
 
-            /*
-            ArrayList<String> links = crawler.extractLinks();
-            String link2 = links.get(1);
-            Crawler g = new Crawler(link2);
-            ArrayList<String> wo = g.extractWords();
-            for(int i = 0; i < wo.size(); i++)
-                System.out.print(wo.get(i)+" ");
-            System.out.println("Links in "+crawler.url+":");
-            for(int i = 0; i < links.size(); i++)
-                System.out.println(links.get(i));
-            System.out.println("");
-            */
         }
         catch (ParserException e)
         {

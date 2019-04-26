@@ -27,6 +27,7 @@ public class PageContentDBOperation{
 
         this.dbpath = dbpath;
         options = new Options();
+        options.setCreateIfMissing(true);
         try {
             rocksDB = RocksDB.open(options,dbpath);
         }
