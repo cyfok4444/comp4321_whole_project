@@ -52,10 +52,8 @@ public class PageContentDBOperation{
             String[]s2 = value.split("JOHNMAVISOSCAR");
             ArrayList<String> arrayList = new ArrayList<>();
             arrayList.addAll(Arrays.asList(s2));
-            for ( int i = 0 ; i < s2.length ; i++ ){
-                    arrayList.add(s2[i]);
-                }
-                hashMap.put(Integer.parseInt(key),arrayList);
+
+            hashMap.put(Integer.parseInt(key),arrayList);
 
         }
         return hashMap;

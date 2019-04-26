@@ -28,17 +28,24 @@ public class PageIDWordIDPosDBOperation {
     //every word need seperate How to seperate
     //PageID: KeywordID Pos
     public HashMap<Integer,HashMap<Integer,ArrayList<Integer>>> getHashMapTable() throws RocksDBException{
+
         HashMap<Integer,HashMap<Integer,ArrayList<Integer>>> hashMap = new HashMap<>();
         RocksIterator iterator = rocksDB.newIterator();
         for(iterator.seekToFirst(); iterator.isValid(); iterator.next()) {
-
+            HashMap<Integer, ArrayList<Integer>> h2 = new HashMap<>();
             String key = new String(iterator.key());
             String value = new String(rocksDB.get(key.getBytes()));
-            String[]s2 = value.split(" ");
-            ArrayList<String> arrayList = new ArrayList<>();
-            arrayList.addAll(Arrays.asList(s2));
-            Integer wordID = Integer.parseInt(arrayList.remove(0));
-
+            String [] single_wordID = value.split("Sep");
+            for (int i = 0 ; i< single_wordID.length ; i++){
+                String [] sep = single_wordID[i].split(" ");
+                Integer wordId = Integer.parseInt(sep[0]);
+                ArrayList<Integer> arr = new ArrayList<>();
+                for (int j = 1 ; j < sep.length ; j++){
+                    arr.add(Integer.parseInt(sep[j]));
+                }
+                h2.put(wordId,arr);
+            }
+            hashMap.put(Integer.parseInt(key),h2);
 
         }
         return hashMap;
@@ -84,10 +91,20 @@ public class PageIDWordIDPosDBOperation {
         arrayList2.add(6);
         hashMap.put(10000,arrayList2);
         pageIDdBOperation.addEntry(hashMap,"10000");
+        pageIDdBOperation.addEntry(hashMap,"100");
+
         RocksIterator iterator = pageIDdBOperation.rocksDB.newIterator();
         for(iterator.seekToFirst(); iterator.isValid(); iterator.next()){
-            System.out.println(new String(iterator.key()) + " " + new String(iterator.value()));
+            //System.out.println(new String(iterator.key()) + " " + new String(iterator.value()));
 
+        }
+
+        HashMap<Integer,HashMap<Integer,ArrayList<Integer>> > h = pageIDdBOperation.getHashMapTable();
+        for (Map.Entry<Integer,HashMap<Integer,ArrayList<Integer>> > item : h.entrySet()) {
+            Integer key = item.getKey();
+
+            System.out.println(key);
+            System.out.println(item.getValue());
         }
         /*
         String s = "";
