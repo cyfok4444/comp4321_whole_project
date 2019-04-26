@@ -1,8 +1,7 @@
-package function;
-
 import org.rocksdb.RocksDBException;
 import java.io.*;
-
+import java.util.ArrayList;
+/*
 public class TestProgram {
     public static void main(String[] args){
         //String path = "/Users/chunyinfok/Downloads/db";
@@ -10,7 +9,9 @@ public class TestProgram {
         PageIndex.set(path);
         Page page = Spider.go("https://www.cse.ust.hk/");
          for ( int i = 0 ; i < 40 ; i ++ ){
-
+            if ( page.url != page.childs.get(i) ) {
+                Page page_child = Spider.go(page.childs.get(i));
+            }
         }
         try{
             PageIndex.printAll();
@@ -35,3 +36,4 @@ public class TestProgram {
         }
     }
 }
+*/
