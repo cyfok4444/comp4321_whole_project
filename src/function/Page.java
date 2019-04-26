@@ -9,7 +9,7 @@ public class Page {
 
     String title;
     String url ;
-    long lastModificationDate ;
+    Long lastModificationDate ;
     Integer size;
     HashMap<String,Integer> mostFreqKeywords = new HashMap<String,Integer>();
     ArrayList<Integer> parentLinks = new ArrayList<Integer>();
@@ -29,7 +29,7 @@ public class Page {
         return parentLinks;
     }
 
-    public long getLastModificationDate(){
+    public Long getLastModificationDate(){
         return lastModificationDate;
     }
 
@@ -60,7 +60,7 @@ public class Page {
     }
 
 
-    public void setLastModificationDate(long lastModificationDate){
+    public void setLastModificationDate(Long lastModificationDate){
         this.lastModificationDate = lastModificationDate;
     }
 
