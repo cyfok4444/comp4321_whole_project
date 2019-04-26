@@ -1,5 +1,6 @@
 package database;
 
+import function.PathForDB;
 import org.rocksdb.Options;
 import org.rocksdb.RocksDB;
 import org.rocksdb.RocksDBException;
@@ -75,6 +76,10 @@ public class PageIDdBOperation{
             return max;
         }
 
+        public int getPageId(String url) throws RocksDBException {
+            PageIDdBOperation pageIDdBOperation = new PageIDdBOperation(PathForDB.path);
+            return new Integer(Integer.parseInt(pageIDdBOperation.rocksDB.get(url.getBytes()).toString()));
+        }
 
         /**
          * basic operation of addEntry
