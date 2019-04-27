@@ -27,7 +27,7 @@ public class WordIDKeyword{
         options.setCreateIfMissing(true);
         try {
             rocksDB = RocksDB.open(options,dbpath);
-            HashMap hm = getHashMapTable();
+            hm = getHashMapTable();
             availableID = getMaxId()+1;
         }
         catch (RocksDBException e){
@@ -58,6 +58,21 @@ public class WordIDKeyword{
         return hashMap;
     }
 
+    public void setHashMapTable() throws RocksDBException{
+
+        HashMap<String,Integer> hashMap = new HashMap<>();
+        RocksIterator iterator = rocksDB.newIterator();
+
+
+        for (iterator.seekToFirst(); iterator.isValid(); iterator.next()) {
+            String key = new String(iterator.key());
+            String value = new String(rocksDB.get(key.getBytes()));
+            hashMap.put(key,Integer.parseInt(value));
+        }
+
+        hm = hashMap;
+    }
+
     /**
      * if there is the same data in the database return false
      * else return true
@@ -65,7 +80,7 @@ public class WordIDKeyword{
      * @return
      */
     public boolean isEntryExists (String info){
-        if (hm.containsValue(info)) return true;
+        if (hm.containsKey(info)) return true;
         return false;
     }
 
@@ -109,13 +124,13 @@ public class WordIDKeyword{
         wordIDKeyword.addEntry("hiii");
         wordIDKeyword.addEntry("hy");
         wordIDKeyword.addEntry("hiiiiiiii");
+        wordIDKeyword.addEntry("hy");
         wordIDKeyword.addEntry("hiiiiiiiippppp");
         RocksIterator iterator = wordIDKeyword.rocksDB.newIterator();
         for (iterator.seekToFirst(); iterator.isValid(); iterator.next()) {
             System.out.println(new String(iterator.key()) + " " + new String(iterator.value()));
         }
 
-        System.out.println(wordIDKeyword.getWordId("hy"));
 
     }
 

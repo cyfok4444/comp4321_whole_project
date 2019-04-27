@@ -12,7 +12,7 @@ public class PageIDChildIDDB {
     protected RocksDB rocksDB;
     protected Options options;
     protected  String dbpath;
-
+    protected  HashMap<Integer,ArrayList<Integer>> hm = new HashMap<>();
     public PageIDChildIDDB(String dbpath){
 
         this.dbpath = dbpath;
@@ -20,6 +20,7 @@ public class PageIDChildIDDB {
         options.setCreateIfMissing(true);
         try {
             rocksDB = RocksDB.open(options,dbpath);
+            setHashMapTable();
         }
         catch (RocksDBException e){
             e.printStackTrace();
@@ -42,25 +43,31 @@ public class PageIDChildIDDB {
         return hashMap;
     }
 
-    public boolean addEntry(HashMap<Integer,ArrayList<Integer>> hashMap ) throws RocksDBException{
-        System.out.println("Enter");
-        for (Map.Entry<Integer, ArrayList<Integer>> item : hashMap.entrySet()){
-            String key = item.getKey().toString();
-            ArrayList<Integer> arr = item.getValue();
-            String s = "";
-            for (int i = 0 ; i< arr.size() ; i++){
-                if (i == arr.size()-1)
-                    s+=arr.get(i);
-                else {
-                    s += arr.get(i);
-                    s+=" ";
-                }
+    public void setHashMapTable() throws RocksDBException{
+        HashMap<Integer,ArrayList<Integer>> hashMap = new HashMap<>();
+        RocksIterator iterator = rocksDB.newIterator();
+        for(iterator.seekToFirst(); iterator.isValid(); iterator.next()){
+            String key = new String(iterator.key());
+            String value = new String(rocksDB.get(key.getBytes()));
+            String [] s = value.split(" ");
+            ArrayList<Integer> arrayList = new ArrayList<>();
+            for (int i = 0 ; i < s.length ; i++){
+                arrayList.add(Integer.parseInt(s[i]));
             }
-            rocksDB.put(key.getBytes(),s.getBytes());
+            hashMap.put(Integer.parseInt(key),arrayList);
         }
+        hm = hashMap;
+    }
+    public boolean addEntry(Integer key,ArrayList<Integer> childs) throws RocksDBException{
+        System.out.println("Enter");
+            rocksDB.put(key.toString().getBytes(),childs.toString().getBytes());
         return true;
     }
 
+    public boolean isEntryExists (Integer info){
+        if (hm.containsKey(info)) return true;
+        return false;
+    }
     public static void main (String [] args) throws RocksDBException{
         PageIDChildIDDB pageIDChildIDDB = new PageIDChildIDDB("PageIDContent");
         HashMap<Integer,ArrayList<Integer>> hashMap = new HashMap<>();
@@ -70,7 +77,7 @@ public class PageIDChildIDDB {
         arrayList.add(1111);
         hashMap.put(123,arrayList);
         hashMap.put(321,arrayList);
-        pageIDChildIDDB.addEntry(hashMap);
+        pageIDChildIDDB.addEntry(123,arrayList);
         HashMap<Integer,ArrayList<Integer>> RE = pageIDChildIDDB.getHashMapTable();
         for (Map.Entry<Integer, ArrayList<Integer>> item : RE.entrySet()){
             System.out.println(item.getKey());

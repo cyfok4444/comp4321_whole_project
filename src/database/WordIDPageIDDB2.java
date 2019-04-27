@@ -13,6 +13,7 @@ public class WordIDPageIDDB2 {
         protected RocksDB rocksDB;
         protected Options options;
         protected  String dbpath;
+        protected HashMap<Integer,HashMap<Integer,Integer>> hm = new HashMap<>();
 
         public WordIDPageIDDB2 (String dbpath){
 
@@ -21,6 +22,7 @@ public class WordIDPageIDDB2 {
             options.setCreateIfMissing(true);
             try {
                 rocksDB = RocksDB.open(options,dbpath);
+                hm = getHashMapTable();
             }
             catch (RocksDBException e){
                 e.printStackTrace();
@@ -50,7 +52,28 @@ public class WordIDPageIDDB2 {
             }
             return hashMap;
         }
-        public boolean addEntry (HashMap<Integer,Integer> hashMap , String key) throws RocksDBException {
+        public void setHashMapTable() throws RocksDBException{
+
+            HashMap<Integer,HashMap<Integer,Integer>> hashMap = new HashMap<>();
+            RocksIterator iterator = rocksDB.newIterator();
+            for(iterator.seekToFirst(); iterator.isValid(); iterator.next()) {
+                HashMap<Integer, Integer> h2 = new HashMap<>();
+                String key = new String(iterator.key());
+                String value = new String(rocksDB.get(key.getBytes()));
+                String [] single_wordID = value.split("Sep");
+                for (int i = 0 ; i< single_wordID.length ; i++){
+                    String [] sep = single_wordID[i].split(" ");
+                    Integer pageID = Integer.parseInt(sep[0]);
+                    Integer tf = Integer.parseInt(sep[1]);
+
+                    h2.put(pageID,tf);
+                }
+                hashMap.put(Integer.parseInt(key),h2);
+
+            }
+            hm = hashMap;
+        }
+        public boolean addEntry (HashMap<Integer,Integer> hashMap , Integer key) throws RocksDBException {
             String s = "";
             for (Map.Entry<Integer, Integer> item : hashMap.entrySet()) {
                 Integer key1 = item.getKey();
@@ -60,14 +83,14 @@ public class WordIDPageIDDB2 {
                 s+=Integer.toString(key2);
                 s+="Sep";
             }
-            rocksDB.put(key.getBytes(),s.getBytes());
+            rocksDB.put(key.toString().getBytes(),s.getBytes());
             return true;
         }
 
-        public HashMap<Integer,Integer> getEntry(String key){
+        public HashMap<Integer,Integer> getEntry(Integer key){
             try{
                 HashMap<Integer,Integer> hm = new HashMap();
-                String value = new String (rocksDB.get(key.getBytes()));
+                String value = new String (rocksDB.get(key.toString().getBytes()));
                 String [] single_wordID = value.split("Sep");
                 for (int i = 0 ; i< single_wordID.length ; i++){
                     String [] sep = single_wordID[i].split(" ");
@@ -85,6 +108,10 @@ public class WordIDPageIDDB2 {
             return null;
         }
 
+    public boolean isEntryExists (Integer info){
+        if (hm.containsKey(info)) return true;
+        return false;
+    }
         public static void main (String args[]){
             database.WordIDPageIDDB2 wp = new database.WordIDPageIDDB2("/Users/chunyinfok/Downloads/comp4321_pj/comp4321_whole_project/db");
             HashMap<Integer,Integer> hm2 = new HashMap<>();
@@ -92,9 +119,9 @@ public class WordIDPageIDDB2 {
             hm2.put(1,3);
             System.out.println(hm2);
             try{
-                wp.addEntry(hm2,"5");
+                wp.addEntry(hm2,5);
                 String s = new String(wp.rocksDB.get("5".getBytes()));
-                String s2 = wp.getEntry("5").toString();
+                String s2 = wp.getEntry(5).toString();
                 System.out.println(s);
                 System.out.println(s2);
             }

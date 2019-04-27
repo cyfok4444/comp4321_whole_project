@@ -12,8 +12,11 @@ public class Page {
     Long lastModificationDate ;
     Integer size;
     HashMap<String,Integer> mostFreqKeywords = new HashMap<String,Integer>();
-    ArrayList<Integer> parentLinks = new ArrayList<Integer>();
+    ArrayList<Integer> childLinks = new ArrayList<Integer>();
     Integer maxTf;
+    Integer maxTfTitle;
+    Integer wordSize;
+
 
     public Integer getMaxTf() { return maxTf; }
 
@@ -25,8 +28,12 @@ public class Page {
         return url;
     }
 
-    public ArrayList<Integer> getParentLinks(){
-        return parentLinks;
+    public Integer getWordSize(){return wordSize;}
+
+    public Integer getMaxTfTitle(){return maxTfTitle;}
+
+    public ArrayList<Integer> getChildLinks(){
+        return childLinks;
     }
 
     public Long getLastModificationDate(){
@@ -41,11 +48,15 @@ public class Page {
         return size;
     }
 
-    public void addParentLinks(Integer pageID){
-        parentLinks.add(pageID);
+    public void addChildLinks(Integer pageID){
+        childLinks.add(pageID);
     }
 
     public void setMaxTf(Integer maxTf) { this.maxTf=maxTf; }
+
+    public void setWordSize(Integer wordSize){ this.wordSize=wordSize ;}
+
+    public void setMaxTfTitle(Integer maxTfTitle) { this.maxTfTitle = maxTfTitle;}
 
     public void setSize(Integer size){
         this.size=size;
@@ -69,10 +80,10 @@ public class Page {
     }
 
     public byte[] getBytes(){
-        return (title+"JOHNMAVISOSCAR"+url+"JOHNMAVISOSCAR"+lastModificationDate.toString()+"JOHNMAVISOSCAR"+size.toString()+"JOHNMAVISOSCAR"+mostFreqKeywords.toString()+"JOHNMAVISOSCAR"+parentLinks.toString()).getBytes();
+        return (title+"JOHNMAVISOSCAR"+url+"JOHNMAVISOSCAR"+lastModificationDate.toString()+"JOHNMAVISOSCAR"+size.toString()+"JOHNMAVISOSCAR"+mostFreqKeywords.toString()+"JOHNMAVISOSCAR"+childLinks.toString()+"JOHNMAVISOSCAR"+maxTf.toString()+"JOHNMAVISOSCAR"+maxTfTitle.toString()+"JOHNMAVISOSCAR"+wordSize.toString()).getBytes();
     }
     public String toString(){
-        return (title.toString()+url.toString()+lastModificationDate.toString()+size.toString()+mostFreqKeywords.toString()+parentLinks.toString());
+        return (title.toString()+url.toString()+lastModificationDate.toString()+size.toString()+mostFreqKeywords.toString()+childLinks.toString()+maxTf.toString()+maxTfTitle.toString()+wordSize.toString());
     }
     public static void main(String[] args){
         ;

@@ -58,6 +58,7 @@ public class PageContentDBOperation{
     }
 
 
+
     /**
      * if there is the same data in the database return false
      * else return true
@@ -98,16 +99,6 @@ public class PageContentDBOperation{
     }
 
     public static void main (String args[]){
-        ArrayList<String> x = new ArrayList<>();
-        x.add("ZZZZ");
-        x.add("AAAA");
-        x.add("CCC");
-        System.out.println(x.get(0));
-        System.out.println("1"+x);
-        x.remove(0);
-        System.out.println(x.get(0));
-        System.out.println("2"+x);
-
 
 
     }
