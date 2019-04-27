@@ -8,15 +8,16 @@ import java.lang.reflect.Array;
 import java.util.*;
 public class Query {
 
-     private HashMap<String,Integer> word_ID;
+     static private HashMap<String,Integer> word_ID;
 
     /**
      * constructor
      */
 
-    public Query(String db) throws RocksDBException {
-        WordIDKeyword wordIDKeyword = new WordIDKeyword(db);
-        word_ID = wordIDKeyword.getHashMapTable();
+    public Query() {
+        word_ID = new HashMap<>();
+        word_ID.put("love",1);
+        word_ID.put("hong",2);
     }
     /**
      * Only for non-phrase
@@ -66,9 +67,19 @@ public class Query {
         }
         return idlist;
     }
+    public boolean isPhraseSearch (String query){
+        if ( query.charAt(0) == 34 && query.charAt(query.length()-1) == 34) return true;
+        else return false;
+    }
 
+    public Double qLength (HashMap<Integer,Integer> query){
+        Integer length = 0;
+        for (Map.Entry<Integer,Integer>item : query.entrySet())
+            length += item.getValue()*item.getValue();
+        return Math.sqrt(length);
+    }
     public static void main (String [] args) throws RocksDBException{
-        Query query = new Query("1");
+        Query query = new Query();
         query.word_ID = new HashMap<>();
         query.word_ID.put("love",1);
         query.word_ID.put("hong",2);
@@ -77,8 +88,12 @@ public class Query {
         HashMap<Integer,Integer> h = query.convertToWordID("I Loves Kong hong hong KOng Loving YeAh ");
         LinkedHashMap<Integer, ArrayList<Integer>> h2 = query.convertToWordIDPhrase("I Loves Kong hong hong KOng Loving YeAh ");
 
-        System.out.println(h2.toString());
+        System.out.println(query.isPhraseSearch("\"hi\""));
+        System.out.println(h.toString());
+
 
     }
+
+
 
 }

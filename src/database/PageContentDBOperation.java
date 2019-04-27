@@ -9,6 +9,12 @@ import java.util.*;
 public class PageContentDBOperation{
 
     /**
+     * Need to modified the add Entry
+     * Cannot use Hashmap toString directly since it will not out as expected
+     * If really want to use Hashmap toString need to separate them according to its format
+     */
+
+    /**
      *
      * @param dbpath
      */
@@ -34,7 +40,11 @@ public class PageContentDBOperation{
      * @return
      * @throws RocksDBException
      */
-
+    /**
+     * ??? what is the structure of the DB
+     * @return
+     * @throws RocksDBException
+     */
     public HashMap<String,Long> getDateHashMapTable() throws RocksDBException{
         HashMap<String,Long>  hashMap = new HashMap<>();
         RocksIterator iterator = rocksDB.newIterator();
