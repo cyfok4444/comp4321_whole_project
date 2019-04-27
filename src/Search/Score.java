@@ -71,6 +71,8 @@ public class Score {
         inverted_table_content = new HashMap<>();
         HashMap<Integer,Integer> word1 = new HashMap<>();
         HashMap<Integer,Integer> word2 = new HashMap<>();
+        HashMap<Integer,Integer> word3 = new HashMap<>();
+        word3.put(1,1);
         word2.put(1,10);
         word2.put(2,100);
         word1.put(1,3);
@@ -78,7 +80,7 @@ public class Score {
         word1.put(3,3);
         inverted_table_content.put(1,word1);
         inverted_table_content.put(2,word2);
-        inverted_table_content.put(3,word1);
+        inverted_table_content.put(3,word3);
         //System.out.println(inverted_table_content.toString());
 
     }
@@ -217,14 +219,14 @@ public class Score {
             Integer[] second = docs.get(1);
             HashSet<Integer> set = new HashSet<>();
             set.addAll(Arrays.asList(first));
-            set.addAll(Arrays.asList(second));
+            set.retainAll(Arrays.asList(second));
             result = set.toArray(result);
             num = num-2;
             while (num != 0 ){
                 Integer [] i = docs.get(num-1);
                 HashSet<Integer> set2 = new HashSet<>();
                 set2.addAll(Arrays.asList(result));
-                set2.addAll(Arrays.asList(i));
+                set2.retainAll(Arrays.asList(i));
                 result = set.toArray(result);
                 num = num-2;
             }
@@ -234,7 +236,7 @@ public class Score {
             Integer[] second = docs.get(1);
             HashSet<Integer> set = new HashSet<>();
             set.addAll(Arrays.asList(first));
-            set.addAll(Arrays.asList(second));
+            set.retainAll(Arrays.asList(second));
             result = set.toArray(result);
         }
         else {
@@ -247,7 +249,7 @@ public class Score {
   public static void main (String [] a) {
        Score score = new Score();
        System.out.println(score.findPossiblePageID("loving love love love love hong hong hong loves").toString());
-       Integer[] p = score.findPossiblePageID("loving love love love love hong hong hong loves");
+       Integer[] p = score.findPossiblePageID("loving love love love love hong hong hong loves kong");
        for (Integer b : p) System.out.println(b);
 
   }

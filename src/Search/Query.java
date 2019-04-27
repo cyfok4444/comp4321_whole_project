@@ -19,6 +19,8 @@ public class Query {
         word_ID = new HashMap<>();
         word_ID.put("love",1);
         word_ID.put("hong",2);
+        word_ID.put("hong",3);
+
     }
     /**
      * Only for non-phrase
