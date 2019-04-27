@@ -195,14 +195,18 @@ public class Score {
      * <PageID TF>
      */
     public Integer[] findPossiblePageID (String query){
+
+        if (query.length() == 0) return null;
+
         Query q = new Query();
         ArrayList<Integer> paragh = q.convertToWordIDPhrase(query);
         ArrayList<Integer> distinct = q.getDistinctSetOfKeyword(paragh);
         ArrayList<Integer[]> docs = new ArrayList<>();
         for (int i = 0  ; i < distinct.size() ; i++)
             if(!inverted_table_content.containsKey(distinct.get(i))) return null;
+
         for (int i = 0  ; i < distinct.size() ; i++) {
-            HashMap<Integer,Integer> doc = inverted_table_content.get(i);
+            HashMap<Integer,Integer> doc = inverted_table_content.get(distinct.get(i));
             Integer []  a = doc.keySet().toArray(new Integer[doc.size()]);
             docs.add(a);
         }
@@ -242,7 +246,9 @@ public class Score {
 
   public static void main (String [] a) {
        Score score = new Score();
-       System.out.println(score.calculateScoreContent("loving love love love love hong hong hong loves",6));
+       System.out.println(score.findPossiblePageID("loving love love love love hong hong hong loves").toString());
+       Integer[] p = score.findPossiblePageID("loving love love love love hong hong hong loves");
+       for (Integer b : p) System.out.println(b);
 
   }
 
