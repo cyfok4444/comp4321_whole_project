@@ -191,10 +191,13 @@ public class Score {
 
     /**
      * Compute the phrase search
+     * How to compute leh???????
+     * Document: [10, 101, 130 ,150]
+     * Query: [10,  39  ,59 ]
      * @param query
      * @return
      */
-    public HashMap<Integer,Double>  computePhraseContent (String query){
+    public HashMap<Integer,Double>  computePhraseContent (String query, double dsize){
        Query query1 = new Query();
        LinkedHashMap<Integer, ArrayList<Integer>> phraseterm = query1.convertToWordIDPhrase(query);
        ArrayList<Integer> pageContainAllTerm = new ArrayList<>();

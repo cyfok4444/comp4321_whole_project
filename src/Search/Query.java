@@ -86,11 +86,11 @@ public class Query {
         query.word_ID.put("hong",2);
         query.word_ID.put("kong",3);
         query.word_ID.put("yeah",5);
-        HashMap<Integer,Integer> h = query.convertToWordID("I Loves Kong hong hong KOng Loving YeAh ");
-        LinkedHashMap<Integer, ArrayList<Integer>> h2 = query.convertToWordIDPhrase("I Loves Kong hong hong KOng Loving YeAh ");
+        HashMap<Integer,Integer> h = query.convertToWordID("I Loves in Kong hong hong ");
+        LinkedHashMap<Integer, ArrayList<Integer>> h2 = query.convertToWordIDPhrase("I Loves Kong in hong hong KOng Loving in YeAh ");
 
         System.out.println(query.isPhraseSearch("\"hi\""));
-        System.out.println(h.toString());
+        System.out.println(h2.toString());
 
 
     }
