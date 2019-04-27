@@ -49,11 +49,11 @@ public class Query {
 
     /**
      * for phrase search
-     * @return LinkedHashMap <WordId,Pos>
+     * @return 1 1 1 1 1 0 1 1 3 。。
      * @param query
      */
 
-    public LinkedHashMap<Integer, ArrayList<Integer>> convertToWordIDPhrase (String query){
+    /*public LinkedHashMap<Integer, ArrayList<Integer>> convertToWordIDPhrase (String query){
         ArrayList<String> wordlist = new ArrayList<>();
         LinkedHashMap<Integer, ArrayList<Integer>> idlist = new LinkedHashMap<>();
         StringTokenizer st = new StringTokenizer(query);
@@ -67,7 +67,32 @@ public class Query {
 
         }
         return idlist;
+    }*/
+
+    public ArrayList<Integer> convertToWordIDPhrase (String query){
+        ArrayList<String> wordlist = new ArrayList<>();
+        ArrayList<Integer> result = new ArrayList<>();
+        StringTokenizer st = new StringTokenizer(query);
+        while (st.hasMoreTokens()) {
+            wordlist.add(st.nextToken());
+        }
+        wordlist = ProcessString.removeRubbish(wordlist);
+        ArrayList<String> process = ProcessString.doKeywordOnly(wordlist);
+        for (int i = 0 ; i < process.size() ; i++)
+            if (word_ID.containsKey(process.get(i))) result.add(word_ID.get(process.get(i)));
+
+            return result;
     }
+
+    public ArrayList<Integer> getDistinctSetOfKeyword (ArrayList<Integer> term){
+        ArrayList<Integer> result = new ArrayList<>();
+        for (Integer i : term){
+            if (!result.contains(i)) result.add(i);
+        }
+        return result;
+    }
+
+
     public boolean isPhraseSearch (String query){
         if ( query.charAt(0) == 34 && query.charAt(query.length()-1) == 34) return true;
         else return false;
@@ -87,7 +112,7 @@ public class Query {
         query.word_ID.put("kong",3);
         query.word_ID.put("yeah",5);
         HashMap<Integer,Integer> h = query.convertToWordID("I Loves in Kong hong hong ");
-        LinkedHashMap<Integer, ArrayList<Integer>> h2 = query.convertToWordIDPhrase("I Loves Kong in hong hong KOng Loving in YeAh ");
+        ArrayList<Integer> h2 = query.convertToWordIDPhrase("I Loves Kong in hong hong KOng Loving in YeAh ");
 
         System.out.println(query.isPhraseSearch("\"hi\""));
         System.out.println(h2.toString());
