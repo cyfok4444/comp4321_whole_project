@@ -202,7 +202,6 @@ public class Score {
     public HashMap<Integer,ArrayList<Integer>>  getOffset (String query, double dsize){
        Query query1 = new Query();
        LinkedHashMap<Integer, ArrayList<Integer>> phraseterm = query1.convertToWordIDPhrase(query);
-       ArrayList<Integer> pageContainAllTerm = new ArrayList<>();
        HashMap<Integer, ArrayList<Integer>> offsets = new HashMap<>();
       for (Map.Entry<Integer, ArrayList<Integer>> doc: phraseterm.entrySet()){
           ArrayList<Integer> getWord = doc.getValue();
