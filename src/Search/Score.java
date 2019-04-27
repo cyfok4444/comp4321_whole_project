@@ -81,6 +81,7 @@ public class Score {
         inverted_table_content.put(1,word1);
         inverted_table_content.put(2,word2);
         inverted_table_content.put(3,word3);
+        inverted_table_content.put(4,word3);
         //System.out.println(inverted_table_content.toString());
 
     }
@@ -212,23 +213,29 @@ public class Score {
             Integer []  a = doc.keySet().toArray(new Integer[doc.size()]);
             docs.add(a);
         }
+
         int num = docs.size();
+        //System.out.println(num);
         Integer[] result = {};
         if (num > 2){
             Integer[] first = docs.get(0);
             Integer[] second = docs.get(1);
-            HashSet<Integer> set = new HashSet<>();
-            set.addAll(Arrays.asList(first));
-            set.retainAll(Arrays.asList(second));
-            result = set.toArray(result);
+            Set<Integer> s1 = new HashSet<Integer>(Arrays.asList(first));
+            Set<Integer> s2 = new HashSet<Integer>(Arrays.asList(second));
+            s1.retainAll(s2);
+            result = s1.toArray(new Integer[s1.size()]);
+            int counter = 2;
             num = num-2;
             while (num != 0 ){
-                Integer [] i = docs.get(num-1);
-                HashSet<Integer> set2 = new HashSet<>();
-                set2.addAll(Arrays.asList(result));
-                set2.retainAll(Arrays.asList(i));
-                result = set.toArray(result);
-                num = num-2;
+                Integer [] i = docs.get(counter);
+                //System.out.println("Sep");
+                //for ( Integer k : i) System.out.println(k);
+                Set<Integer> s3 = new HashSet<Integer>(Arrays.asList(i));
+                Set<Integer> s4 = new HashSet<Integer>(Arrays.asList(result));
+                s3.retainAll(s4);
+                result = s3.toArray(new Integer[s3.size()]);
+                num = num-1;
+                counter++;
             }
         }
         else if (num == 2){
@@ -246,10 +253,27 @@ public class Score {
 
     }
 
+    public static Set<Integer> intersection(Set<Integer> a, Set<Integer> b) {
+        // unnecessary; just an optimization to iterate over the smaller set
+        if (a.size() > b.size()) {
+            return intersection(b, a);
+        }
+
+        Set<Integer> results = new HashSet<>();
+
+        for (Integer element : a) {
+            if (b.contains(element)) {
+                results.add(element);
+            }
+        }
+
+        return results;
+    }
+
   public static void main (String [] a) {
        Score score = new Score();
-       System.out.println(score.findPossiblePageID("loving love love love love hong hong hong loves").toString());
-       Integer[] p = score.findPossiblePageID("loving love love love love hong hong hong loves kong");
+       //System.out.println(score.findPossiblePageID("loving love love love love hong hong hong loves").toString());
+       Integer[] p = score.findPossiblePageID("hong love kong ust");
        for (Integer b : p) System.out.println(b);
 
   }
