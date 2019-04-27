@@ -12,6 +12,7 @@ public class Query {
 
     /**
      * constructor
+     * Need to modified after having the database
      */
 
     public Query() {

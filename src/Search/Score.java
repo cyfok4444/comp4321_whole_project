@@ -28,6 +28,8 @@ import java.util.*;
  */
 
 /// set . contains key.set
+
+
 public class Score {
 
    private HashMap<String, Integer> pageIdTable;
@@ -38,9 +40,13 @@ public class Score {
    static private HashMap<Integer,Integer> maxtfContent;
    static private HashMap<Integer,Integer> maxtfTitle;
    private double N;
+   private double N2;
 
     /**
      * Constructor
+     */
+    /**
+     * Need to modified after having database
      */
     public Score(){
         pageIdTable = new HashMap<>();
@@ -137,7 +143,7 @@ public class Score {
 
                 int m = maxtfTitle.get(doc.getKey());
                 double maxtf = (double)m;
-                double idf = Math.log(N/df)/Math.log(2);
+                double idf = Math.log(N2/df)/Math.log(2);
                 double dweight = (tf/maxtf) * idf;
                 int qt = term.getValue();
                 double qweight = (double)qt;
@@ -183,10 +189,25 @@ public class Score {
 
     }
 
+    /**
+     * Compute the phrase search
+     * @param query
+     * @return
+     */
+    public HashMap<Integer,Double>  computePhraseContent (String query){
+       Query query1 = new Query();
+       LinkedHashMap<Integer, ArrayList<Integer>> phraseterm = query1.convertToWordIDPhrase(query);
+       ArrayList<Integer> pageContainAllTerm = new ArrayList<>();
+      for (Map.Entry<Integer, ArrayList<Integer>> doc: phraseterm.entrySet()){
+
+      }
+       return null;
+    }
+
   public static void main (String [] a) {
        Score score = new Score();
-       System.out.println(score.calculateScoreContent("love love love love love hong hong hong love",6));
-     
+       System.out.println(score.calculateScoreContent("loving love love love love hong hong hong loves",6));
+
   }
 
 }

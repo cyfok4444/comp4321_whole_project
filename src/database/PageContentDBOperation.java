@@ -7,12 +7,7 @@ import java.util.HashMap;
 
 import java.util.*;
 public class PageContentDBOperation{
-
-    /**
-     * Need to modified the add Entry
-     * Cannot use Hashmap toString directly since it will not out as expected
-     * If really want to use Hashmap toString need to separate them according to its format
-     */
+    
 
     /**
      *
