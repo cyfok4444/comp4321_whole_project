@@ -76,7 +76,7 @@ public class ProcessString {
     }
 
     public static LinkedHashMap<String,ArrayList<Integer>> keyWordPos (ArrayList<String> input){
-        for (String in : input) System.out.println(in);
+        //for (String in : input) System.out.println(in);
         LinkedHashMap<String,ArrayList<Integer>> process = new LinkedHashMap<>();
         for (int i = 0 ; i < input.size() ; i++){
             StopStem stopStem = new StopStem("stopword.txt");
@@ -95,6 +95,17 @@ public class ProcessString {
 
         }
         return process;
+    }
+
+    public static ArrayList<String> doKeywordOnly (ArrayList<String> input){
+        ArrayList<String> result = new ArrayList<>();
+        for (int i = 0 ; i < input.size() ; i ++){
+            StopStem stopStem = new StopStem("stopword.txt");
+            String word = stopStem.stem(input.get(i).toLowerCase());
+            result.add(word);
+        }
+
+        return result;
     }
     public static void main (String [] args){
         ArrayList<String> k = new ArrayList<>();

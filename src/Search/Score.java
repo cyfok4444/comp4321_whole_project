@@ -192,59 +192,63 @@ public class Score {
 
     /**
      * Compute the phrase search
-     * How to compute leh???????
-     * Document: [10, 101, 130 ,150]
-     * Query: [10,  39  ,59 ]
-     * Query: Offset of the each key word
-     * 加上 再睇substring
-     * every first one
-     * if match next
-     * @param query
-     * @return
+     * <PageID TF>
      */
-    public HashMap<Integer,ArrayList<Integer>>  getEachKeyWordOffset (String query, double dsize){
-       Query query1 = new Query();
-       LinkedHashMap<Integer, ArrayList<Integer>> phraseterm = query1.convertToWordIDPhrase(query);
-       HashMap<Integer, ArrayList<Integer>> offsets = new HashMap<>();
-      for (Map.Entry<Integer, ArrayList<Integer>> doc: phraseterm.entrySet()){
-          ArrayList<Integer> getWord = doc.getValue();
-          ArrayList<Integer> getWordOffset = new ArrayList<>();
-          for (int i = 0 ; i < getWord.size(); i++){
-              if (i == 0) getWordOffset.add(getWord.get(i));
-              else {
-                  Integer offset = getWord.get(i) - getWord.get(i-1);
-                  getWordOffset.add(offset);
-              }
-          }
-          offsets.put(doc.getKey(),getWordOffset);
-      }
-       return offsets;
-    }
+    public Integer[] findPossiblePageID (String query){
 
-    public ArrayList<Integer> getBetweenEachKeyWordOffet (HashMap<Integer,ArrayList<Integer>> h){
-        ArrayList<Integer> offset = new ArrayList<>();
-        ArrayList<Integer> result = new ArrayList<>();
-        for (Map.Entry<Integer, ArrayList<Integer>> doc: h.entrySet()){
-            ArrayList<Integer> pos = doc.getValue();
-            offset.add(pos.get(0));
+        if (query.length() == 0) return null;
+
+        Query q = new Query();
+        ArrayList<Integer> paragh = q.convertToWordIDPhrase(query);
+        ArrayList<Integer> distinct = q.getDistinctSetOfKeyword(paragh);
+        ArrayList<Integer[]> docs = new ArrayList<>();
+        for (int i = 0  ; i < distinct.size() ; i++)
+            if(!inverted_table_content.containsKey(distinct.get(i))) return null;
+
+        for (int i = 0  ; i < distinct.size() ; i++) {
+            HashMap<Integer,Integer> doc = inverted_table_content.get(distinct.get(i));
+            Integer []  a = doc.keySet().toArray(new Integer[doc.size()]);
+            docs.add(a);
         }
-
-        for (int i = 0 ; i < offset.size() ; i++){
-            if (i==0) result.add(offset.get(i));
-            else {
-                Integer of = offset.get(i) - offset.get(i-1);
-                result.add(of);
+        int num = docs.size();
+        Integer[] result = {};
+        if (num > 2){
+            Integer[] first = docs.get(0);
+            Integer[] second = docs.get(1);
+            HashSet<Integer> set = new HashSet<>();
+            set.addAll(Arrays.asList(first));
+            set.addAll(Arrays.asList(second));
+            result = set.toArray(result);
+            num = num-2;
+            while (num != 0 ){
+                Integer [] i = docs.get(num-1);
+                HashSet<Integer> set2 = new HashSet<>();
+                set2.addAll(Arrays.asList(result));
+                set2.addAll(Arrays.asList(i));
+                result = set.toArray(result);
+                num = num-2;
             }
         }
-        
+        else if (num == 2){
+            Integer[] first = docs.get(0);
+            Integer[] second = docs.get(1);
+            HashSet<Integer> set = new HashSet<>();
+            set.addAll(Arrays.asList(first));
+            set.addAll(Arrays.asList(second));
+            result = set.toArray(result);
+        }
+        else {
+            return docs.get(0);
+        }
         return result;
+
     }
-
-
 
   public static void main (String [] a) {
        Score score = new Score();
-       System.out.println(score.calculateScoreContent("loving love love love love hong hong hong loves",6));
+       System.out.println(score.findPossiblePageID("loving love love love love hong hong hong loves").toString());
+       Integer[] p = score.findPossiblePageID("loving love love love love hong hong hong loves");
+       for (Integer b : p) System.out.println(b);
 
   }
 
