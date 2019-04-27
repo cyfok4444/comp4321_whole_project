@@ -195,11 +195,14 @@ public class Score {
      * How to compute leh???????
      * Document: [10, 101, 130 ,150]
      * Query: [10,  39  ,59 ]
+     * Query: Offset of the each key word
      * 加上 再睇substring
+     * every first one
+     * if match next
      * @param query
      * @return
      */
-    public HashMap<Integer,ArrayList<Integer>>  getOffset (String query, double dsize){
+    public HashMap<Integer,ArrayList<Integer>>  getEachKeyWordOffset (String query, double dsize){
        Query query1 = new Query();
        LinkedHashMap<Integer, ArrayList<Integer>> phraseterm = query1.convertToWordIDPhrase(query);
        HashMap<Integer, ArrayList<Integer>> offsets = new HashMap<>();
@@ -217,6 +220,27 @@ public class Score {
       }
        return offsets;
     }
+
+    public ArrayList<Integer> getBetweenEachKeyWordOffet (HashMap<Integer,ArrayList<Integer>> h){
+        ArrayList<Integer> offset = new ArrayList<>();
+        ArrayList<Integer> result = new ArrayList<>();
+        for (Map.Entry<Integer, ArrayList<Integer>> doc: h.entrySet()){
+            ArrayList<Integer> pos = doc.getValue();
+            offset.add(pos.get(0));
+        }
+
+        for (int i = 0 ; i < offset.size() ; i++){
+            if (i==0) result.add(offset.get(i));
+            else {
+                Integer of = offset.get(i) - offset.get(i-1);
+                result.add(of);
+            }
+        }
+        
+        return result;
+    }
+
+
 
   public static void main (String [] a) {
        Score score = new Score();
