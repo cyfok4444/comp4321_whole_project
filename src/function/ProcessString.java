@@ -57,9 +57,9 @@ public class ProcessString {
         HashMap<String,Integer> process = new HashMap<>();
         for (int i = 0 ; i < input.size() ; i++){
             StopStem stopStem = new StopStem("stopword.txt");
-            String word = stopStem.stem(input.get(i));
+            String word = stopStem.stem(input.get(i).toLowerCase());
             if (!process.containsKey(word)){
-                process.put(input.get(i), 1);
+                process.put(word, 1);
             }
 
             else{
@@ -75,11 +75,11 @@ public class ProcessString {
         HashMap<String,ArrayList<Integer>> process = new HashMap<>();
         for (int i = 0 ; i < input.size() ; i++){
             StopStem stopStem = new StopStem("stopword.txt");
-            String word = stopStem.stem(input.get(i));
+            String word = stopStem.stem(input.get(i).toLowerCase());
             if (!process.containsKey(word)){
                 ArrayList<Integer> pos = new ArrayList<>();
                 pos.add(i+1);
-                process.put(input.get(i),pos);
+                process.put(word,pos);
             }
 
             else{
@@ -99,18 +99,19 @@ public class ProcessString {
         k.add("loves");
         k.add("loving");
 
-
-
-
         k = removeRubbish(k);
         k = stopWordRemoveTf(k);
-        HashMap<String, ArrayList<Integer>> a = keyWordPos(k);
+        HashMap<String,Integer> h = ProcessString.keyWordTf(k);
+        for (HashMap.Entry<String,Integer> entry : h.entrySet()) {
+            System.out.println(entry.getKey() + " " + entry.getValue());
+        }
+        /*HashMap<String, ArrayList<Integer>> a = keyWordPos(k);
         for (HashMap.Entry<String, ArrayList<Integer>> entry : a.entrySet()) {
             String key = entry.getKey();
             ArrayList<Integer> value = entry.getValue();
             System.out.println("Key: " + key + " " + "value: " + value.toString());
 
-        }
+        }*/
 
     }
 

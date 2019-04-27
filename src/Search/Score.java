@@ -1,5 +1,5 @@
 package Search;
-
+import java.util.*;
 /**
  * Calculation of the page score
  * 1) Get the String
@@ -27,6 +27,12 @@ package Search;
  *                         PageIDWordIDPos <PageID <WordID pos>>
  */
 
-
+/// set . contains key.set
 public class Score {
+   private HashMap<String, Integer> word_wordID_table;
+   private HashMap<Integer,ArrayList<Integer>> title_pos;
+   private HashMap<Integer,ArrayList<Integer>> content_pos;
+   private HashMap<Integer, HashMap<Integer,Integer>> inverted_table_title;
+   private HashMap<Integer, HashMap<Integer,Integer>> inverted_table_content;
+
 }
