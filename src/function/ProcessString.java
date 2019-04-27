@@ -2,6 +2,7 @@ package function;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.LinkedHashMap;
 
 public class ProcessString {
 
@@ -45,11 +46,15 @@ public class ProcessString {
 
     public static HashMap<String,ArrayList<Integer>> stopWordRemovePos(HashMap<String,ArrayList<Integer>> input){
         StopStem stopStem = new StopStem("stopword.txt");
+        ArrayList<String> delete = new ArrayList<>();
         for (HashMap.Entry<String,ArrayList<Integer>> entry: input.entrySet()){
+            System.out.print(entry.toString());
             if (stopStem.isStopWord(entry.getKey())){
-                input.remove(entry.getKey());
+                //input.remove(entry.getKey());
+                delete.add(entry.getKey());
             }
         }
+        for (String s : delete) input.remove(s);
         return input;
     }
 
@@ -70,9 +75,9 @@ public class ProcessString {
         return process;
     }
 
-    public static HashMap<String,ArrayList<Integer>> keyWordPos (ArrayList<String> input){
+    public static LinkedHashMap<String,ArrayList<Integer>> keyWordPos (ArrayList<String> input){
         for (String in : input) System.out.println(in);
-        HashMap<String,ArrayList<Integer>> process = new HashMap<>();
+        LinkedHashMap<String,ArrayList<Integer>> process = new LinkedHashMap<>();
         for (int i = 0 ; i < input.size() ; i++){
             StopStem stopStem = new StopStem("stopword.txt");
             String word = stopStem.stem(input.get(i).toLowerCase());
