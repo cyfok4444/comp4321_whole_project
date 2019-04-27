@@ -11,6 +11,7 @@ public class PageIDWordIDPosDB2 {
     protected RocksDB rocksDB;
     protected Options options;
     protected  String dbpath;
+    protected HashMap<Integer,HashMap<Integer,ArrayList<Integer>>> hm = new HashMap<>();
 
     public PageIDWordIDPosDB2 (String dbpath){
 
@@ -19,6 +20,7 @@ public class PageIDWordIDPosDB2 {
         options.setCreateIfMissing(true);
         try {
             rocksDB = RocksDB.open(options,dbpath);
+            hm = getHashMapTable();
         }
         catch (RocksDBException e){
             e.printStackTrace();
@@ -69,6 +71,10 @@ public class PageIDWordIDPosDB2 {
         }
         rocksDB.put(key.toString().getBytes(),s.getBytes());
         return true;
+    }
+    public boolean isEntryExists (Integer info){
+        if (hm.containsKey(info)) return true;
+        return false;
     }
 
     public static void main(String [] args) throws RocksDBException{

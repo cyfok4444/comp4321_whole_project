@@ -58,15 +58,31 @@ public class PageIDdBOperation{
             return hashMap;
         }
 
-        /**
+    public void setHashMapTable() throws RocksDBException{
+
+        HashMap<String,Integer> hashMap = new HashMap<>();
+        RocksIterator iterator = rocksDB.newIterator();
+
+
+        for (iterator.seekToFirst(); iterator.isValid(); iterator.next()) {
+            String key = new String(iterator.key());
+            String value = new String(rocksDB.get(key.getBytes()));
+            hashMap.put(key,Integer.parseInt(value));
+        }
+
+        hm = hashMap;
+    }
+
+
+
+    /**
          * if there is the same data in the database return false
          * else return true
-         * @param  is the hashmap the data we have in the db
          * @param info
          * @return
          */
         public boolean isEntryExists (String info){
-            if (hm.containsValue(info)) return true;
+            if (hm.containsKey(info)) return true;
             return false;
         }
 

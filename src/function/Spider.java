@@ -14,8 +14,16 @@ public class Spider {
         try {
             ArrayList<String> targetUrl = new ArrayList<>();
             targetUrl.add(url);
-            HashMap<Integer,ArrayList<Integer>> parentPageId = new HashMap<>();                 //3.preparing parent link DB
+
+            //!!!!!opening the DB!!!!!!!
             PageContentDBOperation pageContentDBOperation = new PageContentDBOperation(PathForDB.path);
+            PageIDdBOperation pageIDdBOperation = new PageIDdBOperation(PathForDB.path);
+            PageIDChildIDDB pageIDChildIDDB = new PageIDChildIDDB(PathForDB.path);
+            WordIDKeyword wordIDKeyword = new WordIDKeyword(PathForDB.path);
+            PageIDWordIDPosDBOperation pageIDWordIDPosDBOperation = new PageIDWordIDPosDBOperation(PathForDB.path);
+            PageIDWordIDPosDB2 pageIDWordIDPosDB2 = new PageIDWordIDPosDB2(PathForDB.path);
+            PageIDParentIDDB pageIDParentIDDB = new PageIDParentIDDB(PathForDB.path);
+
             HashMap<String,Long> visistedList = pageContentDBOperation.getDateHashMapTable();
             while(!targetUrl.isEmpty()){
                 String url2 = targetUrl.get(0);
@@ -50,43 +58,31 @@ public class Spider {
                     ProcessString.stopWordRemovePos(keywordsPos2);
 
                     //1.staring DB Url to PageID
-                    PageIDdBOperation pageIDdBOperation = new PageIDdBOperation(PathForDB.path);
+                    //PageIDdBOperation pageIDdBOperation = new PageIDdBOperation(PathForDB.path);
                     pageIDdBOperation.addEntry(url2);
                     Integer pageId = pageIDdBOperation.getPageId(url2);
 
                     //2.staring DB child link
-                    PageIDChildIDDB pageIDChildIDDB = new PageIDChildIDDB(PathForDB.path);
+                    //PageIDChildIDDB pageIDChildIDDB = new PageIDChildIDDB(PathForDB.path);
                     HashMap<Integer,ArrayList<Integer>> pageIdChildList = new HashMap<>();
                     ArrayList<Integer> childList = new ArrayList<>();
                     for( String s : childLinks ){
                         pageIDdBOperation.addEntry(s);
                         Integer childPageId = pageIDdBOperation.getPageId(s);
                         childList.add(childPageId);
-
-                        //3.preparing parent link DB
-                        if ( parentPageId.containsKey(childPageId)){
-                            ArrayList<Integer> newParentLinks = parentPageId.get(childPageId);
-                            newParentLinks.add(pageId);
-                        }
-                        else {
-                            ArrayList<Integer> newParentLinks2 = new ArrayList<>();
-                            parentPageId.put(childPageId,newParentLinks2);
-                        }
-
                     }
-                    pageIdChildList.put(pageId,childList);
-                    pageIDChildIDDB.addEntry(pageIdChildList);
+                    pageIDChildIDDB.addEntry(pageId,childList);
 
-                    //4. Keyword to wordID
+                    //3. Keyword to wordID
                     HashMap<Integer,ArrayList<Integer>> positionFileBody = new HashMap<>();
-                    WordIDKeyword wordIDKeyword = new WordIDKeyword(PathForDB.path);
-                    //5. Forwarded file for body
+                    // WordIDKeyword wordIDKeyword = new WordIDKeyword(PathForDB.path);
+                    //4. Forwarded file for body
                     for( Map.Entry<String,ArrayList<Integer>> entry: keywordsPos2.entrySet()){
                         wordIDKeyword.addEntry(entry.getKey());
                         Integer thisWordId = wordIDKeyword.getWordId(entry.getKey());
                         positionFileBody.put(thisWordId,entry.getValue());
                     }
-                    PageIDWordIDPosDBOperation pageIDWordIDPosDBOperation = new PageIDWordIDPosDBOperation(PathForDB.path);
+                    //PageIDWordIDPosDBOperation pageIDWordIDPosDBOperation = new PageIDWordIDPosDBOperation(PathForDB.path);
                     pageIDWordIDPosDBOperation.addEntry(positionFileBody,pageId);
 
                     //5. forwarded file for title
@@ -97,14 +93,57 @@ public class Spider {
                         Integer thisWordId = wordIDKeyword.getWordId(entry.getKey());
                         positionFileTitle.put(thisWordId,entry.getValue());
                     }
-                    PageIDWordIDPosDB2 pageIDWordIDPosDB2 = new PageIDWordIDPosDB2(PathForDB.path);
+                    //PageIDWordIDPosDB2 pageIDWordIDPosDB2 = new PageIDWordIDPosDB2(PathForDB.path);
                     pageIDWordIDPosDB2.addEntry(positionFileTitle,pageId);
 
                     //6.Inverted file for body
                     WordIDPageIDDB wordIDPageIDDB = new WordIDPageIDDB(PathForDB.path);
+                    for( Map.Entry<String,Integer> entry: keyWordTf2.entrySet()) {
+                        wordIDKeyword.addEntry(entry.getKey());
+                        Integer wordID = wordIDKeyword.getWordId(entry.getKey());
+                        if (wordIDPageIDDB.isEntryExists(wordID)){
+                            HashMap<Integer,Integer> hm = wordIDPageIDDB.getEntry(wordID);
+                            hm.put(pageId,entry.getValue());
+                            wordIDPageIDDB.addEntry(hm,wordID);
+                        }
+                        else{
+                            HashMap<Integer,Integer> hm = new HashMap<>();
+                            hm.put(pageId,entry.getValue());
+                            wordIDPageIDDB.addEntry(hm,wordID);
+                        }
+                    }
+
+                    //7.Inverted file for title
+                    WordIDPageIDDB2 wordIDPageIDDB2 = new WordIDPageIDDB2(PathForDB.path);
                     for( Map.Entry<String,Integer> entry: titleTf2.entrySet()) {
-                     //   wordIDKeyword.addEntry(entry.getKey());
-                       // Integer thisWordId = wordIDKeyword.getWordId(entry.getKey());
+                        wordIDKeyword.addEntry(entry.getKey());
+                        Integer wordID = wordIDKeyword.getWordId(entry.getKey());
+                        if (wordIDPageIDDB2.isEntryExists(wordID)){
+                            HashMap<Integer,Integer> hm = wordIDPageIDDB.getEntry(wordID);
+                            hm.put(pageId,entry.getValue());
+                            wordIDPageIDDB2.addEntry(hm,wordID);
+                        }
+                        else{
+                            HashMap<Integer,Integer> hm = new HashMap<>();
+                            hm.put(pageId,entry.getValue());
+                            wordIDPageIDDB2.addEntry(hm,wordID);
+                        }
+                    }
+
+                    //8. Add it to the parentDB of the child links
+                    for ( String s : childLinks){
+                        Integer childId = pageIDdBOperation.getPageId(s);
+                        if(pageIDParentIDDB.isEntryExists(childId)){
+                            ArrayList<Integer> parentList = pageIDParentIDDB.getEntry(childId);
+                            parentList.add(pageId);
+                            pageIDParentIDDB.addEntry(childId,parentList);
+                        }
+                        else{
+                            ArrayList<Integer> parentList = new ArrayList<>();
+                            parentList.add(pageId);
+                            pageIDParentIDDB.addEntry(childId,parentList);
+                        }
+
                     }
 
 
@@ -116,6 +155,7 @@ public class Spider {
 
 
                 }
+                visistedList = pageContentDBOperation.getDateHashMapTable(); // update the visited list;
             }
             /*Page page = new Page();
             ArrayList<String> keywords = Crawler.extractWords(url);
