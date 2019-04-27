@@ -1,4 +1,5 @@
 package Search;
+import java.lang.reflect.Array;
 import java.util.*;
 /**
  * Calculation of the page score
@@ -194,17 +195,28 @@ public class Score {
      * How to compute leh???????
      * Document: [10, 101, 130 ,150]
      * Query: [10,  39  ,59 ]
+     * 加上 再睇substring
      * @param query
      * @return
      */
-    public HashMap<Integer,Double>  computePhraseContent (String query, double dsize){
+    public HashMap<Integer,ArrayList<Integer>>  getOffset (String query, double dsize){
        Query query1 = new Query();
        LinkedHashMap<Integer, ArrayList<Integer>> phraseterm = query1.convertToWordIDPhrase(query);
        ArrayList<Integer> pageContainAllTerm = new ArrayList<>();
+       HashMap<Integer, ArrayList<Integer>> offsets = new HashMap<>();
       for (Map.Entry<Integer, ArrayList<Integer>> doc: phraseterm.entrySet()){
-
+          ArrayList<Integer> getWord = doc.getValue();
+          ArrayList<Integer> getWordOffset = new ArrayList<>();
+          for (int i = 0 ; i < getWord.size(); i++){
+              if (i == 0) getWordOffset.add(getWord.get(i));
+              else {
+                  Integer offset = getWord.get(i) - getWord.get(i-1);
+                  getWordOffset.add(offset);
+              }
+          }
+          offsets.put(doc.getKey(),getWordOffset);
       }
-       return null;
+       return offsets;
     }
 
   public static void main (String [] a) {
