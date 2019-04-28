@@ -186,7 +186,7 @@ public class Score {
 
            }
        }
-       return result;
+       return sortByValue(result);
 
    }
 
@@ -221,7 +221,7 @@ public class Score {
 
             }
         }
-        return result;
+        return sortByValue(result);
 
     }
 
@@ -640,17 +640,71 @@ public class Score {
     public HashMap<Integer,Double> allInOneComputePhraseScoreContent (String query) throws RocksDBException{
         ArrayList<Integer> pagematch = pageHavePhraseContent(query);
         HashMap<Integer,Double> result = computeScorePhraseContent(pagematch,query);
-        return result;
+        return sortByValue(result);
     }
 
     public HashMap<Integer,Double> allInOneComputePhraseScoreTitle (String query) throws RocksDBException{
         ArrayList<Integer> pagematch = pageHavePhraseTitle(query);
         HashMap<Integer,Double> result = computeScorePhraseTitle(pagematch,query);
-        return result;
+        return sortByValue(result);
+    }
+
+    public static HashMap<Integer,Double> sortByValue(HashMap<Integer,Double> hm)
+    {
+        // Create a list from elements of HashMap
+        List<Map.Entry<Integer,Double> > list =
+                new LinkedList<Map.Entry<Integer,Double> >(hm.entrySet());
+
+        // Sort the list
+        Collections.sort(list, new Comparator<Map.Entry<Integer,Double> >() {
+            public int compare(Map.Entry<Integer,Double> o1,
+                               Map.Entry<Integer,Double> o2)
+            {
+                return (o1.getValue()).compareTo(o2.getValue());
+            }
+        });
+
+        // put data from sorted list to hashmap
+        HashMap<Integer,Double> temp = new LinkedHashMap<Integer,Double>();
+        for (Map.Entry<Integer,Double> aa : list) {
+            temp.put(aa.getKey(), aa.getValue());
+        }
+        return temp;
     }
 
 
-  public static void main (String [] a) throws RocksDBException{
+
+    public HashMap<Integer,Double> ranking (String query) throws RocksDBException{
+        HashMap<Integer,Double> title;
+        HashMap<Integer,Double> content;
+        if (Query.isPhraseSearch(query)) {
+            query = query.substring(1, query.length() - 1);
+            title = allInOneComputePhraseScoreTitle(query);
+            content = allInOneComputePhraseScoreContent(query);
+
+        }
+
+        else {
+
+            title = calculateScoreCTitle(query);
+            content =calculateScoreContent(query);
+        }
+
+        for (Map.Entry<Integer,Double> in : title.entrySet())
+            title.put(in.getKey(),in.getValue()*10);
+
+        for (Map.Entry<Integer,Double> in : title.entrySet()) {
+            if (content.containsKey(in.getKey()))
+                content.put(in.getKey(), content.get(in.getKey()) + in.getValue());
+            else
+                content.put(in.getKey(),in.getValue());
+        }
+            return sortByValue(content);
+
+    }
+
+
+    public static void main (String [] a) throws RocksDBException{
        Score score = new Score();
        //System.out.println(score.findPossiblePageID("loving love love love love hong hong hong loves").toString());
        Integer[] p = score.findPossiblePageID("hong kong");
@@ -690,6 +744,13 @@ public class Score {
       b.add(3);
       b.add(-1);
       System.out.println(score.trimStopStartEnd(b));*/
+      HashMap<Integer,Double> h = new HashMap<>();
+      h.put(1,10.888);
+      h.put(7,9.9);
+      h.put(8,10.3);
+      System.out.print(Score.sortByValue(h));
+
+
 
 
   }
