@@ -72,7 +72,20 @@ public class Score {
         ArrayList<Integer> pos_4 = new ArrayList<>();
         pos_4.add(8);
         keyPos2.put(3,pos_4);
+        HashMap<Integer,ArrayList<Integer>> keyPos3 = new HashMap<>();
+        ArrayList<Integer> pos_5 = new ArrayList<>();
+        pos_5.add(2);
+        pos_5.add(5);
+        keyPos3.put(2,pos_5);
+
+        ArrayList<Integer> pos_6 = new ArrayList<>();
+        pos_6.add(2);
+        pos_6.add(7);
+        keyPos3.put(3,pos_6);
+
         contentPos.put(1,keyPos2);
+        contentPos.put(2,keyPos3);
+
 
         /*contentPos.put(1,keyPos);
         contentPos.put(2,keyPos);
@@ -83,6 +96,8 @@ public class Score {
         HashMap<Integer,Integer> word2 = new HashMap<>();
         HashMap<Integer,Integer> word3 = new HashMap<>();
         word3.put(1,1);
+        word3.put(2,1);
+        word2.put(3,1);
         word2.put(1,10);
         word2.put(2,100);
         word1.put(1,3);
@@ -280,7 +295,9 @@ public class Score {
         ArrayList<Integer> trimStopStartEnd = trimStopStartEnd(term);
         System.out.println(trimStopStartEnd);
         Integer[] possiblePage = findPossiblePageID(query);
+        for (Integer a : possiblePage) System.out.println("Possible Page: " + a);
         for (Integer page : possiblePage){
+            System.out.println("Page: " + page);
             HashMap<Integer,ArrayList<Integer>> pagePos = contentPos.get(page);
             ArrayList<Integer> allPos = allThePos(pagePos);
             ArrayList<Integer> first_Keyword = pagePos.get(trimStopStartEnd.get(0));
@@ -289,7 +306,7 @@ public class Score {
             boolean containAll = false;
             for (int i = 0 ; i < first_Keyword.size() ; i++){
                 Integer posNum = first_Keyword.get(i);
-                System.out.println(posNum);
+                System.out.println("Start:" + posNum);
                 for (int j = 1 ; j < trimStopStartEnd.size() ; j++){
                     if (containAll) break;
                     Integer queryNextTerm = trimStopStartEnd.get(j);
@@ -309,6 +326,7 @@ public class Score {
                     }
 
                     if (j == trimStopStartEnd.size()-1){
+                        System.out.println("he");
                         suitable_s = first_Keyword.get(i);
                         suitable_e = posNum;
                         containAll = true;
@@ -319,11 +337,13 @@ public class Score {
             //*where is the start*//
             if (containAll){
                 for (int i = 1 ; i <= stopNumStart; i++){
+                    System.out.println("first");
                     if (allPos.contains(suitable_s-i) || (suitable_s-i <= 0)) containAll=false;
                 }
             }
             if (containAll){
                 for (int i = 1 ; i <= stopEndStart; i++){
+                    System.out.println("Second");
                     //if (allPos.contains(suitable_e+i) || (suitable_e+i > getMaxPos(pagePos))) containAll=false;
                     if (allPos.contains(suitable_e+i) ) containAll=false;
 
@@ -412,7 +432,7 @@ public class Score {
       //System.out.println(score.trimStopStartEnd(arr).toString());
       System.out.println(score.stopNumStart(arr).toString());
       System.out.println(score.stopNumEnd(arr).toString());
-      System.out.println(score.pageHavePhraseContent("In hong In kong In"));
+      System.out.println(score.pageHavePhraseContent("On hong in kong in"));
       /*ArrayList<Integer> b = new ArrayList<>();
       b.add(-1);
       b.add(2);
