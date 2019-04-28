@@ -101,16 +101,28 @@ public class ForwardFileforBody {
         return false;
     }
 
-    public static void main(String [] args) throws RocksDBException{
-        ForwardFileforBody pageIDdBOperation = new ForwardFileforBody("/Users/tszmoonhung/IdeaProjects/comp4321_whole_project/function.PageIDKeyword");
+    public static void main(String [] args) throws RocksDBException{ // done
+        ForwardFileforBody forwardFileforBody = new ForwardFileforBody("db/db_ForwardFileforBody");
         HashMap<Integer,ArrayList<Integer> > hashMap = new HashMap<>();
         ArrayList<Integer> arrayList = new ArrayList<>();
         arrayList.add(1);
         arrayList.add(2);
-        arrayList.add(3);
-        arrayList.add(4);
-        arrayList.add(5);
-        arrayList.add(6);
+        arrayList.add(10);
+        hashMap.put(1,arrayList);
+        System.out.println("1.array:" + hashMap);
+        forwardFileforBody.addEntry(hashMap,11);
+        System.out.println("2:"+new String(forwardFileforBody.rocksDB.get("11".getBytes())));
+        arrayList.add(100);
+        hashMap.put(2,arrayList);
+        System.out.println("3:"+hashMap);
+        forwardFileforBody.addEntry(hashMap,11);
+        forwardFileforBody.addEntry(hashMap,111111111);
+        System.out.println("4:"+new String(forwardFileforBody.rocksDB.get("111111111".getBytes())));
+        System.out.println(forwardFileforBody.hm);
+        for (Map.Entry<Integer,HashMap<Integer,ArrayList<Integer>>> Entry: forwardFileforBody.hm.entrySet()){
+            System.out.println((Entry.getKey().toString())+"         "+Entry.getValue().toString());
+        }
+        /*arrayList.add(1);
         hashMap.put(100,arrayList);
         ArrayList<Integer> arrayList2 = new ArrayList<>();
         arrayList2.add(1);
@@ -135,7 +147,7 @@ public class ForwardFileforBody {
 
             System.out.println(key);
             System.out.println(item.getValue());
-        }
+        }*/
 
     }
 }

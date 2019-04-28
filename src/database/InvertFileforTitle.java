@@ -112,21 +112,19 @@ public class InvertFileforTitle {
         if (hm.containsKey(info)) return true;
         return false;
     }
-        public static void main (String args[]){
-            InvertFileforTitle wp = new InvertFileforTitle("/Users/chunyinfok/Downloads/comp4321_pj/comp4321_whole_project/db");
-            HashMap<Integer,Integer> hm2 = new HashMap<>();
-            hm2.put(10,10);
-            hm2.put(1,3);
-            System.out.println(hm2);
-            try{
-                wp.addEntry(hm2,5);
-                String s = new String(wp.rocksDB.get("5".getBytes()));
-                String s2 = wp.getEntry(5).toString();
-                System.out.println(s);
-                System.out.println(s2);
-            }
-            catch ( RocksDBException e){
-                e.printStackTrace();
+        public static void main (String args[]) {         //done
+            InvertFileforTitle wp = new InvertFileforTitle("db/db_InvertFileforTitle");
+            HashMap<Integer, Integer> hm2 = new HashMap<>();
+            hm2.put(10, 10);
+            hm2.put(1, 999999999);
+            try {
+                wp.addEntry(hm2, 1111111);
+                HashMap<Integer, HashMap<Integer, Integer>> hm = wp.getHashMapTable();
+                for (Map.Entry<Integer, HashMap<Integer, Integer>> Entry : hm.entrySet()) {
+                    System.out.println(Entry.getKey().toString() + "    " + Entry.getValue().toString());
+                }
+            } catch (RocksDBException e) {
+
             }
         }
 

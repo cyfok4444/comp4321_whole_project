@@ -77,9 +77,10 @@ public class ForwardFileforTitle {
         return false;
     }
 
-    public static void main(String [] args) throws RocksDBException{
-        ForwardFileforTitle forwardFileforTitle = new ForwardFileforTitle("/Users/tszmoonhung/IdeaProjects/comp4321_whole_project/function.PageIDKeyword");
+    public static void main(String [] args) throws RocksDBException{  //done
+        ForwardFileforTitle forwardFileforTitle = new ForwardFileforTitle("db/db_ForwardFileforTitle");
         HashMap<Integer,ArrayList<Integer> > hashMap = new HashMap<>();
+        HashMap<Integer,ArrayList<Integer> > hashMap2 = new HashMap<>();
         ArrayList<Integer> arrayList = new ArrayList<>();
         arrayList.add(1);
         arrayList.add(2);
@@ -87,17 +88,18 @@ public class ForwardFileforTitle {
         arrayList.add(4);
         arrayList.add(5);
         arrayList.add(6);
+        arrayList.add(999);
         hashMap.put(100,arrayList);
         ArrayList<Integer> arrayList2 = new ArrayList<>();
-        arrayList2.add(1);
-        arrayList2.add(2);
-        arrayList2.add(3);
-        arrayList2.add(4);
-        arrayList2.add(5);
-        arrayList2.add(6);
-        hashMap.put(10000,arrayList2);
+        arrayList2.add(10);
+        arrayList2.add(20);
+        arrayList2.add(30);
+        arrayList2.add(40);
+        arrayList2.add(50);
+        arrayList2.add(60);
+        hashMap2.put(10000,arrayList2);
         forwardFileforTitle.addEntry(hashMap,10000);
-        forwardFileforTitle.addEntry(hashMap,100);
+        forwardFileforTitle.addEntry(hashMap2,100);
 
         RocksIterator iterator = forwardFileforTitle.rocksDB.newIterator();
         for(iterator.seekToFirst(); iterator.isValid(); iterator.next()){
@@ -106,12 +108,12 @@ public class ForwardFileforTitle {
         }
 
         HashMap<Integer,HashMap<Integer,ArrayList<Integer>> > h = forwardFileforTitle.getHashMapTable();
+
         for (Map.Entry<Integer,HashMap<Integer,ArrayList<Integer>> > item : h.entrySet()) {
             Integer key = item.getKey();
 
             System.out.println(key);
             System.out.println(item.getValue());
         }
-
     }
 }
