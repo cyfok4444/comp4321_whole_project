@@ -15,13 +15,15 @@ public class Query {
      */
 
     public Query() throws RocksDBException{
+        //////Comment if have database
+        ///////////////////////////
         word_ID = new HashMap<>();
         word_ID.put("love",1);
         word_ID.put("hong",2);
         word_ID.put("kong",3);
         word_ID.put("ust",4);
         word_ID.put("cool",5);
-
+        //////////////////////////
         WordtoWordID wordtoWordID = new WordtoWordID("db/db_WordtoWordID");
         word_ID = wordtoWordID.getHashMapTable();
     }

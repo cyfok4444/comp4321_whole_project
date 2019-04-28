@@ -35,15 +35,15 @@ import java.util.*;
 
 public class Score {
 
-   private HashMap<String, Integer> pageIdTable;
-   private HashMap<Integer,HashMap<Integer,ArrayList<Integer>>> titlePos;
-   private HashMap<Integer,HashMap<Integer,ArrayList<Integer>>> contentPos;
-   private HashMap<Integer, HashMap<Integer,Integer>> inverted_table_title;
-   private HashMap<Integer, HashMap<Integer,Integer>> inverted_table_content;
+   static private HashMap<String, Integer> pageIdTable;
+   static private HashMap<Integer,HashMap<Integer,ArrayList<Integer>>> titlePos;
+   static private HashMap<Integer,HashMap<Integer,ArrayList<Integer>>> contentPos;
+   static private HashMap<Integer, HashMap<Integer,Integer>> inverted_table_title;
+   static private HashMap<Integer, HashMap<Integer,Integer>> inverted_table_content;
    static private HashMap<Integer,Integer> maxtfContent;
    //static private HashMap<Integer,Integer> maxtfTitle;
    static private HashMap<Integer, ArrayList<Double>> sizemaxtfContent;
-    static private HashMap<Integer, ArrayList<Double>> sizemaxtfTitle;
+   static private HashMap<Integer, ArrayList<Double>> sizemaxtfTitle;
 
     private double N;
 

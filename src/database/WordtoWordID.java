@@ -43,7 +43,7 @@ public class WordtoWordID {
      * @return
      * @throws RocksDBException
      */
-    public HashMap getHashMapTable() throws RocksDBException{
+    public HashMap<String,Integer> getHashMapTable() throws RocksDBException{
 
         HashMap<String,Integer> hashMap = new HashMap<>();
         RocksIterator iterator = rocksDB.newIterator();
