@@ -21,6 +21,7 @@ public class Query {
         word_ID.put("hong",2);
         word_ID.put("kong",3);
         word_ID.put("ust",4);
+        word_ID.put("cool",5);
 
     }
     /**
