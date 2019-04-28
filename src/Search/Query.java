@@ -83,7 +83,7 @@ public class Query {
         ArrayList<String> process = ProcessString.doKeywordOnly(wordlist);
         for (int i = 0 ; i < process.size() ; i++)
             if (word_ID.containsKey(process.get(i))) result.add(word_ID.get(process.get(i)));
-
+            else result.add(-1);
             return result;
     }
 
