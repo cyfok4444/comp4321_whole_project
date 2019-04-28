@@ -35,7 +35,8 @@ public class PageIDtoTitleInfo {
         for(iterator.seekToFirst(); iterator.isValid(); iterator.next()){
             String key = new String(iterator.key());
             String value = new String(rocksDB.get(key.getBytes()));
-            String [] s = value.split(" ");
+            value = value.substring(1,value.length()-1);
+            String [] s = value.split(", ");
             ArrayList<Double> arrayList = new ArrayList<>();
             for (int i = 0 ; i < s.length ; i++){
                 arrayList.add(Double.parseDouble(s[i]));
@@ -51,7 +52,8 @@ public class PageIDtoTitleInfo {
         for(iterator.seekToFirst(); iterator.isValid(); iterator.next()){
             String key = new String(iterator.key());
             String value = new String(rocksDB.get(key.getBytes()));
-            String [] s = value.split(" ");
+            value = value.substring(1,value.length()-1);
+            String [] s = value.split(", ");
             ArrayList<Double> arrayList = new ArrayList<>();
             for (int i = 0 ; i < s.length ; i++){
                 arrayList.add(Double.parseDouble(s[i]));
@@ -70,7 +72,15 @@ public class PageIDtoTitleInfo {
         if (hm.containsKey(key)) return true;
         return false;
     }
-    public static void main (String [] args) throws RocksDBException{
+    public static void main (String [] args) throws RocksDBException{ //done
+        PageIDtoTitleInfo pageIDtoTitleInfo = new PageIDtoTitleInfo("db/db_PageIDtoTitleInfo");
+        ArrayList<Double> a1 = new ArrayList<>();
+        a1.add(10.0);
+        a1.add(99.9);
+        pageIDtoTitleInfo.addEntry(1,a1);
+        a1.add(99999.0);
+        pageIDtoTitleInfo.addEntry(2,a1);
+        System.out.println(pageIDtoTitleInfo.isEntryExists(100));
 
 
 

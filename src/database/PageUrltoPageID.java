@@ -1,6 +1,5 @@
 package database;
 
-import function.PathForDB;
 import org.rocksdb.Options;
 import org.rocksdb.RocksDB;
 import org.rocksdb.RocksDBException;
@@ -8,7 +7,7 @@ import org.rocksdb.RocksIterator;
 
 import java.util.HashMap;
 
-public class PageUrlToPageID {
+public class PageUrltoPageID {
 
     protected RocksDB rocksDB;
     protected Options options;
@@ -21,13 +20,13 @@ public class PageUrlToPageID {
          * constructor of the database
          * @param dbpath
          */
-        public PageUrlToPageID(String dbpath){
+        public PageUrltoPageID(String dbpath){
             this.dbpath = dbpath;
             options = new Options();
             options.setCreateIfMissing(true);
             try {
                 rocksDB = RocksDB.open(options,dbpath);
-                hm = getHashMapTable();
+                setHashMapTable();
                 availableID = getMaxId()+1;
             }
             catch (RocksDBException e){
@@ -120,19 +119,17 @@ public class PageUrlToPageID {
             }
         }
 
-        public static void main(String [] args) throws RocksDBException{
-            PageUrlToPageID pageUrlToPageID = new PageUrlToPageID(PathForDB.path);
-            pageUrlToPageID.addEntry("hiii");
+        public static void main(String [] args) throws RocksDBException{ // done
+            PageUrltoPageID pageUrlToPageID = new PageUrltoPageID("db/db_PageUrlToPageID");
             pageUrlToPageID.addEntry("hy");
             pageUrlToPageID.addEntry("hiiiiiiii");
             pageUrlToPageID.addEntry("hiiiiiiiippppp");
-            RocksIterator iterator = pageUrlToPageID.rocksDB.newIterator();
-            for (iterator.seekToFirst(); iterator.isValid(); iterator.next()) {
-               System.out.println(new String(iterator.key()) + " " + new String(iterator.value()));
-            }
-
-            System.out.println(pageUrlToPageID.getPageId("hy"));
-
+            pageUrlToPageID.addEntry("hiii");
+            pageUrlToPageID.addEntry("abcd");
+            pageUrlToPageID.addEntry("qwe");
+            pageUrlToPageID.addEntry("ok");
+            System.out.println(pageUrlToPageID.getMaxId());
+            System.out.println(pageUrlToPageID.hm);
         }
 
 

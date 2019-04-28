@@ -37,6 +37,10 @@ public class ForwardFileforBody {
             HashMap<Integer, ArrayList<Integer>> h2 = new HashMap<>();
             String key = new String(iterator.key());
             String value = new String(rocksDB.get(key.getBytes()));
+            if ( value =="{}"){
+                hashMap.put(Integer.parseInt(key),h2);
+                continue;
+            }
             String [] single_wordID = value.split("Sep");
             for (int i = 0 ; i< single_wordID.length ; i++){
                 String [] sep = single_wordID[i].split(" ");
@@ -60,6 +64,10 @@ public class ForwardFileforBody {
             HashMap<Integer, ArrayList<Integer>> h2 = new HashMap<>();
             String key = new String(iterator.key());
             String value = new String(rocksDB.get(key.getBytes()));
+            if ( value =="{}"){
+                hashMap.put(Integer.parseInt(key),h2);
+                continue;
+            }
             String [] single_wordID = value.split("Sep");
             for (int i = 0 ; i< single_wordID.length ; i++){
                 String [] sep = single_wordID[i].split(" ");

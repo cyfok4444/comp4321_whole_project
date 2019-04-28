@@ -66,7 +66,7 @@ public class Score {
            PageIDtoTitleInfo pageIDtoTitleInfo = new PageIDtoTitleInfo("db/db_PageIDtoTitleInfo");
            sizemaxtfTitle = pageIDtoTitleInfo.getHashMapTable();
 
-           PageUrlToPageID pageUrlToPageID = new PageUrlToPageID("db/db_PageUrlToPageID");
+           PageUrltoPageID pageUrlToPageID = new PageUrltoPageID("db/db_PageUrlToPageID");
            pageIdTable = pageUrlToPageID.getHashMapTable();
 
            N = pageIdTable.size();

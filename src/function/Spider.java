@@ -25,7 +25,7 @@ public class Spider {
             PageIDtoPageObject pageIDtoPageObject = new PageIDtoPageObject("db/db_PageIDtoPageObject");
             PageIDtoParentIDList pageIDtoParentIDList = new PageIDtoParentIDList("db/db_PageIDtoParentIDList");
             PageIDtoTitleInfo pageIDtoTitleInfo = new PageIDtoTitleInfo("db/db_PageIDtoTitleInfo");
-            PageUrlToPageID pageUrlToPageID = new PageUrlToPageID("db/db_PageUrlToPageID");
+            PageUrltoPageID pageUrlToPageID = new PageUrltoPageID("db/db_PageUrlToPageID");
             WordtoWordID wordtoWordID = new WordtoWordID("db/db_WordtoWordID");
 
 
@@ -42,9 +42,12 @@ public class Spider {
                     PageObject pageObject = new PageObject();
                     pageObject.setUrl(url2);
                     ArrayList<String> keywordsTf =  Crawler.extractWords(url2);
-                    ProcessString.removeRubbish(keywordsTf);
+                    if (keywordsTf.toString()=="[]"){
+                        continue;
+                    }
+                    keywordsTf = ProcessString.removeRubbish(keywordsTf);
                     ArrayList<String> keywordsPos = keywordsTf;
-                    ProcessString.stopWordRemoveTf(keywordsTf);
+                    keywordsTf = ProcessString.stopWordRemoveTf(keywordsTf);
                     HashMap<String,Integer> keyWordTf2 = ProcessString.keyWordTf(keywordsTf);
 
                     HashMap<String,Integer> mostFreqWords = new HashMap<>();
@@ -67,7 +70,7 @@ public class Spider {
                     pageObject.setMostFreqKeywords(mostFreqWords);
 
                     HashMap<String,ArrayList<Integer>> keywordsPos2 = ProcessString.keyWordPos(keywordsPos);
-                    ProcessString.stopWordRemovePos(keywordsPos2);
+                    keywordsPos2 = ProcessString.stopWordRemovePos(keywordsPos2);
 
                     Long date = Crawler.getLastModifiedDate(url2);
                     pageObject.setLastModificationDate(date);
@@ -82,24 +85,23 @@ public class Spider {
                     for ( String s : title2){
                         titleTf.add(s);
                     }
-                    ProcessString.removeRubbish(titleTf);
+                    titleTf = ProcessString.removeRubbish(titleTf);
                     ArrayList<String> titlePos = titleTf;
-                    ProcessString.stopWordRemoveTf(titleTf);
+                    titleTf = ProcessString.stopWordRemoveTf(titleTf);
                     HashMap<String,Integer> titleTf2 = ProcessString.keyWordTf(titleTf);
 
                     HashMap<String,ArrayList<Integer>> titlePos2 = ProcessString.keyWordPos(titlePos);
-                    ProcessString.stopWordRemovePos(keywordsPos2);
+                    titlePos2 = ProcessString.stopWordRemovePos(titlePos2);
 
                     //1.starting DB Url to PageID
-                    //PageUrlToPageID pageUrlToPageID = new PageUrlToPageID(PathForDB.path);
-                    if ( lastDate==null) {
+                    //PageUrltoPageID pageUrlToPageID = new PageUrltoPageID(PathForDB.path);
+                    if ( lastDate==null ) {
                         pageUrlToPageID.addEntry(url2);
                     }
                     Integer pageId = pageUrlToPageID.getPageId(url2);
 
                     //2.staring DB child link
                     //PageIDtoChildIDList pageIDToChildIDList = new PageIDtoChildIDList(PathForDB.path);
-                    HashMap<Integer,ArrayList<Integer>> pageIdChildList = new HashMap<>();
                     ArrayList<Integer> childList = new ArrayList<>();
                     for( String s : childLinks ){
                         pageUrlToPageID.addEntry(s);
@@ -120,6 +122,9 @@ public class Spider {
                         wordtoWordID.addEntry(entry.getKey());
                         Integer thisWordId = wordtoWordID.getWordId(entry.getKey());
                         positionFileBody.put(thisWordId,entry.getValue());
+                    }
+                    if (positionFileBody.isEmpty()){
+                        continue;
                     }
                     //ForwardFileforBody forwardFileforBody = new ForwardFileforBody(PathForDB.path);
                     forwardFileforBody.addEntry(positionFileBody,pageId);
@@ -215,7 +220,20 @@ public class Spider {
                     }
 
                     pageIDtoPageObject.addEntry(pageId, pageObject);
-                    visistedList = pageIDtoPageObject.getDateHashMapTable(); // update the visited list;
+
+                    //update hashMap for all the DB
+                    forwardFileforBody.setHashMapTable();
+                    //forwardFileforTitle.setHashMapTable();
+                    invertFileforBody.setHashMapTable();
+                    invertFileforTitle.setHashMapTable();
+                    pageIDtoBodyInfo.setHashMapTable();
+                    pageIDToChildIDList.setHashMapTable();
+
+                    pageIDtoParentIDList.setHashMapTable();
+                    pageIDtoTitleInfo.setHashMapTable();
+                    pageUrlToPageID.setHashMapTable();
+                    wordtoWordID.setHashMapTable();
+                    //visistedList = pageIDtoPageObject.getDateHashMapTable(); // update the visited list;
                 }
             }
             /*PageObject page = new PageObject();
@@ -244,5 +262,9 @@ public class Spider {
             e.printStackTrace();
         }
 
+    }
+
+    public static void main (String args[]) throws RocksDBException{
+        go("https://hk.yahoo.com/");
     }
 }
