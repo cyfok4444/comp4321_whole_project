@@ -7,14 +7,21 @@ import org.rocksdb.RocksDBException;
 import java.util.*;
 public class Query {
 
-     static private HashMap<String,Integer> word_ID;
-
+     static private HashMap<String,Integer> word_ID ;
     /**
      * constructor
      * Need to modified after having the database
      */
+     static {
+         try {
+             WordtoWordID wordtoWordID = new WordtoWordID("db/db_WordtoWordID");
+             word_ID = wordtoWordID.getHashMapTable();
+         }catch (RocksDBException e){
+             e.printStackTrace();
+         }
 
-    public Query() throws RocksDBException{
+    }
+    /*public Query() throws RocksDBException{
         //////Comment if have database
         ///////////////////////////
         word_ID = new HashMap<>();
@@ -24,9 +31,9 @@ public class Query {
         word_ID.put("ust",4);
         word_ID.put("cool",5);
         //////////////////////////
-        WordtoWordID wordtoWordID = new WordtoWordID("db/db_WordtoWordID");
-        word_ID = wordtoWordID.getHashMapTable();
-    }
+        //WordtoWordID wordtoWordID = new WordtoWordID("db/db_WordtoWordID");
+        //word_ID = wordtoWordID.getHashMapTable();
+    }*/
     /**
      * Only for non-phrase
      * @param query

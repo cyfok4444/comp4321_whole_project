@@ -44,16 +44,44 @@ public class Score {
    //static private HashMap<Integer,Integer> maxtfTitle;
    static private HashMap<Integer, ArrayList<Double>> sizemaxtfContent;
    static private HashMap<Integer, ArrayList<Double>> sizemaxtfTitle;
+   static private double N;
 
-    private double N;
+   static {
+       try{
+           ForwardFileforBody forwardFileforBody = new ForwardFileforBody("db/db_ForwardFileforBody");
+           contentPos = forwardFileforBody.getHashMapTable();
 
+           ForwardFileforTitle forwardFileforTitle = new ForwardFileforTitle("db/db_ForwardFileforTitle");
+           titlePos = forwardFileforTitle.getHashMapTable();
+
+           InvertFileforBody invertFileforBody = new InvertFileforBody("db/db_InvertFileforBody");
+           inverted_table_content = invertFileforBody.getHashMapTable();
+
+           InvertFileforTitle invertFileforTitle = new InvertFileforTitle("db/db_InvertFileforTitle");
+           inverted_table_title = invertFileforTitle.getHashMapTable();
+
+           PageIDtoBodyInfo pageIDtoBodyInfo = new PageIDtoBodyInfo("db/db_PageIDtoBodyInfo");
+           sizemaxtfContent = pageIDtoBodyInfo.getHashMapTable();
+
+           PageIDtoTitleInfo pageIDtoTitleInfo = new PageIDtoTitleInfo("db/db_PageIDtoTitleInfo");
+           sizemaxtfTitle = pageIDtoTitleInfo.getHashMapTable();
+
+           PageUrlToPageID pageUrlToPageID = new PageUrlToPageID("db/db_PageUrlToPageID");
+           pageIdTable = pageUrlToPageID.getHashMapTable();
+
+           N = pageIdTable.size();
+
+       } catch (RocksDBException e) {
+           e.printStackTrace();
+       }
+   }
     /**
      * Constructor
      */
     /**
      * Need to modified after having database
      */
-    public Score() throws RocksDBException {
+    /*public Score() throws RocksDBException {
         //** Comment this part if have databse
         pageIdTable = new HashMap<>();
         pageIdTable.put("page A",1);
@@ -69,7 +97,7 @@ public class Score {
         ArrayList<Integer> pos_2 = new ArrayList<>();
         pos_2.add(4); pos_2.add(5);
         keyPos.put(1,pos_1); keyPos.put(2,pos_2);*/
-        HashMap<Integer,ArrayList<Integer>> keyPos2 = new HashMap<>();
+        /*HashMap<Integer,ArrayList<Integer>> keyPos2 = new HashMap<>();
         ArrayList<Integer> pos_3 = new ArrayList<>();
         pos_3.add(1);
         pos_3.add(6);
@@ -96,8 +124,7 @@ public class Score {
         /*contentPos.put(1,keyPos);
         contentPos.put(2,keyPos);
         contentPos.put(3,keyPos);*/
-        computeMaxTFContent();
-        inverted_table_content = new HashMap<>();
+        /*inverted_table_content = new HashMap<>();
         HashMap<Integer,Integer> word1 = new HashMap<>();
         HashMap<Integer,Integer> word2 = new HashMap<>();
         HashMap<Integer,Integer> word3 = new HashMap<>();
@@ -116,30 +143,7 @@ public class Score {
         //System.out.println(inverted_table_content.toString());
         ////////////////////////////////////////////////////////
 
-        ForwardFileforBody forwardFileforBody = new ForwardFileforBody("db/db_ForwardFileforBody");
-        contentPos = forwardFileforBody.getHashMapTable();
-
-        ForwardFileforTitle forwardFileforTitle = new ForwardFileforTitle("db/db_ForwardFileforTitle");
-        titlePos = forwardFileforTitle.getHashMapTable();
-
-        InvertFileforBody invertFileforBody = new InvertFileforBody("db/db_InvertFileforBody");
-        inverted_table_content = invertFileforBody.getHashMapTable();
-
-        InvertFileforTitle invertFileforTitle = new InvertFileforTitle("db/db_InvertFileforTitle");
-        inverted_table_title = invertFileforTitle.getHashMapTable();
-
-        PageIDtoBodyInfo pageIDtoBodyInfo = new PageIDtoBodyInfo("db/db_PageIDtoBodyInfo");
-        sizemaxtfContent = pageIDtoBodyInfo.getHashMapTable();
-
-        PageIDtoTitleInfo pageIDtoTitleInfo = new PageIDtoTitleInfo("db/db_PageIDtoTitleInfo");
-        sizemaxtfTitle = pageIDtoTitleInfo.getHashMapTable();
-
-        PageUrlToPageID pageUrlToPageID = new PageUrlToPageID("db/db_PageUrlToPageID");
-        pageIdTable = pageUrlToPageID.getHashMapTable();
-
-        N = pageIdTable.size();
-
-    }
+    }*/
     /**
      * Dunno the size of the document a HashMapInput will be the best
      * Hard code of dsize
