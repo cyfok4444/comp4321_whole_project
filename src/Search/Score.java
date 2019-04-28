@@ -78,6 +78,7 @@ public class Score {
         ArrayList<Integer> pos_5 = new ArrayList<>();
         pos_5.add(2);
         pos_5.add(5);
+        pos_5.add(10);
         keyPos3.put(2,pos_5);
 
         ArrayList<Integer> pos_6 = new ArrayList<>();
@@ -98,7 +99,7 @@ public class Score {
         HashMap<Integer,Integer> word2 = new HashMap<>();
         HashMap<Integer,Integer> word3 = new HashMap<>();
         word3.put(1,1);
-        word3.put(2,1);
+        word3.put(2,100);
         word2.put(3,1);
         word2.put(1,10);
         word2.put(2,100);
