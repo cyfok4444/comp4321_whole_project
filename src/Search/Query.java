@@ -116,10 +116,11 @@ public class Query {
         query.word_ID.put("kong",3);
         query.word_ID.put("yeah",5);
         HashMap<Integer,Integer> h = query.convertToWordID("I Loves in Kong hong hong ");
-        ArrayList<Integer> h2 = query.convertToWordIDPhrase("I Loves Kong in hong hong KOng Loving in YeAh ");
+        ArrayList<Integer> h2 = query.convertToWordIDPhrase("I I I Loves Kong in hong hong KOng Loving in YeAh at at");
 
         System.out.println(query.isPhraseSearch("\"hi\""));
-        System.out.println(h2.toString());
+        System.out.println(h2);
+        //System.out.println(query.getDistinctSetOfKeyword(h2));
 
 
     }

@@ -58,15 +58,25 @@ public class Score {
         int a = pageIdTable.size();
         N = (double) a;
         contentPos = new HashMap<>();
-        HashMap<Integer,ArrayList<Integer>> keyPos = new HashMap<>();
+        /*HashMap<Integer,ArrayList<Integer>> keyPos = new HashMap<>();
         ArrayList<Integer> pos_1 = new ArrayList<>();
         pos_1.add(1);
         ArrayList<Integer> pos_2 = new ArrayList<>();
         pos_2.add(4); pos_2.add(5);
-        keyPos.put(1,pos_1); keyPos.put(2,pos_2);
-        contentPos.put(1,keyPos);
+        keyPos.put(1,pos_1); keyPos.put(2,pos_2);*/
+        HashMap<Integer,ArrayList<Integer>> keyPos2 = new HashMap<>();
+        ArrayList<Integer> pos_3 = new ArrayList<>();
+        pos_3.add(1);
+        pos_3.add(6);
+        keyPos2.put(2,pos_3);
+        ArrayList<Integer> pos_4 = new ArrayList<>();
+        pos_4.add(8);
+        keyPos2.put(3,pos_4);
+        contentPos.put(1,keyPos2);
+
+        /*contentPos.put(1,keyPos);
         contentPos.put(2,keyPos);
-        contentPos.put(3,keyPos);
+        contentPos.put(3,keyPos);*/
         computeMaxTFContent();
         inverted_table_content = new HashMap<>();
         HashMap<Integer,Integer> word1 = new HashMap<>();
@@ -79,9 +89,9 @@ public class Score {
         word1.put(2,3);
         word1.put(3,3);
         inverted_table_content.put(1,word1);
-        inverted_table_content.put(2,word2);
+        inverted_table_content.put(2,word3);
         inverted_table_content.put(3,word3);
-        inverted_table_content.put(4,word3);
+        inverted_table_content.put(4,word1);
         //System.out.println(inverted_table_content.toString());
 
     }
@@ -215,7 +225,6 @@ public class Score {
         }
 
         int num = docs.size();
-        //System.out.println(num);
         Integer[] result = {};
         if (num > 2){
             Integer[] first = docs.get(0);
@@ -253,29 +262,167 @@ public class Score {
 
     }
 
-    public static Set<Integer> intersection(Set<Integer> a, Set<Integer> b) {
-        // unnecessary; just an optimization to iterate over the smaller set
-        if (a.size() > b.size()) {
-            return intersection(b, a);
-        }
+    /**
+     * finally add all the pos list together
+     * check for start and end
+     * @param query
+     * @return
+     */
+    public ArrayList<Integer> pageHavePhraseContent (String query){
 
-        Set<Integer> results = new HashSet<>();
+        Query q = new Query();
+        ArrayList<Integer> matchPage = new ArrayList<>();
+        ArrayList<Integer> term = q.convertToWordIDPhrase(query);
+        ArrayList<Integer> distinctSetOfKeyword = q.getDistinctSetOfKeyword(term);
+        if (distinctSetOfKeyword.size() == 0 ) return matchPage;
+        Integer stopNumStart = stopNumStart(term);
+        Integer stopEndStart = stopNumEnd(term);
+        ArrayList<Integer> trimStopStartEnd = trimStopStartEnd(term);
+        System.out.println(trimStopStartEnd);
+        Integer[] possiblePage = findPossiblePageID(query);
+        for (Integer page : possiblePage){
+            HashMap<Integer,ArrayList<Integer>> pagePos = contentPos.get(page);
+            ArrayList<Integer> allPos = allThePos(pagePos);
+            ArrayList<Integer> first_Keyword = pagePos.get(trimStopStartEnd.get(0));
+            Integer suitable_s = -1;
+            Integer suitable_e = -1;
+            boolean containAll = false;
+            for (int i = 0 ; i < first_Keyword.size() ; i++){
+                Integer posNum = first_Keyword.get(i);
+                System.out.println(posNum);
+                for (int j = 1 ; j < trimStopStartEnd.size() ; j++){
+                    if (containAll) break;
+                    Integer queryNextTerm = trimStopStartEnd.get(j);
+                    System.out.println("QueryNextTerm: " + queryNextTerm);
+                    posNum = posNum+1;
+                    System.out.println("Pos: " + posNum);
 
-        for (Integer element : a) {
-            if (b.contains(element)) {
-                results.add(element);
+                    if (queryNextTerm != -1){
+                        System.out.println("queryNextTerm: " + queryNextTerm);
+                        if (!pagePos.get(queryNextTerm).contains(posNum)) break;
+
+                    }
+                    if (queryNextTerm == -1) {
+                        if (allPos.contains(posNum)) {
+                            break;
+                        }
+                    }
+
+                    if (j == trimStopStartEnd.size()-1){
+                        suitable_s = first_Keyword.get(i);
+                        suitable_e = posNum;
+                        containAll = true;
+                    }
+
+                }
             }
-        }
+            //*where is the start*//
+            if (containAll){
+                for (int i = 1 ; i <= stopNumStart; i++){
+                    if (allPos.contains(suitable_s-i) || (suitable_s-i <= 0)) containAll=false;
+                }
+            }
+            if (containAll){
+                for (int i = 1 ; i <= stopEndStart; i++){
+                    //if (allPos.contains(suitable_e+i) || (suitable_e+i > getMaxPos(pagePos))) containAll=false;
+                    if (allPos.contains(suitable_e+i) ) containAll=false;
 
-        return results;
+                }
+            }
+
+            if (containAll) matchPage.add(page);
+
+        }
+        return matchPage;
     }
 
+    public Integer getMaxPos (HashMap<Integer,ArrayList<Integer>> poslist){
+        Integer max = -1;
+        for (Map.Entry<Integer,ArrayList<Integer>> in : poslist.entrySet()) {
+            if (Collections.max(in.getValue())>max)
+                max = Collections.max(in.getValue());
+        }
+        return max;
+    }
+
+    public Integer stopNumStart (ArrayList <Integer> term){
+        Integer count = 0;
+        for (Integer i : term) {
+            if (i == -1) count++;
+            else break;
+        }
+        return count;
+
+    }
+
+    public Integer stopNumEnd (ArrayList <Integer> term) {
+        Integer count = 0 ;
+        for (int i = term.size()-1 ; i >= 0 ; i --) {
+            if (term.get(i) == -1) count++;
+            else break;
+        }
+        return count;
+    }
+
+    public ArrayList<Integer> trimStopStartEnd (ArrayList<Integer> term) {
+        ArrayList<Integer> result = new ArrayList<>();
+        for (int i = 0 ; i < term.size() ; i++) {
+            if (term.get(i) != -1) break;
+            else {
+                term.remove(i);
+                i = i - 1;
+            }
+        }
+        for (int i = term.size()-1 ; i >= 0 ; i--) {
+            if (term.get(i) != -1) break;
+            else {
+                term.remove(i);
+            }
+        }
+        return term;
+    }
+
+    public ArrayList<Integer> allThePos (HashMap<Integer,ArrayList<Integer>> posList){
+        ArrayList<Integer> result = new ArrayList<>();
+        for (Map.Entry<Integer,ArrayList<Integer>> in : posList.entrySet()){
+            result.addAll(in.getValue());
+        }
+        return result;
+    }
   public static void main (String [] a) {
        Score score = new Score();
        //System.out.println(score.findPossiblePageID("loving love love love love hong hong hong loves").toString());
-       Integer[] p = score.findPossiblePageID("hong love kong ust");
+       Integer[] p = score.findPossiblePageID("hong kong");
        for (Integer b : p) System.out.println(b);
+       ArrayList<Integer> arr = new ArrayList<>();
+       arr.add(-1);
+       arr.add(-1);
+       arr.add(-1);
+       arr.add(1);
+       arr.add(2);
+       arr.add(3);
+       arr.add(3);
+       arr.add(-1);
+       arr.add(3);
+       arr.add(-1);
+       arr.add(-1);
+       arr.add(-1);
+       arr.add(-1);
+
+      //System.out.println(score.trimStopStartEnd(arr).toString());
+      System.out.println(score.stopNumStart(arr).toString());
+      System.out.println(score.stopNumEnd(arr).toString());
+      System.out.println(score.pageHavePhraseContent("In hong In kong In"));
+      /*ArrayList<Integer> b = new ArrayList<>();
+      b.add(-1);
+      b.add(2);
+      b.add(-1);
+      b.add(3);
+      b.add(-1);
+      System.out.println(score.trimStopStartEnd(b));*/
+
 
   }
 
 }
+
