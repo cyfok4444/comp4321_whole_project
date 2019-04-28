@@ -1,4 +1,6 @@
 package Search;
+import function.Page;
+
 import java.lang.reflect.Array;
 import java.util.*;
 /**
@@ -277,6 +279,60 @@ public class Score {
 
     }
 
+    public Integer[] findPossiblePageIDPhrase (String query){
+
+        if (query.length() == 0) return null;
+
+        Query q = new Query();
+        ArrayList<Integer> paragh = q.convertToWordIDPhrase(query);
+        ArrayList<Integer> distinct = q.getDistinctSetOfKeyword(paragh);
+        ArrayList<Integer[]> docs = new ArrayList<>();
+        for (int i = 0  ; i < distinct.size() ; i++)
+            if(!inverted_table_title.containsKey(distinct.get(i))) return null;
+
+        for (int i = 0  ; i < distinct.size() ; i++) {
+            HashMap<Integer,Integer> doc = inverted_table_title.get(distinct.get(i));
+            Integer []  a = doc.keySet().toArray(new Integer[doc.size()]);
+            docs.add(a);
+        }
+
+        int num = docs.size();
+        Integer[] result = {};
+        if (num > 2){
+            Integer[] first = docs.get(0);
+            Integer[] second = docs.get(1);
+            Set<Integer> s1 = new HashSet<Integer>(Arrays.asList(first));
+            Set<Integer> s2 = new HashSet<Integer>(Arrays.asList(second));
+            s1.retainAll(s2);
+            result = s1.toArray(new Integer[s1.size()]);
+            int counter = 2;
+            num = num-2;
+            while (num != 0 ){
+                Integer [] i = docs.get(counter);
+                //System.out.println("Sep");
+                //for ( Integer k : i) System.out.println(k);
+                Set<Integer> s3 = new HashSet<Integer>(Arrays.asList(i));
+                Set<Integer> s4 = new HashSet<Integer>(Arrays.asList(result));
+                s3.retainAll(s4);
+                result = s3.toArray(new Integer[s3.size()]);
+                num = num-1;
+                counter++;
+            }
+        }
+        else if (num == 2){
+            Integer[] first = docs.get(0);
+            Integer[] second = docs.get(1);
+            HashSet<Integer> set = new HashSet<>();
+            set.addAll(Arrays.asList(first));
+            set.retainAll(Arrays.asList(second));
+            result = set.toArray(result);
+        }
+        else {
+            return docs.get(0);
+        }
+        return result;
+
+    }
     /**
      * finally add all the pos list together
      * check for start and end
@@ -356,6 +412,142 @@ public class Score {
         return matchPage;
     }
 
+    public ArrayList<Integer> pageHavePhraseTitle (String query){
+
+        Query q = new Query();
+        ArrayList<Integer> matchPage = new ArrayList<>();
+        ArrayList<Integer> term = q.convertToWordIDPhrase(query);
+        ArrayList<Integer> distinctSetOfKeyword = q.getDistinctSetOfKeyword(term);
+        if (distinctSetOfKeyword.size() == 0 ) return matchPage;
+        Integer stopNumStart = stopNumStart(term);
+        Integer stopEndStart = stopNumEnd(term);
+        ArrayList<Integer> trimStopStartEnd = trimStopStartEnd(term);
+        System.out.println(trimStopStartEnd);
+        Integer[] possiblePage = findPossiblePageID(query);
+        for (Integer a : possiblePage) System.out.println("Possible Page: " + a);
+        for (Integer page : possiblePage){
+            System.out.println("Page: " + page);
+            HashMap<Integer,ArrayList<Integer>> pagePos = titlePos.get(page);
+            ArrayList<Integer> allPos = allThePos(pagePos);
+            ArrayList<Integer> first_Keyword = pagePos.get(trimStopStartEnd.get(0));
+            Integer suitable_s = -1;
+            Integer suitable_e = -1;
+            boolean containAll = false;
+            for (int i = 0 ; i < first_Keyword.size() ; i++){
+                Integer posNum = first_Keyword.get(i);
+                System.out.println("Start:" + posNum);
+                for (int j = 1 ; j < trimStopStartEnd.size() ; j++){
+                    if (containAll) break;
+                    Integer queryNextTerm = trimStopStartEnd.get(j);
+                    System.out.println("QueryNextTerm: " + queryNextTerm);
+                    posNum = posNum+1;
+                    System.out.println("Pos: " + posNum);
+
+                    if (queryNextTerm != -1){
+                        System.out.println("queryNextTerm: " + queryNextTerm);
+                        if (!pagePos.get(queryNextTerm).contains(posNum)) break;
+
+                    }
+                    if (queryNextTerm == -1) {
+                        if (allPos.contains(posNum)) {
+                            break;
+                        }
+                    }
+
+                    if (j == trimStopStartEnd.size()-1){
+                        System.out.println("Successful");
+                        suitable_s = first_Keyword.get(i);
+                        suitable_e = posNum;
+                        containAll = true;
+                    }
+
+                }
+            }
+            //*where is the start*//
+            if (containAll){
+                for (int i = 1 ; i <= stopNumStart; i++){
+                    System.out.println("first");
+                    if (allPos.contains(suitable_s-i) || (suitable_s-i <= 0)) containAll=false;
+                }
+            }
+            if (containAll){
+                for (int i = 1 ; i <= stopEndStart; i++){
+                    System.out.println("Second");
+                    //if (allPos.contains(suitable_e+i) || (suitable_e+i > getMaxPos(pagePos))) containAll=false;
+                    if (allPos.contains(suitable_e+i) ) containAll=false;
+
+                }
+            }
+
+            if (containAll) matchPage.add(page);
+
+        }
+        return matchPage;
+    }
+
+    public HashMap<Integer,Double> computeScorePhraseContent (ArrayList<Integer> matchPage , String query){
+        HashMap<Integer,Double> result = new HashMap<>();
+        Query query1 = new Query();
+        HashMap<Integer,Integer> queryterm = query1.convertToWordID(query);
+        double qsize = query1.qLength(queryterm);
+
+        for (Integer page : matchPage){
+            Double dsize = 10.0;
+            for (Map.Entry<Integer,Integer> term : queryterm.entrySet()){
+                HashMap<Integer,Integer> dochave = inverted_table_content.get(term.getKey());
+                int f = dochave.size();
+                double df = (double)f;
+                int t = dochave.get(page);
+                double tf = (double)t;
+
+                int m = maxtfContent.get(page);
+                double maxtf = (double)m;
+                double idf = Math.log(N/df)/Math.log(2);
+                double dweight = (tf/maxtf) * idf;
+                int qt = term.getValue();
+                double qweight = (double)qt;
+                if (!result.containsKey(page))
+                    result.put(page,cos_sim(dweight,dsize,qweight,qsize));
+                else
+                    result.put(page,result.get(page)+cos_sim(dweight,dsize,qweight,qsize));
+
+
+            }
+        }
+        return result;
+    }
+
+    public HashMap<Integer,Double> computeScorePhraseTitle (ArrayList<Integer> matchPage , String query){
+        HashMap<Integer,Double> result = new HashMap<>();
+        Query query1 = new Query();
+        HashMap<Integer,Integer> queryterm = query1.convertToWordID(query);
+        double qsize = query1.qLength(queryterm);
+
+        for (Integer page : matchPage){
+            Double dsize = 10.0;
+            for (Map.Entry<Integer,Integer> term : queryterm.entrySet()){
+                HashMap<Integer,Integer> dochave = inverted_table_title.get(term.getKey());
+                int f = dochave.size();
+                double df = (double)f;
+                int t = dochave.get(page);
+                double tf = (double)t;
+
+                int m = maxtfTitle.get(page);
+                double maxtf = (double)m;
+                double idf = Math.log(N2/df)/Math.log(2);
+                double dweight = (tf/maxtf) * idf;
+                int qt = term.getValue();
+                double qweight = (double)qt;
+                if (!result.containsKey(page))
+                    result.put(page,cos_sim(dweight,dsize,qweight,qsize));
+                else
+                    result.put(page,result.get(page)+cos_sim(dweight,dsize,qweight,qsize));
+
+
+            }
+        }
+        return result;
+    }
     public Integer getMaxPos (HashMap<Integer,ArrayList<Integer>> poslist){
         Integer max = -1;
         for (Map.Entry<Integer,ArrayList<Integer>> in : poslist.entrySet()) {
@@ -433,6 +625,8 @@ public class Score {
       System.out.println(score.stopNumStart(arr).toString());
       System.out.println(score.stopNumEnd(arr).toString());
       System.out.println(score.pageHavePhraseContent("On hong in kong in"));
+      System.out.println(score.computeScorePhraseContent(score.pageHavePhraseContent("On hong in kong in"),"On hong in kong in"));
+
       /*ArrayList<Integer> b = new ArrayList<>();
       b.add(-1);
       b.add(2);

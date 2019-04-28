@@ -108,6 +108,8 @@ public class Query {
             length += item.getValue()*item.getValue();
         return Math.sqrt(length);
     }
+
+
     public static void main (String [] args) throws RocksDBException{
         Query query = new Query();
         query.word_ID = new HashMap<>();
