@@ -90,6 +90,7 @@ public class Query {
     public ArrayList<Integer> getDistinctSetOfKeyword (ArrayList<Integer> term){
         ArrayList<Integer> result = new ArrayList<>();
         for (Integer i : term){
+            if (i == -1) continue;
             if (!result.contains(i)) result.add(i);
         }
         return result;
