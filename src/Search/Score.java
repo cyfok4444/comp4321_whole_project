@@ -1,5 +1,8 @@
 package Search;
 
+import database.*;
+import org.rocksdb.RocksDBException;
+
 import java.util.*;
 /**
  * Calculation of the page score
@@ -28,7 +31,6 @@ import java.util.*;
  *                         PageIDWordIDPos <PageID <WordID pos>>
  */
 
-/// set . contains key.set
 
 
 public class Score {
@@ -39,8 +41,11 @@ public class Score {
    private HashMap<Integer, HashMap<Integer,Integer>> inverted_table_title;
    private HashMap<Integer, HashMap<Integer,Integer>> inverted_table_content;
    static private HashMap<Integer,Integer> maxtfContent;
-   static private HashMap<Integer,Integer> maxtfTitle;
-   private double N;
+   //static private HashMap<Integer,Integer> maxtfTitle;
+   static private HashMap<Integer, ArrayList<Double>> sizemaxtfContent;
+    static private HashMap<Integer, ArrayList<Double>> sizemaxtfTitle;
+
+    private double N;
 
     /**
      * Constructor
@@ -48,7 +53,8 @@ public class Score {
     /**
      * Need to modified after having database
      */
-    public Score(){
+    public Score() throws RocksDBException {
+        //** Comment this part if have databse
         pageIdTable = new HashMap<>();
         pageIdTable.put("page A",1);
         pageIdTable.put("page B",2);
@@ -108,6 +114,30 @@ public class Score {
         inverted_table_content.put(3,word3);
         inverted_table_content.put(4,word1);
         //System.out.println(inverted_table_content.toString());
+        ////////////////////////////////////////////////////////
+
+        ForwardFileforBody forwardFileforBody = new ForwardFileforBody("db/db_ForwardFileforBody");
+        contentPos = forwardFileforBody.getHashMapTable();
+
+        ForwardFileforTitle forwardFileforTitle = new ForwardFileforTitle("db/db_ForwardFileforTitle");
+        titlePos = forwardFileforTitle.getHashMapTable();
+
+        InvertFileforBody invertFileforBody = new InvertFileforBody("db/db_InvertFileforBody");
+        inverted_table_content = invertFileforBody.getHashMapTable();
+
+        InvertFileforTitle invertFileforTitle = new InvertFileforTitle("db/db_InvertFileforTitle");
+        inverted_table_title = invertFileforTitle.getHashMapTable();
+
+        PageIDtoBodyInfo pageIDtoBodyInfo = new PageIDtoBodyInfo("db/db_PageIDtoBodyInfo");
+        sizemaxtfContent = pageIDtoBodyInfo.getHashMapTable();
+
+        PageIDtoTitleInfo pageIDtoTitleInfo = new PageIDtoTitleInfo("db/db_PageIDtoTitleInfo");
+        sizemaxtfTitle = pageIDtoTitleInfo.getHashMapTable();
+
+        PageUrlToPageID pageUrlToPageID = new PageUrlToPageID("db/db_PageUrlToPageID");
+        pageIdTable = pageUrlToPageID.getHashMapTable();
+
+        N = pageIdTable.size();
 
     }
     /**
@@ -121,7 +151,7 @@ public class Score {
      * @return PageID Score
      */
 
-   public HashMap<Integer,Double> calculateScoreContent (String query, double dsize) {
+   public HashMap<Integer,Double> calculateScoreContent (String query) throws RocksDBException{
 
        Query query1 = new Query();
        HashMap<Integer,Double> result = new HashMap<>();
@@ -137,8 +167,10 @@ public class Score {
                int t = doc.getValue();
                double tf = (double)t;
 
-               int m = maxtfContent.get(doc.getKey());
-               double maxtf = (double)m;
+               //int m = maxtfContent.get(doc.getKey());
+               //double maxtf = (double)m;
+               double maxtf = sizemaxtfContent.get(doc.getKey()).get(1);
+               double dsize = sizemaxtfContent.get(doc.getKey()).get(0);
                double idf = Math.log(N/df)/Math.log(2);
                double dweight = (tf/maxtf) * idf;
                int qt = term.getValue();
@@ -154,7 +186,7 @@ public class Score {
 
    }
 
-    public HashMap<Integer,Double> calculateScoreCTitle (String query, double dsize){
+    public HashMap<Integer,Double> calculateScoreCTitle (String query) throws RocksDBException{
 
         Query query1 = new Query();
         HashMap<Integer,Double> result = new HashMap<>();
@@ -170,8 +202,10 @@ public class Score {
                 int t = doc.getValue();
                 double tf = (double)t;
 
-                int m = maxtfTitle.get(doc.getKey());
-                double maxtf = (double)m;
+                //int m = maxtfTitle.get(doc.getKey());
+                //double maxtf = (double)m;
+                double maxtf = sizemaxtfTitle.get(doc.getKey()).get(1);
+                double dsize = sizemaxtfTitle.get(doc.getKey()).get(0);
                 double idf = Math.log(N/df)/Math.log(2);
                 double dweight = (tf/maxtf) * idf;
                 int qt = term.getValue();
@@ -223,7 +257,7 @@ public class Score {
      * Compute the phrase search
      * <PageID TF>
      */
-    public Integer[] findPossiblePageID (String query){
+    public Integer[] findPossiblePageID (String query) throws RocksDBException{
 
         if (query.length() == 0) return new Integer[0];
 
@@ -279,7 +313,7 @@ public class Score {
 
     }
 
-    public Integer[] findPossiblePageIDPhrase (String query){
+    public Integer[] findPossiblePageIDTitle (String query) throws RocksDBException{
 
         if (query.length() == 0) return new Integer[0];
 
@@ -339,7 +373,7 @@ public class Score {
      * @param query
      * @return
      */
-    public ArrayList<Integer> pageHavePhraseContent (String query){
+    public ArrayList<Integer> pageHavePhraseContent (String query) throws RocksDBException{
 
         Query q = new Query();
         ArrayList<Integer> matchPage = new ArrayList<>();
@@ -412,7 +446,7 @@ public class Score {
         return matchPage;
     }
 
-    public ArrayList<Integer> pageHavePhraseTitle (String query){
+    public ArrayList<Integer> pageHavePhraseTitle (String query) throws RocksDBException{
 
         Query q = new Query();
         ArrayList<Integer> matchPage = new ArrayList<>();
@@ -423,7 +457,7 @@ public class Score {
         Integer stopEndStart = stopNumEnd(term);
         ArrayList<Integer> trimStopStartEnd = trimStopStartEnd(term);
         System.out.println(trimStopStartEnd);
-        Integer[] possiblePage = findPossiblePageID(query);
+        Integer[] possiblePage = findPossiblePageIDTitle(query);
         for (Integer a : possiblePage) System.out.println("Possible PageObject: " + a);
         for (Integer page : possiblePage){
             System.out.println("PageObject: " + page);
@@ -485,14 +519,14 @@ public class Score {
         return matchPage;
     }
 
-    public HashMap<Integer,Double> computeScorePhraseContent (ArrayList<Integer> matchPage , String query){
+    public HashMap<Integer,Double> computeScorePhraseContent (ArrayList<Integer> matchPage , String query) throws RocksDBException{
         HashMap<Integer,Double> result = new HashMap<>();
         Query query1 = new Query();
         HashMap<Integer,Integer> queryterm = query1.convertToWordID(query);
         double qsize = query1.qLength(queryterm);
 
         for (Integer page : matchPage){
-            Double dsize = 10.0;
+            //Double dsize = 10.0;
             for (Map.Entry<Integer,Integer> term : queryterm.entrySet()){
                 HashMap<Integer,Integer> dochave = inverted_table_content.get(term.getKey());
                 int f = dochave.size();
@@ -500,8 +534,10 @@ public class Score {
                 int t = dochave.get(page);
                 double tf = (double)t;
 
-                int m = maxtfContent.get(page);
-                double maxtf = (double)m;
+                //int m = maxtfContent.get(page);
+                //double maxtf = (double)m;
+                double maxtf = sizemaxtfContent.get(page).get(1);
+                double dsize = sizemaxtfContent.get(page).get(0);
                 double idf = Math.log(N/df)/Math.log(2);
                 double dweight = (tf/maxtf) * idf;
                 int qt = term.getValue();
@@ -517,14 +553,14 @@ public class Score {
         return result;
     }
 
-    public HashMap<Integer,Double> computeScorePhraseTitle (ArrayList<Integer> matchPage , String query){
+    public HashMap<Integer,Double> computeScorePhraseTitle (ArrayList<Integer> matchPage , String query) throws RocksDBException{
         HashMap<Integer,Double> result = new HashMap<>();
         Query query1 = new Query();
         HashMap<Integer,Integer> queryterm = query1.convertToWordID(query);
         double qsize = query1.qLength(queryterm);
 
         for (Integer page : matchPage){
-            Double dsize = 10.0;
+            //Double dsize = 10.0;
             for (Map.Entry<Integer,Integer> term : queryterm.entrySet()){
                 HashMap<Integer,Integer> dochave = inverted_table_title.get(term.getKey());
                 int f = dochave.size();
@@ -532,8 +568,10 @@ public class Score {
                 int t = dochave.get(page);
                 double tf = (double)t;
 
-                int m = maxtfTitle.get(page);
-                double maxtf = (double)m;
+                //int m = maxtfTitle.get(page);
+                //double maxtf = (double)m;
+                double maxtf = sizemaxtfTitle.get(page).get(1);
+                double dsize = sizemaxtfTitle.get(page).get(0);
                 double idf = Math.log(N/df)/Math.log(2);
                 double dweight = (tf/maxtf) * idf;
                 int qt = term.getValue();
@@ -548,14 +586,7 @@ public class Score {
         }
         return result;
     }
-    public Integer getMaxPos (HashMap<Integer,ArrayList<Integer>> poslist){
-        Integer max = -1;
-        for (Map.Entry<Integer,ArrayList<Integer>> in : poslist.entrySet()) {
-            if (Collections.max(in.getValue())>max)
-                max = Collections.max(in.getValue());
-        }
-        return max;
-    }
+
 
     public Integer stopNumStart (ArrayList <Integer> term){
         Integer count = 0;
@@ -602,19 +633,20 @@ public class Score {
         return result;
     }
 
-    public HashMap<Integer,Double> allInOneComputePhraseScoreContent (String query){
+    public HashMap<Integer,Double> allInOneComputePhraseScoreContent (String query) throws RocksDBException{
         ArrayList<Integer> pagematch = pageHavePhraseContent(query);
         HashMap<Integer,Double> result = computeScorePhraseContent(pagematch,query);
         return result;
     }
 
-    public HashMap<Integer,Double> allInOneComputePhraseScoreTitle (String query){
+    public HashMap<Integer,Double> allInOneComputePhraseScoreTitle (String query) throws RocksDBException{
         ArrayList<Integer> pagematch = pageHavePhraseTitle(query);
         HashMap<Integer,Double> result = computeScorePhraseTitle(pagematch,query);
         return result;
     }
 
-  public static void main (String [] a) {
+
+  public static void main (String [] a) throws RocksDBException{
        Score score = new Score();
        //System.out.println(score.findPossiblePageID("loving love love love love hong hong hong loves").toString());
        Integer[] p = score.findPossiblePageID("hong kong");

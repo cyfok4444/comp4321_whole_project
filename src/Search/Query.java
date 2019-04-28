@@ -1,5 +1,6 @@
 package Search;
 
+import database.WordtoWordID;
 import function.ProcessString;
 import org.rocksdb.RocksDBException;
 
@@ -13,7 +14,7 @@ public class Query {
      * Need to modified after having the database
      */
 
-    public Query() {
+    public Query() throws RocksDBException{
         word_ID = new HashMap<>();
         word_ID.put("love",1);
         word_ID.put("hong",2);
@@ -21,6 +22,8 @@ public class Query {
         word_ID.put("ust",4);
         word_ID.put("cool",5);
 
+        WordtoWordID wordtoWordID = new WordtoWordID("db/db_WordtoWordID");
+        word_ID = wordtoWordID.getHashMapTable();
     }
     /**
      * Only for non-phrase
