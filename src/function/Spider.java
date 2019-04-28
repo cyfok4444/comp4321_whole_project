@@ -42,7 +42,7 @@ public class Spider {
                     PageObject pageObject = new PageObject();
                     pageObject.setUrl(url2);
                     ArrayList<String> keywordsTf =  Crawler.extractWords(url2);
-                    if (keywordsTf.toString()=="[]"){
+                    if (keywordsTf.isEmpty()){
                         continue;
                     }
                     keywordsTf = ProcessString.removeRubbish(keywordsTf);
