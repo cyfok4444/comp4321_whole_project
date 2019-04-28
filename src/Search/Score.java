@@ -206,6 +206,7 @@ public class Score {
            }
            maxtfContent.put(item.getKey(),max);
        }
+       System.out.println("Max: " + maxtfContent);
 
    }
 
@@ -602,6 +603,19 @@ public class Score {
         }
         return result;
     }
+
+    public HashMap<Integer,Double> allInOneComputePhraseScoreContent (String query){
+        ArrayList<Integer> pagematch = pageHavePhraseContent(query);
+        HashMap<Integer,Double> result = computeScorePhraseContent(pagematch,query);
+        return result;
+    }
+
+    public HashMap<Integer,Double> allInOneComputePhraseScoreTitle (String query){
+        ArrayList<Integer> pagematch = pageHavePhraseTitle(query);
+        HashMap<Integer,Double> result = computeScorePhraseTitle(pagematch,query);
+        return result;
+    }
+    
   public static void main (String [] a) {
        Score score = new Score();
        //System.out.println(score.findPossiblePageID("loving love love love love hong hong hong loves").toString());
@@ -626,8 +640,12 @@ public class Score {
       System.out.println(score.stopNumStart(arr).toString());
       System.out.println(score.stopNumEnd(arr).toString());
       System.out.println(score.pageHavePhraseContent("On hong in kong in"));
+      HashMap<Integer,Double> k = score.allInOneComputePhraseScoreContent("On hong in kong in");
       System.out.println(score.computeScorePhraseContent(score.pageHavePhraseContent("On hong in kong in"),"On hong in kong in"));
+      System.out.println(score.allInOneComputePhraseScoreContent("On hong in kong in"));
+      System.out.println("Hello " + k);
 
+      //System.out.println("Hello " + score.allInOneComputePhraseScoreContent("On hong in kong in"));
       /*ArrayList<Integer> b = new ArrayList<>();
       b.add(-1);
       b.add(2);
