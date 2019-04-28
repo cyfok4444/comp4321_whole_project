@@ -326,7 +326,7 @@ public class Score {
                     }
 
                     if (j == trimStopStartEnd.size()-1){
-                        System.out.println("he");
+                        System.out.println("Successful");
                         suitable_s = first_Keyword.get(i);
                         suitable_e = posNum;
                         containAll = true;
