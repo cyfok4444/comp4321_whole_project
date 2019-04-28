@@ -80,6 +80,9 @@ public class Crawler
         bean.setURL(url);
         URL[] urls = bean.getLinks();
         for (URL s : urls) {
+            if (result.contains(s.toString())){
+                continue;
+            }
             result.add(s.toString());
         }
         return result;

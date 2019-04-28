@@ -80,16 +80,15 @@ public class PageContentDBOperation{
      * @return
      * @throws RocksDBException
      */
-    public void addEntry (String key, Page page) throws RocksDBException {
+    public void addEntry (Integer key, Page page) throws RocksDBException {
         System.out.println("Adding Key: " + key + " info: " + page);
-        rocksDB.put(key.getBytes(), page.getBytes());
+        rocksDB.put(key.toString().getBytes(), page.getBytes());
     }
 
 
-    public  String getEntry(String key){
-
+    public  String getEntry(Integer key){
         try {
-            return new String(rocksDB.get(key.getBytes()));
+            return new String(rocksDB.get(key.toString().getBytes()));
         }
         catch (RocksDBException e ){
             e.printStackTrace();

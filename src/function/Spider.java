@@ -17,35 +17,66 @@ public class Spider {
 
             //!!!!!opening the DB!!!!!!!
             PageContentDBOperation pageContentDBOperation = new PageContentDBOperation(PathForDB.path);
-            PageIDdBOperation pageIDdBOperation = new PageIDdBOperation(PathForDB.path);
+            PageIDBodyInfoDB pageIDBodyInfoDB = new PageIDBodyInfoDB(PathForDB.path);
             PageIDChildIDDB pageIDChildIDDB = new PageIDChildIDDB(PathForDB.path);
-            WordIDKeyword wordIDKeyword = new WordIDKeyword(PathForDB.path);
-            PageIDWordIDPosDBOperation pageIDWordIDPosDBOperation = new PageIDWordIDPosDBOperation(PathForDB.path);
-            PageIDWordIDPosDB2 pageIDWordIDPosDB2 = new PageIDWordIDPosDB2(PathForDB.path);
+            PageIDdBOperation pageIDdBOperation = new PageIDdBOperation(PathForDB.path);
             PageIDParentIDDB pageIDParentIDDB = new PageIDParentIDDB(PathForDB.path);
             PageIDTitleInfoDB pageIDTitleInfoDB = new PageIDTitleInfoDB(PathForDB.path);
-            PageIDBodyInfoDB pageIDBodyInfoDB = new PageIDBodyInfoDB(PathForDB.path);
+            PageIDWordIDPosDB2 pageIDWordIDPosDB2 = new PageIDWordIDPosDB2(PathForDB.path);
+            PageIDWordIDPosDBOperation pageIDWordIDPosDBOperation = new PageIDWordIDPosDBOperation(PathForDB.path);
+            WordIDKeyword wordIDKeyword = new WordIDKeyword(PathForDB.path);
+            WordIDPageIDDB wordIDPageIDDB = new WordIDPageIDDB(PathForDB.path);
+            WordIDPageIDDB2 wordIDPageIDDB2 = new WordIDPageIDDB2(PathForDB.path);
+
+
 
             HashMap<String,Long> visistedList = pageContentDBOperation.getDateHashMapTable();
             while(!targetUrl.isEmpty()){
                 String url2 = targetUrl.get(0);
                 targetUrl.remove(0);
-                if (visistedList.get(url2) == null){
+                Long lastDate = visistedList.get(url2);
+                if ( lastDate != null &&  lastDate == Crawler.getLastModifiedDate(url2)){
+                    continue;
+                }
+                else{
                     Page page = new Page();
+                    page.setUrl(url2);
                     ArrayList<String> keywordsTf =  Crawler.extractWords(url2);
                     ProcessString.removeRubbish(keywordsTf);
                     ArrayList<String> keywordsPos = keywordsTf;
                     ProcessString.stopWordRemoveTf(keywordsTf);
                     HashMap<String,Integer> keyWordTf2 = ProcessString.keyWordTf(keywordsTf);
 
+                    HashMap<String,Integer> mostFreqWords = new HashMap<>();
+                    for ( int i = 0 ; i < 5 ; i++){
+                        String freqWordString = "";
+                        Integer freqWordTf = 0;
+                        for ( Map.Entry<String,Integer> Entry: keyWordTf2.entrySet()){
+                            if ( Entry.getValue() > freqWordTf){
+                                if ( mostFreqWords.containsKey(Entry.getKey()))
+                                {
+                                    continue;
+                                }
+                                freqWordString = Entry.getKey();
+                                freqWordTf = Entry.getValue();
+                            }
+                        }
+                        mostFreqWords.put(freqWordString,freqWordTf);
+                    }
+
+                    page.setMostFreqKeywords(mostFreqWords);
+
                     HashMap<String,ArrayList<Integer>> keywordsPos2 = ProcessString.keyWordPos(keywordsPos);
                     ProcessString.stopWordRemovePos(keywordsPos2);
 
                     Long date = Crawler.getLastModifiedDate(url2);
+                    page.setLastModificationDate(date);
                     ArrayList<String> childLinks = Crawler.getChild(url2);
                     Integer size = Crawler.getSize(url2);
+                    page.setSize(size);
 
                     String title = Crawler.getTitle(url2);
+                    page.setTitle(title);
                     String[] title2 = title.split(" ");
                     ArrayList<String> titleTf  = new ArrayList<>();
                     for ( String s : title2){
@@ -59,9 +90,11 @@ public class Spider {
                     HashMap<String,ArrayList<Integer>> titlePos2 = ProcessString.keyWordPos(titlePos);
                     ProcessString.stopWordRemovePos(keywordsPos2);
 
-                    //1.staring DB Url to PageID asuumed the checking has done,so this url is new
+                    //1.starting DB Url to PageID
                     //PageIDdBOperation pageIDdBOperation = new PageIDdBOperation(PathForDB.path);
-                    pageIDdBOperation.addEntry(url2);
+                    if ( lastDate==null) {
+                        pageIDdBOperation.addEntry(url2);
+                    }
                     Integer pageId = pageIDdBOperation.getPageId(url2);
 
                     //2.staring DB child link
@@ -72,6 +105,10 @@ public class Spider {
                         pageIDdBOperation.addEntry(s);
                         Integer childPageId = pageIDdBOperation.getPageId(s);
                         childList.add(childPageId);
+                        // !!!!! add url to targetUrl !!!!
+                        if ( !targetUrl.contains(s)){
+                            targetUrl.add(s);
+                        }
                     }
                     pageIDChildIDDB.addEntry(pageId,childList);
 
@@ -101,7 +138,6 @@ public class Spider {
                     //6.Inverted file for body
                     Double maxTf = 0.0;
                     Double bodySize = 0.0;
-                    WordIDPageIDDB wordIDPageIDDB = new WordIDPageIDDB(PathForDB.path);
                     for( Map.Entry<String,Integer> entry: keyWordTf2.entrySet()) {
                         wordIDKeyword.addEntry(entry.getKey());
                         Integer wordID = wordIDKeyword.getWordId(entry.getKey());
@@ -130,7 +166,6 @@ public class Spider {
                     //7.Inverted file for title
                     Double maxTfTitle = 0.0;
                     Double titleSize = 0.0;
-                    WordIDPageIDDB2 wordIDPageIDDB2 = new WordIDPageIDDB2(PathForDB.path);
                     for( Map.Entry<String,Integer> entry: titleTf2.entrySet()) {
                         wordIDKeyword.addEntry(entry.getKey());
                         Integer wordID = wordIDKeyword.getWordId(entry.getKey());
@@ -162,10 +197,13 @@ public class Spider {
 
                     //8. Add it to the parentDB of the child links
                     for ( String s : childLinks){
+                        pageIDdBOperation.addEntry(s);
                         Integer childId = pageIDdBOperation.getPageId(s);
                         if(pageIDParentIDDB.isEntryExists(childId)){
                             ArrayList<Integer> parentList = pageIDParentIDDB.getEntry(childId);
-                            parentList.add(pageId);
+                            if(!parentList.contains(pageId)) {
+                                parentList.add(pageId);
+                            }
                             pageIDParentIDDB.addEntry(childId,parentList);
                         }
                         else{
@@ -176,16 +214,9 @@ public class Spider {
 
                     }
 
-
-
-
-
-
-
-
-
+                    pageContentDBOperation.addEntry(pageId,page);
+                    visistedList = pageContentDBOperation.getDateHashMapTable(); // update the visited list;
                 }
-                visistedList = pageContentDBOperation.getDateHashMapTable(); // update the visited list;
             }
             /*Page page = new Page();
             ArrayList<String> keywords = Crawler.extractWords(url);

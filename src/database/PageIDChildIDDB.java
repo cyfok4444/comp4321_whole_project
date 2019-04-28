@@ -69,20 +69,20 @@ public class PageIDChildIDDB {
         return false;
     }
     public static void main (String [] args) throws RocksDBException{
-        PageIDChildIDDB pageIDChildIDDB = new PageIDChildIDDB("PageIDContent");
-        HashMap<Integer,ArrayList<Integer>> hashMap = new HashMap<>();
+        PageIDChildIDDB pageIDChildIDDB = new PageIDChildIDDB("/Users/chunyinfok/Downloads/comp4321_pj/comp4321_whole_project/db");
+       // HashMap<Integer,ArrayList<Integer>> hashMap = new HashMap<>();
         ArrayList<Integer> arrayList = new ArrayList<>();
-        arrayList.add(1);
+        arrayList.add(10);
         arrayList.add(10);
         arrayList.add(1111);
-        hashMap.put(123,arrayList);
-        hashMap.put(321,arrayList);
         pageIDChildIDDB.addEntry(123,arrayList);
-        HashMap<Integer,ArrayList<Integer>> RE = pageIDChildIDDB.getHashMapTable();
+       /* HashMap<Integer,ArrayList<Integer>> RE = pageIDChildIDDB.getHashMapTable();
         for (Map.Entry<Integer, ArrayList<Integer>> item : RE.entrySet()){
             System.out.println(item.getKey());
             System.out.println(item.getValue());
-        }
+        }*/
+        System.out.println(new String(pageIDChildIDDB.rocksDB.get("123".getBytes())));
+
 
 
     }
