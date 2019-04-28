@@ -33,7 +33,8 @@ public class PageIDtoChildIDList {
         for(iterator.seekToFirst(); iterator.isValid(); iterator.next()){
             String key = new String(iterator.key());
             String value = new String(rocksDB.get(key.getBytes()));
-            String [] s = value.split(" ");
+            value = value.substring(1,value.length()-1);
+            String [] s = value.split(", ");
             ArrayList<Integer> arrayList = new ArrayList<>();
             for (int i = 0 ; i < s.length ; i++){
                 arrayList.add(Integer.parseInt(s[i]));
@@ -49,7 +50,8 @@ public class PageIDtoChildIDList {
         for(iterator.seekToFirst(); iterator.isValid(); iterator.next()){
             String key = new String(iterator.key());
             String value = new String(rocksDB.get(key.getBytes()));
-            String [] s = value.split(" ");
+            value = value.substring(1,value.length()-1);
+            String [] s = value.split(", ");
             ArrayList<Integer> arrayList = new ArrayList<>();
             for (int i = 0 ; i < s.length ; i++){
                 arrayList.add(Integer.parseInt(s[i]));
@@ -68,20 +70,15 @@ public class PageIDtoChildIDList {
         if (hm.containsKey(info)) return true;
         return false;
     }
-    public static void main (String [] args) throws RocksDBException{
-        PageIDtoChildIDList pageIDToChildIDList = new PageIDtoChildIDList("/Users/chunyinfok/Downloads/comp4321_pj/comp4321_whole_project/db");
-       // HashMap<Integer,ArrayList<Integer>> hashMap = new HashMap<>();
+    public static void main (String [] args) throws RocksDBException{ // done
+        PageIDtoChildIDList pageIDToChildIDList = new PageIDtoChildIDList("db/db_PageIDtoChildIDList");
         ArrayList<Integer> arrayList = new ArrayList<>();
         arrayList.add(10);
         arrayList.add(10);
         arrayList.add(1111);
-        pageIDToChildIDList.addEntry(123,arrayList);
-       /* HashMap<Integer,ArrayList<Integer>> RE = pageIDToChildIDList.getHashMapTable();
-        for (Map.Entry<Integer, ArrayList<Integer>> item : RE.entrySet()){
-            System.out.println(item.getKey());
-            System.out.println(item.getValue());
-        }*/
-        System.out.println(new String(pageIDToChildIDList.rocksDB.get("123".getBytes())));
+        pageIDToChildIDList.addEntry(223,arrayList);
+
+        System.out.println(pageIDToChildIDList.hm.get(123));
 
 
 

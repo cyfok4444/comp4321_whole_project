@@ -118,18 +118,14 @@ public class WordtoWordID {
         }
     }
 
-    public static void main(String [] args) throws RocksDBException{
-        WordtoWordID wordtoWordID = new WordtoWordID(PathForDB.path);
-        HashMap<String,Integer> hashMap = wordtoWordID.getHashMapTable();
+    public static void main(String [] args) throws RocksDBException{ //done
+        WordtoWordID wordtoWordID = new WordtoWordID("db/db_WordtoWordID");
         wordtoWordID.addEntry("hiii");
         wordtoWordID.addEntry("hy");
         wordtoWordID.addEntry("hiiiiiiii");
-        wordtoWordID.addEntry("hy");
         wordtoWordID.addEntry("hiiiiiiiippppp");
-        RocksIterator iterator = wordtoWordID.rocksDB.newIterator();
-        for (iterator.seekToFirst(); iterator.isValid(); iterator.next()) {
-            System.out.println(new String(iterator.key()) + " " + new String(iterator.value()));
-        }
+        wordtoWordID.addEntry("abc");
+        System.out.println(wordtoWordID.hm);
 
 
     }

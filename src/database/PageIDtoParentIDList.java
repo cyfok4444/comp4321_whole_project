@@ -36,7 +36,8 @@ public class PageIDtoParentIDList {
         for(iterator.seekToFirst(); iterator.isValid(); iterator.next()){
             String key = new String(iterator.key());
             String value = new String(rocksDB.get(key.getBytes()));
-            String [] s = value.split(" ");
+            value = value.substring(1,value.length()-1);
+            String [] s = value.split(", ");
             ArrayList<Integer> arrayList = new ArrayList<>();
             for (int i = 0 ; i < s.length ; i++){
                 arrayList.add(Integer.parseInt(s[i]));
@@ -52,7 +53,8 @@ public class PageIDtoParentIDList {
         for(iterator.seekToFirst(); iterator.isValid(); iterator.next()){
             String key = new String(iterator.key());
             String value = new String(rocksDB.get(key.getBytes()));
-            String [] s = value.split(" ");
+            value = value.substring(1,value.length()-1);
+            String [] s = value.split(", ");
             ArrayList<Integer> arrayList = new ArrayList<>();
             for (int i = 0 ; i < s.length ; i++){
                 arrayList.add(Integer.parseInt(s[i]));
@@ -70,7 +72,8 @@ public class PageIDtoParentIDList {
 
     public ArrayList<Integer> getEntry(Integer pageId) throws RocksDBException{
         String list = new String(rocksDB.get(pageId.toString().getBytes()));
-        String [] list2 = list.split(" ");
+        list = list.substring(1,list.length()-1);
+        String [] list2 = list.split(", ");
         ArrayList<Integer> list3 = new ArrayList<>();
         for ( String s : list2){
             int i = Integer.parseInt(s);
@@ -86,22 +89,17 @@ public class PageIDtoParentIDList {
 
 
 
-    public static void main (String [] args) throws RocksDBException{
-        PageIDtoParentIDList pageIDtoParentIDList = new PageIDtoParentIDList(PathForDB.path);
-        HashMap<Integer,ArrayList<Integer>> hashMap = new HashMap<>();
+    public static void main (String [] args) throws RocksDBException{ // done
+        PageIDtoParentIDList pageIDtoParentIDList = new PageIDtoParentIDList("db/db_PageIDtoParentIDList");
         ArrayList<Integer> arrayList = new ArrayList<>();
-        arrayList.add(1);
+        arrayList.add(10);
         arrayList.add(10);
         arrayList.add(1111);
-        hashMap.put(123,arrayList);
-        hashMap.put(321,arrayList);
-        pageIDtoParentIDList.addEntry(123,arrayList);
-        HashMap<Integer,ArrayList<Integer>> RE = pageIDtoParentIDList.getHashMapTable();
-        for (Map.Entry<Integer, ArrayList<Integer>> item : RE.entrySet()){
-            System.out.println(item.getKey());
-            System.out.println(item.getValue());
-        }
-        System.out.println();
+        pageIDtoParentIDList.addEntry(223,arrayList);
+
+        System.out.println(pageIDtoParentIDList.hm.get(223));
+
+
 
 
     }

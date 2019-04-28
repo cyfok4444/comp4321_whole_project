@@ -3,6 +3,7 @@ import org.rocksdb.*;
 import org.rocksdb.RocksDBException;
 import function.*;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class PageIDtoPageObject {
@@ -15,6 +16,7 @@ public class PageIDtoPageObject {
     protected RocksDB rocksDB;
     protected Options options;
     protected  String dbpath;
+    protected HashMap<Integer,PageObject> hm = new HashMap<>();
 
     //Hashmap <PageID,ArrayList>
     public PageIDtoPageObject(String dbpath){
@@ -24,6 +26,7 @@ public class PageIDtoPageObject {
         options.setCreateIfMissing(true);
         try {
             rocksDB = RocksDB.open(options,dbpath);
+            hm = getHashMapTable();
         }
         catch (RocksDBException e){
             e.printStackTrace();
@@ -49,28 +52,76 @@ public class PageIDtoPageObject {
             String value = new String(rocksDB.get(key.getBytes()));
             String[]s2 = value.split("JOHNMAVISOSCAR");
             String url = s2[1];
-            Long date = Long.parseLong(s2[2]);
-            hashMap.put(url,date);
+            Long pageDate = Long.valueOf(s2[2]);
+            hashMap.put(url,pageDate);
 
         }
         return hashMap;
     }
 
+    public HashMap<Integer,PageObject> getHashMapTable() throws RocksDBException{
+        HashMap<Integer,PageObject> hashMap = new HashMap<>();
+        RocksIterator iterator = rocksDB.newIterator();
+        for(iterator.seekToFirst(); iterator.isValid(); iterator.next()) {
+            String key = new String(iterator.key());
+            String value = new String(rocksDB.get(key.getBytes()));
+            String [] single_wordID = value.split("JOHNMAVISOSCAR");
+            String pageTitle = single_wordID[0];
+            String pageUrl = single_wordID[1];
+            Long pageDate = Long.valueOf(single_wordID[2]);
+            Integer pageSize = Integer.parseInt(single_wordID[3]);
+            HashMap<String,Integer> pageWords = new HashMap<>();
+            String s1 = single_wordID[4];
+            s1 = s1.substring(1,s1.length()-1);
+            String[]s2 = s1.split(", ");
+            for(String s3 :s2){
+                String []s4 = s3.split("=");
+                String name =s4[0];
+                Integer number = Integer.parseInt(s4[1]);
+                pageWords.put(name,number);
+            }
+            PageObject pageObject = new PageObject();
+            pageObject.setUrl(pageUrl);
+            pageObject.setTitle(pageTitle);
+            pageObject.setSize(pageSize);
+            pageObject.setMostFreqKeywords(pageWords);
+            pageObject.setLastModificationDate(pageDate);
+            hashMap.put(Integer.parseInt(key),pageObject);
+        }
+        return hashMap;
+    }
 
-
-    /**
-     * if there is the same data in the database return false
-     * else return true
-     * @param hashMap is the hashmap the data we have in the db
-     * @param info
-     * @return
-     */
-
-
-    /**
-     * get the Highest ID num in hashMap
-     */
-
+    public void setHashMapTable() throws RocksDBException{
+        HashMap<Integer,PageObject> hashMap = new HashMap<>();
+        RocksIterator iterator = rocksDB.newIterator();
+        for(iterator.seekToFirst(); iterator.isValid(); iterator.next()) {
+            String key = new String(iterator.key());
+            String value = new String(rocksDB.get(key.getBytes()));
+            String [] single_wordID = value.split("JOHNMAVISOSCAR");
+            String pageTitle = single_wordID[0];
+            String pageUrl = single_wordID[1];
+            Long pageDate = Long.valueOf(single_wordID[2]);
+            Integer pageSize = Integer.parseInt(single_wordID[3]);
+            HashMap<String,Integer> pageWords = new HashMap<>();
+            String s1 = single_wordID[4];
+            s1 = s1.substring(1,s1.length()-1);
+            String[]s2 = s1.split(", ");
+            for(String s3 :s2){
+                String []s4 = s3.split("=");
+                String name =s4[0];
+                Integer number = Integer.parseInt(s4[1]);
+                pageWords.put(name,number);
+            }
+            PageObject pageObject = new PageObject();
+            pageObject.setUrl(pageUrl);
+            pageObject.setTitle(pageTitle);
+            pageObject.setSize(pageSize);
+            pageObject.setMostFreqKeywords(pageWords);
+            pageObject.setLastModificationDate(pageDate);
+            hashMap.put(Integer.parseInt(key),pageObject);
+        }
+        hm = hashMap;
+    }
 
     /**
      * Should use after PageIDDB
@@ -84,19 +135,28 @@ public class PageIDtoPageObject {
         rocksDB.put(key.toString().getBytes(), pageObject.getBytes());
     }
 
-
-    public  String getEntry(Integer key){
-        try {
-            return new String(rocksDB.get(key.toString().getBytes()));
-        }
-        catch (RocksDBException e ){
-            e.printStackTrace();
-            return null;
-        }
-
+    public boolean isEntryExists (Integer info){
+        if (hm.containsKey(info)) return true;
+        return false;
     }
 
-    public static void main (String args[]){
+    public static void main (String args[]) throws RocksDBException{
+        PageIDtoPageObject pageIDtoPageObject = new PageIDtoPageObject("db/db_PageIDtoPageObject");
+        PageObject pageObject = new PageObject();
+        Long date = new Long(10);
+        pageObject.setLastModificationDate(date);
+        HashMap<String,Integer> words = new HashMap<>();
+        words.put("apple",10);
+        words.put("orange",22);
+        words.put("egg",35);
+        words.put("AFWEQEQ",5);
+        words.put("Ok",999);
+        pageObject.setMostFreqKeywords(words);
+        pageObject.setSize(500);
+        pageObject.setTitle("GOOD title ar");
+        pageObject.setUrl("!!!!!!!");
+        pageIDtoPageObject.addEntry(999,pageObject);
+        System.out.println(pageIDtoPageObject.getDateHashMapTable().get("!!!!!!!"));
 
 
     }
