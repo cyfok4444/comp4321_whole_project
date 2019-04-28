@@ -113,7 +113,7 @@ public class ProcessString {
         k.add("love");
         k.add("ABCD");
         k.add("loves");
-        k.add("loving");
+        k.add("loving他你");
 
         k = removeRubbish(k);
         k = stopWordRemoveTf(k);
