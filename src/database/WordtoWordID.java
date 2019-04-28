@@ -8,7 +8,7 @@ import org.rocksdb.RocksIterator;
 
 import java.util.HashMap;
 
-public class WordIDKeyword{
+public class WordtoWordID {
 
     protected RocksDB rocksDB;
     protected Options options;
@@ -21,7 +21,7 @@ public class WordIDKeyword{
      * constructor of the database
      * @param dbpath
      */
-    public WordIDKeyword(String dbpath){
+    public WordtoWordID(String dbpath){
         this.dbpath = dbpath;
         options = new Options();
         options.setCreateIfMissing(true);
@@ -119,14 +119,14 @@ public class WordIDKeyword{
     }
 
     public static void main(String [] args) throws RocksDBException{
-        WordIDKeyword wordIDKeyword = new WordIDKeyword(PathForDB.path);
-        HashMap<String,Integer> hashMap = wordIDKeyword.getHashMapTable();
-        wordIDKeyword.addEntry("hiii");
-        wordIDKeyword.addEntry("hy");
-        wordIDKeyword.addEntry("hiiiiiiii");
-        wordIDKeyword.addEntry("hy");
-        wordIDKeyword.addEntry("hiiiiiiiippppp");
-        RocksIterator iterator = wordIDKeyword.rocksDB.newIterator();
+        WordtoWordID wordtoWordID = new WordtoWordID(PathForDB.path);
+        HashMap<String,Integer> hashMap = wordtoWordID.getHashMapTable();
+        wordtoWordID.addEntry("hiii");
+        wordtoWordID.addEntry("hy");
+        wordtoWordID.addEntry("hiiiiiiii");
+        wordtoWordID.addEntry("hy");
+        wordtoWordID.addEntry("hiiiiiiiippppp");
+        RocksIterator iterator = wordtoWordID.rocksDB.newIterator();
         for (iterator.seekToFirst(); iterator.isValid(); iterator.next()) {
             System.out.println(new String(iterator.key()) + " " + new String(iterator.value()));
         }

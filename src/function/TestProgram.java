@@ -7,10 +7,10 @@ public class TestProgram {
         //String path = "/Users/chunyinfok/Downloads/db";
         String path = "db";
         PageIndex.set(path);
-        Page page = Spider.go("https://www.cse.ust.hk/");
+        PageObject page = Spider.go("https://www.cse.ust.hk/");
          for ( int i = 0 ; i < 40 ; i ++ ){
             if ( page.url != page.childs.get(i) ) {
-                Page page_child = Spider.go(page.childs.get(i));
+                PageObject page_child = Spider.go(page.childs.get(i));
             }
         }
         try{

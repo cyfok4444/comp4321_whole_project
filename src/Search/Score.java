@@ -1,7 +1,5 @@
 package Search;
-import function.Page;
 
-import java.lang.reflect.Array;
 import java.util.*;
 /**
  * Calculation of the page score
@@ -24,9 +22,9 @@ import java.util.*;
  * 8) Get the page content according to the ranking
  * partial score
  *
- * Database that will use: PageContentDBOperation <PageID <PageContent>>
+ * Database that will use: PageIDtoPageObject <PageID <PageContent>>
  *                         WordIDPageID <PageId <WordID tf>>
- *                         WordIDKeyword <Keyword WordID>
+ *                         WordtoWordID <Keyword WordID>
  *                         PageIDWordIDPos <PageID <WordID pos>>
  */
 
@@ -354,9 +352,9 @@ public class Score {
         ArrayList<Integer> trimStopStartEnd = trimStopStartEnd(term);
         System.out.println(trimStopStartEnd);
         Integer[] possiblePage = findPossiblePageID(query);
-        for (Integer a : possiblePage) System.out.println("Possible Page: " + a);
+        for (Integer a : possiblePage) System.out.println("Possible PageObject: " + a);
         for (Integer page : possiblePage){
-            System.out.println("Page: " + page);
+            System.out.println("PageObject: " + page);
             HashMap<Integer,ArrayList<Integer>> pagePos = contentPos.get(page);
             ArrayList<Integer> allPos = allThePos(pagePos);
             ArrayList<Integer> first_Keyword = pagePos.get(trimStopStartEnd.get(0));
@@ -427,9 +425,9 @@ public class Score {
         ArrayList<Integer> trimStopStartEnd = trimStopStartEnd(term);
         System.out.println(trimStopStartEnd);
         Integer[] possiblePage = findPossiblePageID(query);
-        for (Integer a : possiblePage) System.out.println("Possible Page: " + a);
+        for (Integer a : possiblePage) System.out.println("Possible PageObject: " + a);
         for (Integer page : possiblePage){
-            System.out.println("Page: " + page);
+            System.out.println("PageObject: " + page);
             HashMap<Integer,ArrayList<Integer>> pagePos = titlePos.get(page);
             ArrayList<Integer> allPos = allThePos(pagePos);
             ArrayList<Integer> first_Keyword = pagePos.get(trimStopStartEnd.get(0));

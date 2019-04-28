@@ -2,11 +2,10 @@ package database;
 import org.rocksdb.*;
 import org.rocksdb.RocksDBException;
 import function.*;
-import java.lang.reflect.Array;
+
 import java.util.HashMap;
 
-import java.util.*;
-public class PageContentDBOperation{
+public class PageIDtoPageObject {
 
 
     /**
@@ -18,7 +17,7 @@ public class PageContentDBOperation{
     protected  String dbpath;
 
     //Hashmap <PageID,ArrayList>
-    public PageContentDBOperation(String dbpath){
+    public PageIDtoPageObject(String dbpath){
 
         this.dbpath = dbpath;
         options = new Options();
@@ -76,13 +75,13 @@ public class PageContentDBOperation{
     /**
      * Should use after PageIDDB
      * @param key
-     * @param page
+     * @param pageObject
      * @return
      * @throws RocksDBException
      */
-    public void addEntry (Integer key, Page page) throws RocksDBException {
-        System.out.println("Adding Key: " + key + " info: " + page);
-        rocksDB.put(key.toString().getBytes(), page.getBytes());
+    public void addEntry (Integer key, PageObject pageObject) throws RocksDBException {
+        System.out.println("Adding Key: " + key + " info: " + pageObject);
+        rocksDB.put(key.toString().getBytes(), pageObject.getBytes());
     }
 
 

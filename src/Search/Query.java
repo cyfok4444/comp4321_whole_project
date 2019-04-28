@@ -1,10 +1,8 @@
 package Search;
 
-import database.WordIDKeyword;
 import function.ProcessString;
 import org.rocksdb.RocksDBException;
 
-import java.lang.reflect.Array;
 import java.util.*;
 public class Query {
 

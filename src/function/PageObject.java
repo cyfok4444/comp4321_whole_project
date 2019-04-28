@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.ArrayList;
 import java.util.Date;
 
-public class Page {
+public class PageObject {
 
     String title;
     String url ;

@@ -54,13 +54,13 @@ public class PageIndex
        }
 
    }
-    public static void addEntry(String url, Page page) throws RocksDBException
+    public static void addEntry(String url, PageObject pageObject) throws RocksDBException
     {
         // Add a "docX Y" entry for the key "word" into hashtable
         // ADD YOUR CODES HERE
         byte[] content = db.get(url.getBytes());
         if (content == null) {
-            content = page.getBytes();
+            content = pageObject.getBytes();
         }
         db.put(url.getBytes(), content);
     }

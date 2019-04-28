@@ -8,14 +8,15 @@ import java.security.KeyPair;
 import java.util.ArrayList;
 import java.util.*;
 
+
 // PageID [maxtf,Size]
 
-public class PageIDTitleInfoDB {
+public class PageIDtoBodyInfo {
     protected RocksDB rocksDB;
     protected Options options;
     protected  String dbpath;
     protected  HashMap<Integer,ArrayList<Double>> hm = new HashMap<>();
-    public PageIDTitleInfoDB(String dbpath){
+    public PageIDtoBodyInfo(String dbpath){
 
         this.dbpath = dbpath;
         options = new Options();

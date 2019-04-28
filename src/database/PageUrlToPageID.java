@@ -8,7 +8,7 @@ import org.rocksdb.RocksIterator;
 
 import java.util.HashMap;
 
-public class PageIDdBOperation{
+public class PageUrlToPageID {
 
     protected RocksDB rocksDB;
     protected Options options;
@@ -21,7 +21,7 @@ public class PageIDdBOperation{
          * constructor of the database
          * @param dbpath
          */
-        public PageIDdBOperation(String dbpath){
+        public PageUrlToPageID(String dbpath){
             this.dbpath = dbpath;
             options = new Options();
             options.setCreateIfMissing(true);
@@ -121,17 +121,17 @@ public class PageIDdBOperation{
         }
 
         public static void main(String [] args) throws RocksDBException{
-            PageIDdBOperation pageIDdBOperation = new PageIDdBOperation(PathForDB.path);
-            pageIDdBOperation.addEntry("hiii");
-            pageIDdBOperation.addEntry("hy");
-            pageIDdBOperation.addEntry("hiiiiiiii");
-            pageIDdBOperation.addEntry("hiiiiiiiippppp");
-            RocksIterator iterator = pageIDdBOperation.rocksDB.newIterator();
+            PageUrlToPageID pageUrlToPageID = new PageUrlToPageID(PathForDB.path);
+            pageUrlToPageID.addEntry("hiii");
+            pageUrlToPageID.addEntry("hy");
+            pageUrlToPageID.addEntry("hiiiiiiii");
+            pageUrlToPageID.addEntry("hiiiiiiiippppp");
+            RocksIterator iterator = pageUrlToPageID.rocksDB.newIterator();
             for (iterator.seekToFirst(); iterator.isValid(); iterator.next()) {
                System.out.println(new String(iterator.key()) + " " + new String(iterator.value()));
             }
 
-            System.out.println(pageIDdBOperation.getPageId("hy"));
+            System.out.println(pageUrlToPageID.getPageId("hy"));
 
         }
 

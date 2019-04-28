@@ -8,14 +8,14 @@ import org.rocksdb.RocksIterator;
 import java.util.HashMap;
 import java.util.Map;
 
-public class WordIDPageIDDB2 {
+public class InvertFileforTitle {
 
         protected RocksDB rocksDB;
         protected Options options;
         protected  String dbpath;
         protected HashMap<Integer,HashMap<Integer,Integer>> hm = new HashMap<>();
 
-        public WordIDPageIDDB2 (String dbpath){
+        public InvertFileforTitle(String dbpath){
 
             this.dbpath = dbpath;
             options = new Options();
@@ -113,7 +113,7 @@ public class WordIDPageIDDB2 {
         return false;
     }
         public static void main (String args[]){
-            database.WordIDPageIDDB2 wp = new database.WordIDPageIDDB2("/Users/chunyinfok/Downloads/comp4321_pj/comp4321_whole_project/db");
+            InvertFileforTitle wp = new InvertFileforTitle("/Users/chunyinfok/Downloads/comp4321_pj/comp4321_whole_project/db");
             HashMap<Integer,Integer> hm2 = new HashMap<>();
             hm2.put(10,10);
             hm2.put(1,3);

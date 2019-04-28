@@ -1,4 +1,6 @@
 package database;
+
+import function.PathForDB;
 import org.rocksdb.Options;
 import org.rocksdb.RocksDB;
 import org.rocksdb.RocksDBException;
@@ -8,19 +10,20 @@ import java.util.*;
 
 
 
-public class PageIDChildIDDB {
+public class PageIDtoParentIDList {
     protected RocksDB rocksDB;
     protected Options options;
     protected  String dbpath;
-    protected  HashMap<Integer,ArrayList<Integer>> hm = new HashMap<>();
-    public PageIDChildIDDB(String dbpath){
+    protected HashMap<Integer,ArrayList<Integer>> hm = new HashMap<>();
+
+    public PageIDtoParentIDList(String dbpath){
 
         this.dbpath = dbpath;
         options = new Options();
         options.setCreateIfMissing(true);
         try {
             rocksDB = RocksDB.open(options,dbpath);
-            setHashMapTable();
+            hm = getHashMapTable();
         }
         catch (RocksDBException e){
             e.printStackTrace();
@@ -58,31 +61,47 @@ public class PageIDChildIDDB {
         }
         hm = hashMap;
     }
-    public boolean addEntry(Integer key,ArrayList<Integer> childs) throws RocksDBException{
+
+    public boolean addEntry(Integer key, ArrayList<Integer> parent) throws RocksDBException{
         System.out.println("Enter");
-            rocksDB.put(key.toString().getBytes(),childs.toString().getBytes());
+            rocksDB.put(key.toString().getBytes(),parent.toString().getBytes());
         return true;
+    }
+
+    public ArrayList<Integer> getEntry(Integer pageId) throws RocksDBException{
+        String list = new String(rocksDB.get(pageId.toString().getBytes()));
+        String [] list2 = list.split(" ");
+        ArrayList<Integer> list3 = new ArrayList<>();
+        for ( String s : list2){
+            int i = Integer.parseInt(s);
+            list3.add(i);
+        }
+        return list3;
     }
 
     public boolean isEntryExists (Integer info){
         if (hm.containsKey(info)) return true;
         return false;
     }
+
+
+
     public static void main (String [] args) throws RocksDBException{
-        PageIDChildIDDB pageIDChildIDDB = new PageIDChildIDDB("/Users/chunyinfok/Downloads/comp4321_pj/comp4321_whole_project/db");
-       // HashMap<Integer,ArrayList<Integer>> hashMap = new HashMap<>();
+        PageIDtoParentIDList pageIDtoParentIDList = new PageIDtoParentIDList(PathForDB.path);
+        HashMap<Integer,ArrayList<Integer>> hashMap = new HashMap<>();
         ArrayList<Integer> arrayList = new ArrayList<>();
-        arrayList.add(10);
+        arrayList.add(1);
         arrayList.add(10);
         arrayList.add(1111);
-        pageIDChildIDDB.addEntry(123,arrayList);
-       /* HashMap<Integer,ArrayList<Integer>> RE = pageIDChildIDDB.getHashMapTable();
+        hashMap.put(123,arrayList);
+        hashMap.put(321,arrayList);
+        pageIDtoParentIDList.addEntry(123,arrayList);
+        HashMap<Integer,ArrayList<Integer>> RE = pageIDtoParentIDList.getHashMapTable();
         for (Map.Entry<Integer, ArrayList<Integer>> item : RE.entrySet()){
             System.out.println(item.getKey());
             System.out.println(item.getValue());
-        }*/
-        System.out.println(new String(pageIDChildIDDB.rocksDB.get("123".getBytes())));
-
+        }
+        System.out.println();
 
 
     }

@@ -5,18 +5,17 @@ import org.rocksdb.RocksDB;
 import org.rocksdb.RocksDBException;
 import org.rocksdb.RocksIterator;
 
-import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
 
-public class WordIDPageIDDB {
+public class InvertFileforBody {
 
     protected RocksDB rocksDB;
     protected Options options;
     protected  String dbpath;
     protected HashMap<Integer,HashMap<Integer,Integer>> hm = new HashMap<>();
 
-    public WordIDPageIDDB (String dbpath){
+    public InvertFileforBody(String dbpath){
 
         this.dbpath = dbpath;
         options = new Options();
@@ -114,7 +113,7 @@ public class WordIDPageIDDB {
     }
 
     public static void main (String args[]){
-        WordIDPageIDDB wp = new WordIDPageIDDB("/Users/chunyinfok/Downloads/comp4321_pj/comp4321_whole_project/db");
+        InvertFileforBody wp = new InvertFileforBody("/Users/chunyinfok/Downloads/comp4321_pj/comp4321_whole_project/db");
         HashMap<Integer,Integer> hm2 = new HashMap<>();
         hm2.put(10,10);
         hm2.put(1,3);
