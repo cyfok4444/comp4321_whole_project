@@ -106,7 +106,7 @@ public class Score {
         word1.put(1,3);
         word1.put(2,3);
         word1.put(3,3);
-        inverted_table_content.put(1,word1);
+        //inverted_table_content.put(1,word1);
         inverted_table_content.put(2,word3);
         inverted_table_content.put(3,word3);
         inverted_table_content.put(4,word1);
@@ -228,14 +228,14 @@ public class Score {
      */
     public Integer[] findPossiblePageID (String query){
 
-        if (query.length() == 0) return null;
+        if (query.length() == 0) return new Integer[0];
 
         Query q = new Query();
         ArrayList<Integer> paragh = q.convertToWordIDPhrase(query);
         ArrayList<Integer> distinct = q.getDistinctSetOfKeyword(paragh);
         ArrayList<Integer[]> docs = new ArrayList<>();
         for (int i = 0  ; i < distinct.size() ; i++)
-            if(!inverted_table_content.containsKey(distinct.get(i))) return null;
+            if(!inverted_table_content.containsKey(distinct.get(i))) return new Integer[0];
 
         for (int i = 0  ; i < distinct.size() ; i++) {
             HashMap<Integer,Integer> doc = inverted_table_content.get(distinct.get(i));
@@ -283,14 +283,14 @@ public class Score {
 
     public Integer[] findPossiblePageIDPhrase (String query){
 
-        if (query.length() == 0) return null;
+        if (query.length() == 0) return new Integer[0];
 
         Query q = new Query();
         ArrayList<Integer> paragh = q.convertToWordIDPhrase(query);
         ArrayList<Integer> distinct = q.getDistinctSetOfKeyword(paragh);
         ArrayList<Integer[]> docs = new ArrayList<>();
         for (int i = 0  ; i < distinct.size() ; i++)
-            if(!inverted_table_title.containsKey(distinct.get(i))) return null;
+            if(!inverted_table_title.containsKey(distinct.get(i))) return new Integer[0];
 
         for (int i = 0  ; i < distinct.size() ; i++) {
             HashMap<Integer,Integer> doc = inverted_table_title.get(distinct.get(i));
@@ -615,7 +615,7 @@ public class Score {
         HashMap<Integer,Double> result = computeScorePhraseTitle(pagematch,query);
         return result;
     }
-    
+
   public static void main (String [] a) {
        Score score = new Score();
        //System.out.println(score.findPossiblePageID("loving love love love love hong hong hong loves").toString());
@@ -642,7 +642,7 @@ public class Score {
       System.out.println(score.pageHavePhraseContent("On hong in kong in"));
       HashMap<Integer,Double> k = score.allInOneComputePhraseScoreContent("On hong in kong in");
       System.out.println(score.computeScorePhraseContent(score.pageHavePhraseContent("On hong in kong in"),"On hong in kong in"));
-      System.out.println(score.allInOneComputePhraseScoreContent("On hong in kong in"));
+      System.out.println(score.allInOneComputePhraseScoreContent("On hong in kong in love"));
       System.out.println("Hello " + k);
 
       //System.out.println("Hello " + score.allInOneComputePhraseScoreContent("On hong in kong in"));
