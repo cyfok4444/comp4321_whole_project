@@ -41,7 +41,6 @@ public class Score {
    static private HashMap<Integer,Integer> maxtfContent;
    static private HashMap<Integer,Integer> maxtfTitle;
    private double N;
-   private double N2;
 
     /**
      * Constructor
@@ -173,7 +172,7 @@ public class Score {
 
                 int m = maxtfTitle.get(doc.getKey());
                 double maxtf = (double)m;
-                double idf = Math.log(N2/df)/Math.log(2);
+                double idf = Math.log(N/df)/Math.log(2);
                 double dweight = (tf/maxtf) * idf;
                 int qt = term.getValue();
                 double qweight = (double)qt;
@@ -535,7 +534,7 @@ public class Score {
 
                 int m = maxtfTitle.get(page);
                 double maxtf = (double)m;
-                double idf = Math.log(N2/df)/Math.log(2);
+                double idf = Math.log(N/df)/Math.log(2);
                 double dweight = (tf/maxtf) * idf;
                 int qt = term.getValue();
                 double qweight = (double)qt;
