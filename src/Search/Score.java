@@ -275,7 +275,8 @@ public class Score {
             result = set.toArray(result);
         }
         else {
-            return docs.get(0);
+            if (num == 1 ) return docs.get(0);
+            else return new Integer[0];
         }
         return result;
 
@@ -644,6 +645,9 @@ public class Score {
       System.out.println(score.computeScorePhraseContent(score.pageHavePhraseContent("On hong in kong in"),"On hong in kong in"));
       System.out.println(score.allInOneComputePhraseScoreContent("On hong in kong in love"));
       System.out.println("Hello " + k);
+      Integer[] l = score.findPossiblePageID("hong kong cool");
+      for (Integer b : l) System.out.println(b);
+      System.out.println(l.length);
 
       //System.out.println("Hello " + score.allInOneComputePhraseScoreContent("On hong in kong in"));
       /*ArrayList<Integer> b = new ArrayList<>();
