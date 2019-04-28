@@ -75,9 +75,9 @@ public class ProcessString {
         return process;
     }
 
-    public static HashMap<String,ArrayList<Integer>> keyWordPos (ArrayList<String> input){
+    public static LinkedHashMap<String,ArrayList<Integer>> keyWordPos (ArrayList<String> input){
         //for (String in : input) System.out.println(in);
-        HashMap<String,ArrayList<Integer>> process = new LinkedHashMap<>();
+        LinkedHashMap<String,ArrayList<Integer>> process = new LinkedHashMap<>();
         for (int i = 0 ; i < input.size() ; i++){
             StopStem stopStem = new StopStem("stopword.txt");
             String word = stopStem.stem(input.get(i).toLowerCase());
@@ -114,12 +114,11 @@ public class ProcessString {
         k.add("ABCD");
         k.add("loves");
         k.add("loving");
-        k.add("in");
 
-
-        HashMap<String,ArrayList<Integer>> h = ProcessString.keyWordPos(k);
-        h = stopWordRemovePos(h);
-        for (HashMap.Entry<String,ArrayList<Integer>> entry : h.entrySet()) {
+        k = removeRubbish(k);
+        k = stopWordRemoveTf(k);
+        HashMap<String,Integer> h = ProcessString.keyWordTf(k);
+        for (HashMap.Entry<String,Integer> entry : h.entrySet()) {
             System.out.println(entry.getKey() + " " + entry.getValue());
         }
         /*HashMap<String, ArrayList<Integer>> a = keyWordPos(k);
