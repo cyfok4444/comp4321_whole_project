@@ -6,6 +6,7 @@ import org.rocksdb.RocksDB;
 import org.rocksdb.RocksDBException;
 import org.rocksdb.RocksIterator;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 
 public class WordtoWordID {
@@ -119,15 +120,16 @@ public class WordtoWordID {
     }
 
     public static void main(String [] args) throws RocksDBException{ //done
-        WordtoWordID wordtoWordID = new WordtoWordID("db/db_WordtoWordID");
+      /*  WordtoWordID wordtoWordID = new WordtoWordID("db/db_WordtoWordID");
         wordtoWordID.addEntry("hiii");
         wordtoWordID.addEntry("hy");
         wordtoWordID.addEntry("hiiiiiiii");
         wordtoWordID.addEntry("hiiiiiiiippppp");
         wordtoWordID.addEntry("abc");
         System.out.println(wordtoWordID.hm);
-
-
+*/
+        ArrayList<String> result = new ArrayList<>();
+        System.out.println(result.toString()=="[]");
     }
 
 

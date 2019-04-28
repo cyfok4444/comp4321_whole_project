@@ -42,6 +42,9 @@ public class Spider {
                     PageObject pageObject = new PageObject();
                     pageObject.setUrl(url2);
                     ArrayList<String> keywordsTf =  Crawler.extractWords(url2);
+                    if (keywordsTf.toString()=="[]"){
+                        continue;
+                    }
                     keywordsTf = ProcessString.removeRubbish(keywordsTf);
                     ArrayList<String> keywordsPos = keywordsTf;
                     keywordsTf = ProcessString.stopWordRemoveTf(keywordsTf);
@@ -119,6 +122,9 @@ public class Spider {
                         wordtoWordID.addEntry(entry.getKey());
                         Integer thisWordId = wordtoWordID.getWordId(entry.getKey());
                         positionFileBody.put(thisWordId,entry.getValue());
+                    }
+                    if (positionFileBody.isEmpty()){
+                        continue;
                     }
                     //ForwardFileforBody forwardFileforBody = new ForwardFileforBody(PathForDB.path);
                     forwardFileforBody.addEntry(positionFileBody,pageId);
@@ -217,7 +223,7 @@ public class Spider {
 
                     //update hashMap for all the DB
                     forwardFileforBody.setHashMapTable();
-                    forwardFileforTitle.setHashMapTable();
+                    //forwardFileforTitle.setHashMapTable();
                     invertFileforBody.setHashMapTable();
                     invertFileforTitle.setHashMapTable();
                     pageIDtoBodyInfo.setHashMapTable();
@@ -259,6 +265,6 @@ public class Spider {
     }
 
     public static void main (String args[]) throws RocksDBException{
-        go("https://www.ust.hk/zh-hant/");
+        go("https://hk.yahoo.com/");
     }
 }

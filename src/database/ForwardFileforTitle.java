@@ -37,6 +37,10 @@ public class ForwardFileforTitle {
             HashMap<Integer, ArrayList<Integer>> h2 = new HashMap<>();
             String key = new String(iterator.key());
             String value = new String(rocksDB.get(key.getBytes()));
+            if ( value =="{}"){
+                hashMap.put(Integer.parseInt(key),h2);
+                continue;
+            }
             String [] single_wordID = value.split("Sep");
             for (int i = 0 ; i< single_wordID.length ; i++){
                 String [] sep = single_wordID[i].split(" ");
@@ -60,6 +64,10 @@ public class ForwardFileforTitle {
             HashMap<Integer, ArrayList<Integer>> h2 = new HashMap<>();
             String key = new String(iterator.key());
             String value = new String(rocksDB.get(key.getBytes()));
+            if ( value =="{}"){
+                hashMap.put(Integer.parseInt(key),h2);
+                continue;
+            }
             String [] single_wordID = value.split("Sep");
             for (int i = 0 ; i< single_wordID.length ; i++){
                 String [] sep = single_wordID[i].split(" ");
@@ -122,7 +130,7 @@ public class ForwardFileforTitle {
         arrayList2.add(60);
         hashMap2.put(10000,arrayList2);
         forwardFileforTitle.addEntry(hashMap,10000);
-        forwardFileforTitle.addEntry(hashMap2,100);
+        forwardFileforTitle.addEntry(hashMap2,1);
 
         RocksIterator iterator = forwardFileforTitle.rocksDB.newIterator();
         for(iterator.seekToFirst(); iterator.isValid(); iterator.next()){
