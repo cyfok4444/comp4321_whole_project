@@ -63,7 +63,8 @@ public class Query {
 
     /**
      * for phrase search
-     * @return 1 1 1 1 1 0 1 1 3 。。
+     * @return 1 1 1 1 -1 0 1 1 3 -1
+     * denoted as the wordID of each of the query term
      * @param query
      */
 
