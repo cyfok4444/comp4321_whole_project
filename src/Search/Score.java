@@ -164,7 +164,7 @@ public class Score {
        double qsize = query1.qLength(queryterm);
 
        for (Map.Entry<Integer,Integer> term : queryterm.entrySet()){
-           if(inverted_table_content.containsKey(term.getKey())) continue;
+           if(!inverted_table_content.containsKey(term.getKey())) continue;
            HashMap<Integer,Integer> dochave = inverted_table_content.get(term.getKey());
            int f = dochave.size();
            double df = (double)f;
@@ -200,7 +200,7 @@ public class Score {
         double qsize = query1.qLength(queryterm);
 
         for (Map.Entry<Integer,Integer> term : queryterm.entrySet()){
-            if(inverted_table_title.containsKey(term.getKey())) continue;
+            if(!inverted_table_title.containsKey(term.getKey())) continue;
             HashMap<Integer,Integer> dochave = inverted_table_title.get(term.getKey());
             int f = dochave.size();
             double df = (double)f;
@@ -403,6 +403,8 @@ public class Score {
             for (int i = 0 ; i < first_Keyword.size() ; i++){
                 Integer posNum = first_Keyword.get(i);
                 System.out.println("Start:" + posNum);
+                if (term.size() == 1 && distinctSetOfKeyword.size() ==1 )
+                    containAll = true;
                 for (int j = 1 ; j < trimStopStartEnd.size() ; j++){
                     if (containAll) break;
                     Integer queryNextTerm = trimStopStartEnd.get(j);
@@ -474,8 +476,11 @@ public class Score {
             Integer suitable_e = -1;
             boolean containAll = false;
             for (int i = 0 ; i < first_Keyword.size() ; i++){
+
                 Integer posNum = first_Keyword.get(i);
                 System.out.println("Start:" + posNum);
+                if (term.size() == 1 && distinctSetOfKeyword.size() ==1 )
+                    containAll = true;
                 for (int j = 1 ; j < trimStopStartEnd.size() ; j++){
                     if (containAll) break;
                     Integer queryNextTerm = trimStopStartEnd.get(j);
@@ -514,7 +519,7 @@ public class Score {
                 for (int i = 1 ; i <= stopEndStart; i++){
                     System.out.println("Second");
                     //if (allPos.contains(suitable_e+i) || (suitable_e+i > getMaxPos(pagePos))) containAll=false;
-                    if (allPos.contains(suitable_e+i) ) containAll=false;
+                    if (allPos.contains(suitable_e+i) ) containAll = false;
 
                 }
             }
@@ -682,6 +687,7 @@ public class Score {
         if (Query.isPhraseSearch(query)) {
             query = query.substring(1, query.length() - 1);
             title = allInOneComputePhraseScoreTitle(query);
+            System.out.println("End of title");
             content = allInOneComputePhraseScoreContent(query);
         }
 
@@ -713,7 +719,7 @@ public class Score {
     public static void main (String [] a) throws RocksDBException{
        Score score = new Score();
        //System.out.println(score.findPossiblePageID("loving love love love love hong hong hong loves").toString());
-       Integer[] p = score.findPossiblePageID("hong kong");
+       /*Integer[] p = score.findPossiblePageID("hong kong");
        for (Integer b : p) System.out.println(b);
        ArrayList<Integer> arr = new ArrayList<>();
        arr.add(-1);
@@ -754,10 +760,10 @@ public class Score {
       h.put(1,10.888);
       h.put(7,1000000.0);
       h.put(8,9.9);
-        System.out.print(Score.sortByValue(h));
+        //System.out.print(Score.sortByValue(h));
 
-        System.out.print(score.getTheKeyReverseOrder(Score.sortByValue(h)));
-
+        //System.out.print(score.getTheKeyReverseOrder(Score.sortByValue(h)));
+        System.out.println(score.ranking("\"Researchers Awarded\""));
 
 
 
