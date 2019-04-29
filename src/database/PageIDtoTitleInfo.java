@@ -7,6 +7,7 @@ import org.rocksdb.RocksIterator;
 import java.security.KeyPair;
 import java.util.ArrayList;
 import java.util.*;
+import java.nio.file.Paths;
 
 // PageID [maxtf,Size]
 
@@ -17,7 +18,7 @@ public class PageIDtoTitleInfo {
     protected  HashMap<Integer,ArrayList<Double>> hm = new HashMap<>();
     public PageIDtoTitleInfo(String dbpath){
 
-        this.dbpath = dbpath;
+        this.dbpath = dbpath;//Paths.get(dbpath).toAbsolutePath().normalize().toString();
         options = new Options();
         options.setCreateIfMissing(true);
         try {

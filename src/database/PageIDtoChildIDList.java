@@ -5,6 +5,7 @@ import org.rocksdb.RocksDBException;
 import org.rocksdb.RocksIterator;
 import java.util.ArrayList;
 import java.util.*;
+import java.nio.file.Paths;
 
 
 
@@ -15,7 +16,7 @@ public class PageIDtoChildIDList {
     protected  HashMap<Integer,ArrayList<Integer>> hm = new HashMap<>();
     public PageIDtoChildIDList(String dbpath){
 
-        this.dbpath = dbpath;
+        this.dbpath = dbpath;//Paths.get(dbpath).toAbsolutePath().normalize().toString();
         options = new Options();
         options.setCreateIfMissing(true);
         try {

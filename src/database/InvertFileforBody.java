@@ -7,6 +7,7 @@ import org.rocksdb.RocksIterator;
 
 import java.util.HashMap;
 import java.util.Map;
+import java.nio.file.Paths;
 
 public class InvertFileforBody {
 
@@ -17,7 +18,7 @@ public class InvertFileforBody {
 
     public InvertFileforBody(String dbpath){
 
-        this.dbpath = dbpath;
+        this.dbpath = dbpath;//Paths.get(dbpath).toAbsolutePath().normalize().toString();
         options = new Options();
         options.setCreateIfMissing(true);
         try {

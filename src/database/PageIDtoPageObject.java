@@ -6,6 +6,7 @@ import function.*;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.nio.file.Paths;
 
 public class PageIDtoPageObject {
 
@@ -22,7 +23,7 @@ public class PageIDtoPageObject {
     //Hashmap <PageID,ArrayList>
     public PageIDtoPageObject(String dbpath){
 
-        this.dbpath = dbpath;
+        this.dbpath = dbpath;//Paths.get(dbpath).toAbsolutePath().normalize().toString();
         options = new Options();
         options.setCreateIfMissing(true);
         try {

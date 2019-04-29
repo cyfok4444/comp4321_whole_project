@@ -6,6 +6,7 @@ import org.rocksdb.RocksDBException;
 import org.rocksdb.RocksIterator;
 import java.util.*;
 import java.util.HashMap;
+import java.nio.file.Paths;
 
 public class ForwardFileforTitle {
     protected RocksDB rocksDB;
