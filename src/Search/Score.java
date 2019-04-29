@@ -164,7 +164,7 @@ public class Score {
        double qsize = query1.qLength(queryterm);
 
        for (Map.Entry<Integer,Integer> term : queryterm.entrySet()){
-           if(inverted_table_content.containsKey(term.getKey())) continue;
+           if(!inverted_table_content.containsKey(term.getKey())) continue;
            HashMap<Integer,Integer> dochave = inverted_table_content.get(term.getKey());
            int f = dochave.size();
            double df = (double)f;
@@ -200,7 +200,7 @@ public class Score {
         double qsize = query1.qLength(queryterm);
 
         for (Map.Entry<Integer,Integer> term : queryterm.entrySet()){
-            if(inverted_table_title.containsKey(term.getKey())) continue;
+            if(!inverted_table_title.containsKey(term.getKey())) continue;
             HashMap<Integer,Integer> dochave = inverted_table_title.get(term.getKey());
             int f = dochave.size();
             double df = (double)f;
@@ -713,48 +713,7 @@ public class Score {
     public static void main (String [] a) throws RocksDBException{
        Score score = new Score();
        //System.out.println(score.findPossiblePageID("loving love love love love hong hong hong loves").toString());
-       Integer[] p = score.findPossiblePageID("hong kong");
-       for (Integer b : p) System.out.println(b);
-       ArrayList<Integer> arr = new ArrayList<>();
-       arr.add(-1);
-       arr.add(-1);
-       arr.add(-1);
-       arr.add(1);
-       arr.add(2);
-       arr.add(3);
-       arr.add(3);
-       arr.add(-1);
-       arr.add(3);
-       arr.add(-1);
-       arr.add(-1);
-       arr.add(-1);
-       arr.add(-1);
-
-      //System.out.println(score.trimStopStartEnd(arr).toString());
-      System.out.println(score.stopNumStart(arr).toString());
-      System.out.println(score.stopNumEnd(arr).toString());
-      System.out.println(score.pageHavePhraseContent("On hong in kong in"));
-      HashMap<Integer,Double> k = score.allInOneComputePhraseScoreContent("On hong in kong in");
-      System.out.println(score.computeScorePhraseContent(score.pageHavePhraseContent("On hong in kong in"),"On hong in kong in"));
-      System.out.println(score.allInOneComputePhraseScoreContent("On hong in kong in love"));
-      System.out.println("Hello " + k);
-      Integer[] l = score.findPossiblePageID("hong kong cool");
-      for (Integer b : l) System.out.println(b);
-      System.out.println(l.length);
-
-      //System.out.println("Hello " + score.allInOneComputePhraseScoreContent("On hong in kong in"));
-      /*ArrayList<Integer> b = new ArrayList<>();
-      b.add(-1);
-      b.add(2);
-      b.add(-1);
-      b.add(3);
-      b.add(-1);
-      System.out.println(score.trimStopStartEnd(b));*/
-      HashMap<Integer,Double> h = new HashMap<>();
-      h.put(1,10.888);
-      h.put(7,9.9);
-      h.put(8,9.9);
-      System.out.print(Score.sortByValue(h));
+       System.out.println(score.ranking("computer science department"));
 
 
 
