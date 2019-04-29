@@ -6,6 +6,7 @@ import org.rocksdb.RocksDBException;
 import org.rocksdb.RocksIterator;
 
 import java.util.HashMap;
+import java.util.Map;
 
 public class PageUrltoPageID {
 
@@ -114,6 +115,7 @@ public class PageUrltoPageID {
             else{
                 System.out.println("Adding Key: " + availableID + " info: " + info);
                 rocksDB.put(info.getBytes(),availableID.toString().getBytes());
+                hm.put(info,availableID);
                 availableID++;
                 return true;
             }
@@ -129,7 +131,14 @@ public class PageUrltoPageID {
             pageUrlToPageID.addEntry("qwe");
             pageUrlToPageID.addEntry("ok");
             System.out.println(pageUrlToPageID.getMaxId());
-            System.out.println(pageUrlToPageID.hm);
+            HashMap<Integer,String> hm2 = new HashMap<>();
+            for (Map.Entry<String,Integer>entry : pageUrlToPageID.hm.entrySet()){
+                hm2.put(entry.getValue(),entry.getKey());
+            }
+            for (Map.Entry<Integer,String>entry:hm2.entrySet()){
+                System.out.println(entry.getKey()+": "+entry.getValue());
+            }
+
         }
 
 

@@ -113,6 +113,7 @@ public class WordtoWordID {
         if (isEntryExists(info)) return false;
         else{
             System.out.println("Adding Key: " + availableID + " info: " + info);
+            hm.put(info,availableID);
             rocksDB.put(info.getBytes(),availableID.toString().getBytes());
             availableID++;
             return true;
@@ -120,16 +121,17 @@ public class WordtoWordID {
     }
 
     public static void main(String [] args) throws RocksDBException{ //done
-      /*  WordtoWordID wordtoWordID = new WordtoWordID("db/db_WordtoWordID");
+        WordtoWordID wordtoWordID = new WordtoWordID("db/db_WordtoWordID");
         wordtoWordID.addEntry("hiii");
         wordtoWordID.addEntry("hy");
         wordtoWordID.addEntry("hiiiiiiii");
         wordtoWordID.addEntry("hiiiiiiiippppp");
         wordtoWordID.addEntry("abc");
         System.out.println(wordtoWordID.hm);
-*/
+
         ArrayList<String> result = new ArrayList<>();
         System.out.println(result.toString()=="[]");
+
     }
 
 

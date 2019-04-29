@@ -80,7 +80,7 @@ public class PageIDtoTitleInfo {
         pageIDtoTitleInfo.addEntry(1,a1);
         a1.add(99999.0);
         pageIDtoTitleInfo.addEntry(2,a1);
-        System.out.println(pageIDtoTitleInfo.isEntryExists(100));
+        System.out.println(pageIDtoTitleInfo.hm);
 
 
 

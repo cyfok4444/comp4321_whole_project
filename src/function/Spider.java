@@ -31,6 +31,7 @@ public class Spider {
 
 
             HashMap<String,Long> visistedList = pageIDtoPageObject.getDateHashMapTable();
+            System.out.println("111111111111111"+visistedList);
             while(!targetUrl.isEmpty()){
                 String url2 = targetUrl.get(0);
                 targetUrl.remove(0);
@@ -93,6 +94,9 @@ public class Spider {
                     HashMap<String,ArrayList<Integer>> titlePos2 = ProcessString.keyWordPos(titlePos);
                     titlePos2 = ProcessString.stopWordRemovePos(titlePos2);
 
+
+
+
                     //1.starting DB Url to PageID
                     //PageUrltoPageID pageUrlToPageID = new PageUrltoPageID(PathForDB.path);
                     if ( lastDate==null ) {
@@ -114,6 +118,8 @@ public class Spider {
                     }
                     pageIDToChildIDList.addEntry(pageId,childList);
 
+                    pageUrlToPageID.setHashMapTable();    // update!!!
+
                     //3. Keyword to wordID
                     HashMap<Integer,ArrayList<Integer>> positionFileBody = new HashMap<>();
                     // WordtoWordID wordtoWordID = new WordtoWordID(PathForDB.path);
@@ -123,11 +129,13 @@ public class Spider {
                         Integer thisWordId = wordtoWordID.getWordId(entry.getKey());
                         positionFileBody.put(thisWordId,entry.getValue());
                     }
-                    if (positionFileBody.isEmpty()){
+                    if (positionFileBody.isEmpty()){     // should put before??????????????
                         continue;
                     }
                     //ForwardFileforBody forwardFileforBody = new ForwardFileforBody(PathForDB.path);
                     forwardFileforBody.addEntry(positionFileBody,pageId);
+
+                    wordtoWordID.setHashMapTable();  //update!!!!
 
                     //5. forwarded file for title
                     HashMap<Integer,ArrayList<Integer>> positionFileTitle = new HashMap<>();
@@ -140,6 +148,7 @@ public class Spider {
                     //ForwardFileforTitle forwardFileforTitle = new ForwardFileforTitle(PathForDB.path);
                     forwardFileforTitle.addEntry(positionFileTitle,pageId);
 
+                    wordtoWordID.setHashMapTable();  //update!!!!!
                     //6.Inverted file for body
                     Double maxTf = 0.0;
                     Double bodySize = 0.0;
@@ -202,7 +211,6 @@ public class Spider {
 
                     //8. Add it to the parentDB of the child links
                     for ( String s : childLinks){
-                        pageUrlToPageID.addEntry(s);
                         Integer childId = pageUrlToPageID.getPageId(s);
                         if(pageIDtoParentIDList.isEntryExists(childId)){
                             ArrayList<Integer> parentList = pageIDtoParentIDList.getEntry(childId);
@@ -223,17 +231,29 @@ public class Spider {
 
                     //update hashMap for all the DB
                     forwardFileforBody.setHashMapTable();
-                    //forwardFileforTitle.setHashMapTable();
+                    System.out.println("1:"+forwardFileforBody.getHashMapTable());
+                    forwardFileforTitle.setHashMapTable();
+                    System.out.println("2:"+forwardFileforTitle.getHashMapTable());
                     invertFileforBody.setHashMapTable();
+                    System.out.println("3"+invertFileforBody.getHashMapTable());
                     invertFileforTitle.setHashMapTable();
+                    System.out.println("4"+invertFileforTitle.getHashMapTable());
                     pageIDtoBodyInfo.setHashMapTable();
+                    System.out.println("5"+pageIDtoBodyInfo.getHashMapTable());
                     pageIDToChildIDList.setHashMapTable();
-
+                    System.out.println("6"+pageIDToChildIDList.getHashMapTable());
+                    pageIDtoPageObject.setHashMapTable();
+                    System.out.println("7"+pageIDtoPageObject.getHashMapTable());
                     pageIDtoParentIDList.setHashMapTable();
+                    System.out.println("8"+pageIDtoParentIDList.getHashMapTable());
                     pageIDtoTitleInfo.setHashMapTable();
+                    System.out.println("9"+pageIDtoTitleInfo.getHashMapTable());
                     pageUrlToPageID.setHashMapTable();
+                    System.out.println("10"+pageUrlToPageID.getHashMapTable());
                     wordtoWordID.setHashMapTable();
-                    //visistedList = pageIDtoPageObject.getDateHashMapTable(); // update the visited list;
+                    System.out.println("11"+wordtoWordID.getHashMapTable());
+                    visistedList.put(url2,date); // update the visited list;
+                    System.out.println("2222222222222"+visistedList);
                 }
             }
             /*PageObject page = new PageObject();

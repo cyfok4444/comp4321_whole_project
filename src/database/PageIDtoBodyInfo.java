@@ -85,6 +85,7 @@ public class PageIDtoBodyInfo {
             System.out.println(entry.getKey().toString()+"     "+entry.getValue().toString());
         }
         System.out.println(pageIDtoBodyInfo.isEntryExists(1));
+        System.out.println(pageIDtoBodyInfo.hm);
     }
 
 

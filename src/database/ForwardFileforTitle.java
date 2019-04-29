@@ -64,7 +64,7 @@ public class ForwardFileforTitle {
             HashMap<Integer, ArrayList<Integer>> h2 = new HashMap<>();
             String key = new String(iterator.key());
             String value = new String(rocksDB.get(key.getBytes()));
-            if ( value =="{}"){
+            if ( "".equals(value)){
                 hashMap.put(Integer.parseInt(key),h2);
                 continue;
             }

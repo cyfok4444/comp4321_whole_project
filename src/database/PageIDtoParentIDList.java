@@ -97,7 +97,7 @@ public class PageIDtoParentIDList {
         arrayList.add(1111);
         pageIDtoParentIDList.addEntry(223,arrayList);
 
-        System.out.println(pageIDtoParentIDList.hm.get(223));
+        System.out.println(pageIDtoParentIDList.hm);
 
 
 

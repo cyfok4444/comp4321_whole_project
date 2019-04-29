@@ -78,7 +78,7 @@ public class PageIDtoChildIDList {
         arrayList.add(1111);
         pageIDToChildIDList.addEntry(223,arrayList);
 
-        System.out.println(pageIDToChildIDList.hm.get(123));
+        System.out.println(pageIDToChildIDList.hm);
 
 
 
