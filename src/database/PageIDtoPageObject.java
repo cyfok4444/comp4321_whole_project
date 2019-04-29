@@ -5,6 +5,7 @@ import function.*;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 public class PageIDtoPageObject {
 
@@ -157,7 +158,8 @@ public class PageIDtoPageObject {
         pageObject.setUrl("!!!!!!!");
         pageIDtoPageObject.addEntry(999,pageObject);
         System.out.println(pageIDtoPageObject.getDateHashMapTable().get("!!!!!!!"));
-        System.out.println(pageIDtoPageObject.hm);
-
+        for (Map.Entry<Integer,PageObject> entry : pageIDtoPageObject.getHashMapTable().entrySet()){
+            System.out.println(entry.getKey().toString()+"     "+entry.getValue().toString());
+        }
     }
 }

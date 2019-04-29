@@ -6,7 +6,7 @@ import org.rocksdb.RocksDBException;
 import org.rocksdb.RocksIterator;
 import java.util.*;
 import java.util.HashMap;
-
+import java.nio.file.Paths;
 public class ForwardFileforBody {
     protected RocksDB rocksDB;
     protected Options options;
@@ -15,7 +15,7 @@ public class ForwardFileforBody {
 
     public ForwardFileforBody(String dbpath){
 
-        this.dbpath = dbpath;
+        this.dbpath = dbpath; //Paths.get(dbpath).toAbsolutePath().normalize().toString();
         options = new Options();
         options.setCreateIfMissing(true);
         try {

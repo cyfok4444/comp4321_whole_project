@@ -99,7 +99,9 @@ public class PageIDtoParentIDList {
 
         System.out.println(pageIDtoParentIDList.hm);
 
-
+        for (Map.Entry<Integer,ArrayList<Integer>> entry : pageIDtoParentIDList.getHashMapTable().entrySet()){
+            System.out.println(entry.getKey().toString()+"     "+entry.getValue().toString());
+        }
 
 
     }

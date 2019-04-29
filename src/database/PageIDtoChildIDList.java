@@ -79,7 +79,9 @@ public class PageIDtoChildIDList {
         pageIDToChildIDList.addEntry(223,arrayList);
 
         System.out.println(pageIDToChildIDList.hm);
-
+        for (Map.Entry<Integer,ArrayList<Integer>> entry : pageIDToChildIDList.getHashMapTable().entrySet()){
+            System.out.println(entry.getKey().toString()+"     "+entry.getValue().toString());
+        }
 
 
     }

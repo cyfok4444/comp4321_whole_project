@@ -8,6 +8,7 @@ import org.rocksdb.RocksIterator;
 
 import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.Map;
 
 public class WordtoWordID {
 
@@ -131,6 +132,18 @@ public class WordtoWordID {
 
         ArrayList<String> result = new ArrayList<>();
         System.out.println(result.toString()=="[]");
+        HashMap<Integer,String> hm2 = new HashMap<>();
+        int i = 1;
+        for (Map.Entry<String,Integer>entry : wordtoWordID.hm.entrySet()){
+            hm2.put(entry.getValue(),entry.getKey());
+            if (entry.getValue()==31){
+                System.out.println("31313131313131:"+entry);
+            }
+            i++;
+        }
+        for (Map.Entry<Integer,String>entry:hm2.entrySet()){
+            System.out.println(entry.getKey()+": "+entry.getValue());
+        }
 
     }
 

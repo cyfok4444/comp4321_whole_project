@@ -65,6 +65,7 @@ public class PageIDtoTitleInfo {
     public boolean addEntry(Integer key,ArrayList<Double> info) throws RocksDBException{
         System.out.println("Enter");
         rocksDB.put(key.toString().getBytes(),info.toString().getBytes());
+
         return true;
     }
 
@@ -81,7 +82,9 @@ public class PageIDtoTitleInfo {
         a1.add(99999.0);
         pageIDtoTitleInfo.addEntry(2,a1);
         System.out.println(pageIDtoTitleInfo.hm);
-
+        for (Map.Entry<Integer,ArrayList<Double>> entry : pageIDtoTitleInfo.getHashMapTable().entrySet()){
+            System.out.println(entry.getKey().toString()+"     "+entry.getValue().toString());
+        }
 
 
     }

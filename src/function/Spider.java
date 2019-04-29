@@ -7,6 +7,7 @@ import org.rocksdb.RocksDBException;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Map;
+import java.util.Timer;
 
 
 public class Spider {
@@ -31,15 +32,17 @@ public class Spider {
 
 
             HashMap<String,Long> visistedList = pageIDtoPageObject.getDateHashMapTable();
-            System.out.println("111111111111111"+visistedList);
+            visistedList.put("https://www.ust.hk/map-directions", System.currentTimeMillis()*2);
+            //System.out.println("111111111111111"+visistedList);
             while(!targetUrl.isEmpty()){
                 String url2 = targetUrl.get(0);
                 targetUrl.remove(0);
                 Long lastDate = visistedList.get(url2);
-                if ( lastDate != null &&  lastDate == Crawler.getLastModifiedDate(url2)){
+                if ( lastDate != null &&  lastDate >= Crawler.getLastModifiedDate(url2)){
                     continue;
                 }
                 else{
+                    visistedList.put(url2,lastDate); // update the visited list;
                     PageObject pageObject = new PageObject();
                     pageObject.setUrl(url2);
                     ArrayList<String> keywordsTf =  Crawler.extractWords(url2);
@@ -231,29 +234,29 @@ public class Spider {
 
                     //update hashMap for all the DB
                     forwardFileforBody.setHashMapTable();
-                    System.out.println("1:"+forwardFileforBody.getHashMapTable());
+                    //System.out.println("1:"+forwardFileforBody.getHashMapTable());
                     forwardFileforTitle.setHashMapTable();
-                    System.out.println("2:"+forwardFileforTitle.getHashMapTable());
+                    //System.out.println("2:"+forwardFileforTitle.getHashMapTable());
                     invertFileforBody.setHashMapTable();
-                    System.out.println("3"+invertFileforBody.getHashMapTable());
+                    //System.out.println("3"+invertFileforBody.getHashMapTable());
                     invertFileforTitle.setHashMapTable();
-                    System.out.println("4"+invertFileforTitle.getHashMapTable());
+                    //System.out.println("4"+invertFileforTitle.getHashMapTable());
                     pageIDtoBodyInfo.setHashMapTable();
-                    System.out.println("5"+pageIDtoBodyInfo.getHashMapTable());
+                    //System.out.println("5"+pageIDtoBodyInfo.getHashMapTable());
                     pageIDToChildIDList.setHashMapTable();
-                    System.out.println("6"+pageIDToChildIDList.getHashMapTable());
+                    //System.out.println("6"+pageIDToChildIDList.getHashMapTable());
                     pageIDtoPageObject.setHashMapTable();
-                    System.out.println("7"+pageIDtoPageObject.getHashMapTable());
+                    //System.out.println("7"+pageIDtoPageObject.getHashMapTable());
                     pageIDtoParentIDList.setHashMapTable();
-                    System.out.println("8"+pageIDtoParentIDList.getHashMapTable());
+                    //System.out.println("8"+pageIDtoParentIDList.getHashMapTable());
                     pageIDtoTitleInfo.setHashMapTable();
-                    System.out.println("9"+pageIDtoTitleInfo.getHashMapTable());
+                    //System.out.println("9"+pageIDtoTitleInfo.getHashMapTable());
                     pageUrlToPageID.setHashMapTable();
-                    System.out.println("10"+pageUrlToPageID.getHashMapTable());
+                    //System.out.println("10"+pageUrlToPageID.getHashMapTable());
                     wordtoWordID.setHashMapTable();
-                    System.out.println("11"+wordtoWordID.getHashMapTable());
+                    //System.out.println("11"+wordtoWordID.getHashMapTable());
                     visistedList.put(url2,date); // update the visited list;
-                    System.out.println("2222222222222"+visistedList);
+                    //System.out.println("2222222222222"+visistedList);
                 }
             }
             /*PageObject page = new PageObject();
@@ -285,6 +288,6 @@ public class Spider {
     }
 
     public static void main (String args[]) throws RocksDBException{
-        go("https://hk.yahoo.com/");
+        go("https://www.cse.ust.hk/");
     }
 }
