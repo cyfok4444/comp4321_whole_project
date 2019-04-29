@@ -681,7 +681,6 @@ public class Score {
             query = query.substring(1, query.length() - 1);
             title = allInOneComputePhraseScoreTitle(query);
             content = allInOneComputePhraseScoreContent(query);
-
         }
 
         else {
@@ -700,9 +699,13 @@ public class Score {
                 content.put(in.getKey(),in.getValue());
         }
             return sortByValue(content);
-
     }
 
+    public ArrayList<Integer> getTheKeyReverseOrder (HashMap<Integer,Double> content){
+        ArrayList<Integer> reversekey = new ArrayList<>(content.keySet());
+        Collections.reverse(reversekey);
+        return reversekey;
+    }
 
     public static void main (String [] a) throws RocksDBException{
        Score score = new Score();
@@ -747,7 +750,7 @@ public class Score {
       HashMap<Integer,Double> h = new HashMap<>();
       h.put(1,10.888);
       h.put(7,9.9);
-      h.put(8,10.3);
+      h.put(8,9.9);
       System.out.print(Score.sortByValue(h));
 
 
