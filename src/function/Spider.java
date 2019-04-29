@@ -33,6 +33,9 @@ public class Spider {
 
             HashMap<String,Long> visistedList = pageIDtoPageObject.getDateHashMapTable();
             visistedList.put("https://www.ust.hk/map-directions", System.currentTimeMillis()*2);
+            visistedList.put("https://library.ust.hk/",System.currentTimeMillis()*2);
+            visistedList.put("https://www.ust.hk/lifehkust",System.currentTimeMillis()*2);
+            visistedList.put("https://www.ust.hk/academics/list",System.currentTimeMillis()*2);
             //System.out.println("111111111111111"+visistedList);
             while(!targetUrl.isEmpty()){
                 String url2 = targetUrl.get(0);

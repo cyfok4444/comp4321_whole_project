@@ -53,6 +53,10 @@ public class PageIDtoChildIDList {
             value = value.substring(1,value.length()-1);
             String [] s = value.split(", ");
             ArrayList<Integer> arrayList = new ArrayList<>();
+            if ( "".equals(s[0])){
+                hashMap.put(Integer.parseInt(key),arrayList);
+                continue;
+            }
             for (int i = 0 ; i < s.length ; i++){
                 arrayList.add(Integer.parseInt(s[i]));
             }

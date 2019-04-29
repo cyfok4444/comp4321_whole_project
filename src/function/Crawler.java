@@ -24,20 +24,23 @@ public class Crawler
     {
         url = _url;
     }
-    public ArrayList<String> extractWords() throws ParserException
+    public ArrayList<String> extractWords()
 
     {
 
-        ArrayList<String> result = new ArrayList<>();
-        StringBean bean = new StringBean();
-        bean.setURL(url);
-        bean.setLinks(false);
-        String contents = bean.getStrings();
-        StringTokenizer st = new StringTokenizer(contents);
-        while (st.hasMoreTokens()) {
-            result.add(st.nextToken());
-        }
-        return result;
+            ArrayList<String> result = new ArrayList<>();
+            StringBean bean = new StringBean();
+            bean.setURL(url);
+            bean.setLinks(false);
+            String contents = bean.getStrings();
+            StringTokenizer st = new StringTokenizer(contents);
+            while (st.hasMoreTokens()) {
+                result.add(st.nextToken());
+            }
+            return result;
+
+
+
 
     }
 
@@ -122,7 +125,6 @@ public class Crawler
 
         }
         catch (ParserException e){
-            e.printStackTrace();
         }
 
         return "";
@@ -145,33 +147,52 @@ public class Crawler
     }
 
     public static Integer getSize(String url) throws ParserException{
+
+        try {
             Parser parser = new Parser(url);
             int length = parser.getConnection().getContentLength();
-            if (length == -1 ) {
+            if (length == -1) {
 
                 ArrayList<String> arr = extractWords(url);
                 Integer i = 0;
                 for (String s : arr) i += s.length();
                 return i;
-            }
-            else return length;
+            } else return length;
+        }
+        catch (ParserException p ){
+
+        }
+        return 0;
     }
 
     public long getLastModifiedDate() throws ParserException{
 
-
-            Parser parser = new Parser(url);
-            long date = parser.getConnection().getLastModified();
-            if (date == 0 )return System.currentTimeMillis();
-            else return date;
+            try {
+                Parser parser = new Parser(url);
+                long date = parser.getConnection().getLastModified();
+                if (date == 0) return System.currentTimeMillis();
+                else return date;
+            }catch (ParserException p){
+                System.out.println("Cannot get");
+            }
+            return System.currentTimeMillis();
     }
 
     public static long getLastModifiedDate(String url) throws ParserException{
 
-            Parser parser = new Parser(url);
+            /*Parser parser = new Parser(url);
             long date = parser.getConnection().getLastModified();
             if (date == 0 )return System.currentTimeMillis();
+            else return date;*/
+        try {
+            Parser parser = new Parser(url);
+            long date = parser.getConnection().getLastModified();
+            if (date == 0) return System.currentTimeMillis();
             else return date;
+        }catch (ParserException p ){
+            System.out.println("Cannot get");
+        }
+        return System.currentTimeMillis();
 
     }
 
