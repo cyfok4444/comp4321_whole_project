@@ -164,6 +164,7 @@ public class Score {
        double qsize = query1.qLength(queryterm);
 
        for (Map.Entry<Integer,Integer> term : queryterm.entrySet()){
+           if(inverted_table_content.containsKey(term.getKey())) continue;
            HashMap<Integer,Integer> dochave = inverted_table_content.get(term.getKey());
            int f = dochave.size();
            double df = (double)f;
@@ -199,6 +200,7 @@ public class Score {
         double qsize = query1.qLength(queryterm);
 
         for (Map.Entry<Integer,Integer> term : queryterm.entrySet()){
+            if(inverted_table_title.containsKey(term.getKey())) continue;
             HashMap<Integer,Integer> dochave = inverted_table_title.get(term.getKey());
             int f = dochave.size();
             double df = (double)f;
