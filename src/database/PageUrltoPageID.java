@@ -123,14 +123,14 @@ public class PageUrltoPageID {
 
         public static void main(String [] args) throws RocksDBException{ // done
             PageUrltoPageID pageUrlToPageID = new PageUrltoPageID("db/db_PageUrlToPageID");
-            pageUrlToPageID.addEntry("hy");
+   /*         pageUrlToPageID.addEntry("hy");
             pageUrlToPageID.addEntry("hiiiiiiii");
             pageUrlToPageID.addEntry("hiiiiiiiippppp");
             pageUrlToPageID.addEntry("hiii");
             pageUrlToPageID.addEntry("abcd");
             pageUrlToPageID.addEntry("qwe");
             pageUrlToPageID.addEntry("ok");
-            System.out.println(pageUrlToPageID.getMaxId());
+            System.out.println(pageUrlToPageID.getMaxId()); */
             HashMap<Integer,String> hm2 = new HashMap<>();
             for (Map.Entry<String,Integer>entry : pageUrlToPageID.hm.entrySet()){
                 hm2.put(entry.getValue(),entry.getKey());

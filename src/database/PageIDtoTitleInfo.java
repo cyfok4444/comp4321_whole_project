@@ -75,13 +75,13 @@ public class PageIDtoTitleInfo {
     }
     public static void main (String [] args) throws RocksDBException{ //done
         PageIDtoTitleInfo pageIDtoTitleInfo = new PageIDtoTitleInfo("db/db_PageIDtoTitleInfo");
-        ArrayList<Double> a1 = new ArrayList<>();
+    /*    ArrayList<Double> a1 = new ArrayList<>();
         a1.add(10.0);
         a1.add(99.9);
         pageIDtoTitleInfo.addEntry(1,a1);
         a1.add(99999.0);
         pageIDtoTitleInfo.addEntry(2,a1);
-        System.out.println(pageIDtoTitleInfo.hm);
+        System.out.println(pageIDtoTitleInfo.hm);*/
         for (Map.Entry<Integer,ArrayList<Double>> entry : pageIDtoTitleInfo.getHashMapTable().entrySet()){
             System.out.println(entry.getKey().toString()+"     "+entry.getValue().toString());
         }

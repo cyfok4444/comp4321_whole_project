@@ -59,7 +59,6 @@ public class Score {
 
            InvertFileforTitle invertFileforTitle = new InvertFileforTitle("db/db_InvertFileforTitle");
            inverted_table_title = invertFileforTitle.getHashMapTable();
-
            PageIDtoBodyInfo pageIDtoBodyInfo = new PageIDtoBodyInfo("db/db_PageIDtoBodyInfo");
            sizemaxtfContent = pageIDtoBodyInfo.getHashMapTable();
 
@@ -164,7 +163,7 @@ public class Score {
        double qsize = query1.qLength(queryterm);
 
        for (Map.Entry<Integer,Integer> term : queryterm.entrySet()){
-           if(inverted_table_content.containsKey(term.getKey())) continue;
+           if(!inverted_table_content.containsKey(term.getKey())) continue;
            HashMap<Integer,Integer> dochave = inverted_table_content.get(term.getKey());
            int f = dochave.size();
            double df = (double)f;
@@ -200,7 +199,10 @@ public class Score {
         double qsize = query1.qLength(queryterm);
 
         for (Map.Entry<Integer,Integer> term : queryterm.entrySet()){
-            if(inverted_table_title.containsKey(term.getKey())) continue;
+            if(!inverted_table_title.containsKey(term.getKey())) {
+                continue;
+            }
+            System.out.println(term.getKey());
             HashMap<Integer,Integer> dochave = inverted_table_title.get(term.getKey());
             int f = dochave.size();
             double df = (double)f;
@@ -276,7 +278,7 @@ public class Score {
 
         for (int i = 0  ; i < distinct.size() ; i++) {
             HashMap<Integer,Integer> doc = inverted_table_content.get(distinct.get(i));
-            Integer []  a = doc.keySet().toArray(new Integer[doc.size()]);
+            Integer [] a =doc.keySet().toArray(new Integer[doc.size()]);
             docs.add(a);
         }
 
@@ -326,15 +328,21 @@ public class Score {
         Query q = new Query();
         ArrayList<Integer> paragh = q.convertToWordIDPhrase(query);
         ArrayList<Integer> distinct = q.getDistinctSetOfKeyword(paragh);
+        System.out.println("Distinct: " + distinct);
         ArrayList<Integer[]> docs = new ArrayList<>();
-        for (int i = 0  ; i < distinct.size() ; i++)
-            if(!inverted_table_title.containsKey(distinct.get(i))) return new Integer[0];
+        for (int i = 0  ; i < distinct.size() ; i++) {
+            if (!inverted_table_title.containsKey(distinct.get(i))){
+                return new Integer[0];
+            }
+        }
 
         for (int i = 0  ; i < distinct.size() ; i++) {
-            HashMap<Integer,Integer> doc = inverted_table_title.get(distinct.get(i));
-            Integer []  a = doc.keySet().toArray(new Integer[doc.size()]);
+            HashMap<Integer,Integer> doc = inverted_table_content.get(distinct.get(i));
+            Integer [] a =doc.keySet().toArray(new Integer[doc.size()]);
             docs.add(a);
         }
+
+
 
         int num = docs.size();
         Integer[] result = {};
@@ -345,6 +353,10 @@ public class Score {
             Set<Integer> s2 = new HashSet<Integer>(Arrays.asList(second));
             s1.retainAll(s2);
             result = s1.toArray(new Integer[s1.size()]);
+            System.out.println("!!!!!!!!!!!!!!!!");
+            for ( int i = 0 ; i < result.length ; i++){
+                System.out.println(i+" : "+result[i]);
+            }
             int counter = 2;
             num = num-2;
             while (num != 0 ){
@@ -371,6 +383,7 @@ public class Score {
             return docs.get(0);
         }
         return result;
+
 
     }
     /**
@@ -473,6 +486,10 @@ public class Score {
             Integer suitable_s = -1;
             Integer suitable_e = -1;
             boolean containAll = false;
+            System.out.println(first_Keyword);
+            if ( first_Keyword==null){
+                continue;
+            }
             for (int i = 0 ; i < first_Keyword.size() ; i++){
                 Integer posNum = first_Keyword.get(i);
                 System.out.println("Start:" + posNum);
@@ -681,8 +698,9 @@ public class Score {
         HashMap<Integer,Double> content;
         if (Query.isPhraseSearch(query)) {
             query = query.substring(1, query.length() - 1);
-            title = allInOneComputePhraseScoreTitle(query);
             content = allInOneComputePhraseScoreContent(query);
+            title = allInOneComputePhraseScoreTitle(query);
+            //title = new HashMap<Integer, Double>();
         }
 
         else {
@@ -713,9 +731,9 @@ public class Score {
     public static void main (String [] a) throws RocksDBException{
        Score score = new Score();
        //System.out.println(score.findPossiblePageID("loving love love love love hong hong hong loves").toString());
-       Integer[] p = score.findPossiblePageID("hong kong");
-       for (Integer b : p) System.out.println(b);
-       ArrayList<Integer> arr = new ArrayList<>();
+       //Integer[] p = score.findPossiblePageID("hong kong");
+       //for (Integer b : p) System.out.println(b);
+       /*ArrayList<Integer> arr = new ArrayList<>();
        arr.add(-1);
        arr.add(-1);
        arr.add(-1);
@@ -728,10 +746,10 @@ public class Score {
        arr.add(-1);
        arr.add(-1);
        arr.add(-1);
-       arr.add(-1);
+       arr.add(-1);*/
 
       //System.out.println(score.trimStopStartEnd(arr).toString());
-      System.out.println(score.stopNumStart(arr).toString());
+      /*System.out.println(score.stopNumStart(arr).toString());
       System.out.println(score.stopNumEnd(arr).toString());
       System.out.println(score.pageHavePhraseContent("On hong in kong in"));
       HashMap<Integer,Double> k = score.allInOneComputePhraseScoreContent("On hong in kong in");
@@ -750,11 +768,14 @@ public class Score {
       b.add(3);
       b.add(-1);
       System.out.println(score.trimStopStartEnd(b));*/
-      HashMap<Integer,Double> h = new HashMap<>();
+      /*HashMap<Integer,Double> h = new HashMap<>();
       h.put(1,10.888);
       h.put(7,9.9);
-      h.put(8,9.9);
-      System.out.print(Score.sortByValue(h));
+      h.put(8,9.9);*/
+      //System.out.print(Score.sortByValue(h));
+      /*Integer[] i = score.findPossiblePageIDTitle("Hong Kong University");
+      for (Integer e : i) System.out.println(e);*/
+      System.out.println(score.ranking("hkust"));
 
 
 

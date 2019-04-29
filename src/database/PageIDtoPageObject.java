@@ -143,7 +143,7 @@ public class PageIDtoPageObject {
 
     public static void main (String args[]) throws RocksDBException{
         PageIDtoPageObject pageIDtoPageObject = new PageIDtoPageObject("db/db_PageIDtoPageObject");
-        PageObject pageObject = new PageObject();
+  /*      PageObject pageObject = new PageObject();
         Long date = new Long(10);
         pageObject.setLastModificationDate(date);
         HashMap<String,Integer> words = new HashMap<>();
@@ -157,7 +157,7 @@ public class PageIDtoPageObject {
         pageObject.setTitle("GOOD title ar");
         pageObject.setUrl("!!!!!!!");
         pageIDtoPageObject.addEntry(999,pageObject);
-        System.out.println(pageIDtoPageObject.getDateHashMapTable().get("!!!!!!!"));
+        System.out.println(pageIDtoPageObject.getDateHashMapTable().get("!!!!!!!"));   */
         for (Map.Entry<Integer,PageObject> entry : pageIDtoPageObject.getHashMapTable().entrySet()){
             System.out.println(entry.getKey().toString()+"     "+entry.getValue().toString());
         }

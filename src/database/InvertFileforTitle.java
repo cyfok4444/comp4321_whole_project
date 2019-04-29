@@ -13,7 +13,7 @@ public class InvertFileforTitle {
         protected RocksDB rocksDB;
         protected Options options;
         protected  String dbpath;
-        protected HashMap<Integer,HashMap<Integer,Integer>> hm = new HashMap<>();
+        public HashMap<Integer,HashMap<Integer,Integer>> hm = new HashMap<>();
 
         public InvertFileforTitle(String dbpath){
 
@@ -39,6 +39,10 @@ public class InvertFileforTitle {
                 HashMap<Integer, Integer> h2 = new HashMap<>();
                 String key = new String(iterator.key());
                 String value = new String(rocksDB.get(key.getBytes()));
+                if ( "".equals(value)){
+                    hashMap.put(Integer.parseInt(key),h2);
+                    continue;
+                }
                 String [] single_wordID = value.split("Sep");
                 for (int i = 0 ; i< single_wordID.length ; i++){
                     String [] sep = single_wordID[i].split(" ");
@@ -60,6 +64,10 @@ public class InvertFileforTitle {
                 HashMap<Integer, Integer> h2 = new HashMap<>();
                 String key = new String(iterator.key());
                 String value = new String(rocksDB.get(key.getBytes()));
+                if ( "".equals(value)){
+                    hashMap.put(Integer.parseInt(key),h2);
+                    continue;
+                }
                 String [] single_wordID = value.split("Sep");
                 for (int i = 0 ; i< single_wordID.length ; i++){
                     String [] sep = single_wordID[i].split(" ");
@@ -84,6 +92,7 @@ public class InvertFileforTitle {
                 s+="Sep";
             }
             rocksDB.put(key.toString().getBytes(),s.getBytes());
+            hm.put(key,hashMap);
             return true;
         }
 
@@ -115,10 +124,10 @@ public class InvertFileforTitle {
         public static void main (String args[]) {         //done
             InvertFileforTitle wp = new InvertFileforTitle("db/db_InvertFileforTitle");
             HashMap<Integer, Integer> hm2 = new HashMap<>();
-            hm2.put(10, 10);
-            hm2.put(1, 999999999);
+          //  hm2.put(10, 10);
+        //    hm2.put(1, 999999999);
             try {
-                wp.addEntry(hm2, 1111111);
+            //    wp.addEntry(hm2, 1111111);
                 HashMap<Integer, HashMap<Integer, Integer>> hm = wp.getHashMapTable();
                 for (Map.Entry<Integer, HashMap<Integer, Integer>> Entry : hm.entrySet()) {
                     System.out.println(Entry.getKey().toString() + "    " + Entry.getValue().toString());

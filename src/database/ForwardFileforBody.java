@@ -111,7 +111,7 @@ public class ForwardFileforBody {
 
     public static void main(String [] args) throws RocksDBException{ // done
         ForwardFileforBody forwardFileforBody = new ForwardFileforBody("db/db_ForwardFileforBody");
-        HashMap<Integer,ArrayList<Integer> > hashMap = new HashMap<>();
+   /*     HashMap<Integer,ArrayList<Integer> > hashMap = new HashMap<>();
         ArrayList<Integer> arrayList = new ArrayList<>();
         arrayList.add(1);
         arrayList.add(2);
@@ -126,7 +126,7 @@ public class ForwardFileforBody {
         forwardFileforBody.addEntry(hashMap,11);
         forwardFileforBody.addEntry(hashMap,111111111);
         System.out.println("4:"+new String(forwardFileforBody.rocksDB.get("111111111".getBytes())));
-        System.out.println(forwardFileforBody.hm);
+        System.out.println(forwardFileforBody.hm);*/
         for (Map.Entry<Integer,HashMap<Integer,ArrayList<Integer>>> Entry: forwardFileforBody.hm.entrySet()){
             System.out.println((Entry.getKey().toString())+"         "+Entry.getValue().toString());
         }

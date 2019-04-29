@@ -114,11 +114,11 @@ public class InvertFileforBody {
 
     public static void main (String args[]){ // done
         InvertFileforBody wp = new InvertFileforBody("db/db_InvertFileforBody");
-        HashMap<Integer,Integer> hm2 = new HashMap<>();
+     /*   HashMap<Integer,Integer> hm2 = new HashMap<>();
         hm2.put(10,10);
-        hm2.put(1,999);
+        hm2.put(1,999);*/
         try{
-            wp.addEntry(hm2,10);
+          //  wp.addEntry(hm2,10);
             HashMap<Integer, HashMap<Integer,Integer>> hm = wp.getHashMapTable();
             for (Map.Entry<Integer, HashMap<Integer,Integer>>Entry : hm.entrySet()){
                 System.out.println(Entry.getKey().toString()+"    "+Entry.getValue().toString());

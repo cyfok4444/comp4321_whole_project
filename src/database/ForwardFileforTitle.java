@@ -110,7 +110,7 @@ public class ForwardFileforTitle {
 
     public static void main(String [] args) throws RocksDBException{  //done
         ForwardFileforTitle forwardFileforTitle = new ForwardFileforTitle("db/db_ForwardFileforTitle");
-        HashMap<Integer,ArrayList<Integer> > hashMap = new HashMap<>();
+    /*    HashMap<Integer,ArrayList<Integer> > hashMap = new HashMap<>();
         HashMap<Integer,ArrayList<Integer> > hashMap2 = new HashMap<>();
         ArrayList<Integer> arrayList = new ArrayList<>();
         arrayList.add(1);
@@ -137,7 +137,7 @@ public class ForwardFileforTitle {
             //System.out.println(new String(iterator.key()) + " " + new String(iterator.value()));
 
         }
-
+*/
         HashMap<Integer,HashMap<Integer,ArrayList<Integer>> > h = forwardFileforTitle.getHashMapTable();
 
         for (Map.Entry<Integer,HashMap<Integer,ArrayList<Integer>> > item : h.entrySet()) {

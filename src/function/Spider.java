@@ -32,10 +32,6 @@ public class Spider {
 
 
             HashMap<String,Long> visistedList = pageIDtoPageObject.getDateHashMapTable();
-            visistedList.put("https://www.ust.hk/map-directions", System.currentTimeMillis()*2);
-            visistedList.put("https://library.ust.hk/",System.currentTimeMillis()*2);
-            visistedList.put("https://www.ust.hk/lifehkust",System.currentTimeMillis()*2);
-            visistedList.put("https://www.ust.hk/academics/list",System.currentTimeMillis()*2);
             //System.out.println("111111111111111"+visistedList);
             while(!targetUrl.isEmpty()){
                 String url2 = targetUrl.get(0);
@@ -195,7 +191,7 @@ public class Spider {
                             maxTfTitle = (double)wordTfTitle;
                         }
                         if (invertFileforTitle.isEntryExists(wordID)){
-                            HashMap<Integer,Integer> hm = invertFileforBody.getEntry(wordID);
+                            HashMap<Integer,Integer> hm = invertFileforTitle.hm.get(wordID);
                             hm.put(pageId,wordTfTitle);
                             invertFileforTitle.addEntry(hm,wordID);
                         }
@@ -219,7 +215,7 @@ public class Spider {
                     for ( String s : childLinks){
                         Integer childId = pageUrlToPageID.getPageId(s);
                         if(pageIDtoParentIDList.isEntryExists(childId)){
-                            ArrayList<Integer> parentList = pageIDtoParentIDList.getEntry(childId);
+                            ArrayList<Integer> parentList = pageIDtoParentIDList.hm.get(childId);
                             if(!parentList.contains(pageId)) {
                                 parentList.add(pageId);
                             }
@@ -247,7 +243,7 @@ public class Spider {
                     pageIDtoBodyInfo.setHashMapTable();
                     //System.out.println("5"+pageIDtoBodyInfo.getHashMapTable());
                     pageIDToChildIDList.setHashMapTable();
-                    //System.out.println("6"+pageIDToChildIDList.getHashMapTable());
+                   // System.out.println("6"+pageIDToChildIDList.getHashMapTable());
                     pageIDtoPageObject.setHashMapTable();
                     //System.out.println("7"+pageIDtoPageObject.getHashMapTable());
                     pageIDtoParentIDList.setHashMapTable();

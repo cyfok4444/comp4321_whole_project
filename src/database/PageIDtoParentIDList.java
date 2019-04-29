@@ -14,7 +14,7 @@ public class PageIDtoParentIDList {
     protected RocksDB rocksDB;
     protected Options options;
     protected  String dbpath;
-    protected HashMap<Integer,ArrayList<Integer>> hm = new HashMap<>();
+    public HashMap<Integer,ArrayList<Integer>> hm = new HashMap<>();
 
     public PageIDtoParentIDList(String dbpath){
 
@@ -67,6 +67,7 @@ public class PageIDtoParentIDList {
     public boolean addEntry(Integer key, ArrayList<Integer> parent) throws RocksDBException{
         System.out.println("Enter");
             rocksDB.put(key.toString().getBytes(),parent.toString().getBytes());
+            hm.put(key,parent);
         return true;
     }
 
@@ -91,14 +92,14 @@ public class PageIDtoParentIDList {
 
     public static void main (String [] args) throws RocksDBException{ // done
         PageIDtoParentIDList pageIDtoParentIDList = new PageIDtoParentIDList("db/db_PageIDtoParentIDList");
-        ArrayList<Integer> arrayList = new ArrayList<>();
+ /*       ArrayList<Integer> arrayList = new ArrayList<>();
         arrayList.add(10);
         arrayList.add(10);
         arrayList.add(1111);
         pageIDtoParentIDList.addEntry(223,arrayList);
 
         System.out.println(pageIDtoParentIDList.hm);
-
+*/
         for (Map.Entry<Integer,ArrayList<Integer>> entry : pageIDtoParentIDList.getHashMapTable().entrySet()){
             System.out.println(entry.getKey().toString()+"     "+entry.getValue().toString());
         }

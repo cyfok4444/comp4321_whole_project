@@ -110,7 +110,10 @@ public class Query {
 
 
     public static boolean isPhraseSearch (String query){
-        if ( query.charAt(0) == 34 && query.charAt(query.length()-1) == 34) return true;
+        if ( query.charAt(0) == 34 && query.charAt(query.length()-1) == 34) {
+            System.out.println(query + "true");
+            return true;
+        }
         else return false;
     }
 

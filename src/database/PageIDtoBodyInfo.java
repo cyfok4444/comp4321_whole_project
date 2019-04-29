@@ -75,17 +75,17 @@ public class PageIDtoBodyInfo {
     }
     public static void main (String [] args) throws RocksDBException{ // done
         PageIDtoBodyInfo pageIDtoBodyInfo = new PageIDtoBodyInfo("db/db_PageIDtoBodyInfo");
-        ArrayList<Double> arrayList = new ArrayList<>();
-        arrayList.add(10.0);
-        arrayList.add(999.0);
-        pageIDtoBodyInfo.addEntry(1,arrayList);
+       // ArrayList<Double> arrayList = new ArrayList<>();
+     //   arrayList.add(10.0);
+       // arrayList.add(999.0);
+       // pageIDtoBodyInfo.addEntry(1,arrayList);
         HashMap<Integer,ArrayList<Double>> hm = pageIDtoBodyInfo.getHashMapTable();
-        System.out.println(hm);
+      //  System.out.println(hm);
         for (Map.Entry<Integer,ArrayList<Double>> entry : hm.entrySet()){
             System.out.println(entry.getKey().toString()+"     "+entry.getValue().toString());
         }
-        System.out.println(pageIDtoBodyInfo.isEntryExists(1));
-        System.out.println(pageIDtoBodyInfo.hm);
+      //  System.out.println(pageIDtoBodyInfo.isEntryExists(1));
+      //  System.out.println(pageIDtoBodyInfo.hm);
     }
 
 

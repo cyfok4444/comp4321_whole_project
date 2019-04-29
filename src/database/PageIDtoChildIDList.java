@@ -36,6 +36,10 @@ public class PageIDtoChildIDList {
             value = value.substring(1,value.length()-1);
             String [] s = value.split(", ");
             ArrayList<Integer> arrayList = new ArrayList<>();
+            if ( "".equals(s[0]) ) {
+                hashMap.put(Integer.parseInt(key), arrayList);
+                continue;
+            }
             for (int i = 0 ; i < s.length ; i++){
                 arrayList.add(Integer.parseInt(s[i]));
             }
@@ -76,14 +80,14 @@ public class PageIDtoChildIDList {
     }
     public static void main (String [] args) throws RocksDBException{ // done
         PageIDtoChildIDList pageIDToChildIDList = new PageIDtoChildIDList("db/db_PageIDtoChildIDList");
-        ArrayList<Integer> arrayList = new ArrayList<>();
+    /*    ArrayList<Integer> arrayList = new ArrayList<>();
         arrayList.add(10);
         arrayList.add(10);
         arrayList.add(1111);
         pageIDToChildIDList.addEntry(223,arrayList);
 
         System.out.println(pageIDToChildIDList.hm);
-        for (Map.Entry<Integer,ArrayList<Integer>> entry : pageIDToChildIDList.getHashMapTable().entrySet()){
+*/        for (Map.Entry<Integer,ArrayList<Integer>> entry : pageIDToChildIDList.getHashMapTable().entrySet()){
             System.out.println(entry.getKey().toString()+"     "+entry.getValue().toString());
         }
 

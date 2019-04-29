@@ -27,7 +27,6 @@ public class Crawler
     public ArrayList<String> extractWords()
 
     {
-
             ArrayList<String> result = new ArrayList<>();
             StringBean bean = new StringBean();
             bean.setURL(url);
@@ -38,16 +37,11 @@ public class Crawler
                 result.add(st.nextToken());
             }
             return result;
-
-
-
-
     }
 
     public static ArrayList<String> extractWords(String url) throws ParserException
 
     {
-
         ArrayList<String> result = new ArrayList<>();
         StringBean bean = new StringBean();
         bean.setURL(url);
@@ -58,7 +52,6 @@ public class Crawler
             result.add(st.nextToken());
         }
         return result;
-
     }
 
     public ArrayList<String> extractLinks() throws ParserException
@@ -146,7 +139,7 @@ public class Crawler
 
     }
 
-    public static Integer getSize(String url) throws ParserException{
+    public static Integer getSize(String url) {
 
         try {
             Parser parser = new Parser(url);
@@ -166,19 +159,13 @@ public class Crawler
     }
 
     public long getLastModifiedDate() throws ParserException{
-
-            try {
                 Parser parser = new Parser(url);
                 long date = parser.getConnection().getLastModified();
                 if (date == 0) return System.currentTimeMillis();
                 else return date;
-            }catch (ParserException p){
-                System.out.println("Cannot get");
-            }
-            return System.currentTimeMillis();
     }
 
-    public static long getLastModifiedDate(String url) throws ParserException{
+    public static long getLastModifiedDate(String url){
 
             /*Parser parser = new Parser(url);
             long date = parser.getConnection().getLastModified();
@@ -193,7 +180,6 @@ public class Crawler
             System.out.println("Cannot get");
         }
         return System.currentTimeMillis();
-
     }
 
 
