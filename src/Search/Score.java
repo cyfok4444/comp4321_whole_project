@@ -403,8 +403,12 @@ public class Score {
             for (int i = 0 ; i < first_Keyword.size() ; i++){
                 Integer posNum = first_Keyword.get(i);
                 System.out.println("Start:" + posNum);
-                if (term.size() == 1 && distinctSetOfKeyword.size() ==1 )
+                if (term.size() == 1 && distinctSetOfKeyword.size() ==1 ){
                     containAll = true;
+                    suitable_s = posNum;
+                    suitable_e = posNum;
+
+                }
                 for (int j = 1 ; j < trimStopStartEnd.size() ; j++){
                     if (containAll) break;
                     Integer queryNextTerm = trimStopStartEnd.get(j);
@@ -419,6 +423,7 @@ public class Score {
                     }
                     if (queryNextTerm == -1) {
                         if (allPos.contains(posNum)) {
+                            System.out.println("-1 term");
                             break;
                         }
                     }
@@ -471,6 +476,7 @@ public class Score {
             System.out.println("PageObject: " + page);
             HashMap<Integer,ArrayList<Integer>> pagePos = titlePos.get(page);
             ArrayList<Integer> allPos = allThePos(pagePos);
+            System.out.print(allPos);
             ArrayList<Integer> first_Keyword = pagePos.get(trimStopStartEnd.get(0));
             Integer suitable_s = -1;
             Integer suitable_e = -1;
@@ -479,8 +485,12 @@ public class Score {
 
                 Integer posNum = first_Keyword.get(i);
                 System.out.println("Start:" + posNum);
-                if (term.size() == 1 && distinctSetOfKeyword.size() ==1 )
+                if (term.size() == 1 && distinctSetOfKeyword.size() ==1 ){
                     containAll = true;
+                    suitable_s = posNum;
+                    suitable_e = posNum;
+
+                }
                 for (int j = 1 ; j < trimStopStartEnd.size() ; j++){
                     if (containAll) break;
                     Integer queryNextTerm = trimStopStartEnd.get(j);
@@ -495,6 +505,7 @@ public class Score {
                     }
                     if (queryNextTerm == -1) {
                         if (allPos.contains(posNum)) {
+                            System.out.println("All pos: " + allPos);
                             break;
                         }
                     }
@@ -512,6 +523,7 @@ public class Score {
             if (containAll){
                 for (int i = 1 ; i <= stopNumStart; i++){
                     System.out.println("first");
+                    System.out.println("Suitable s: "+ suitable_s);
                     if (allPos.contains(suitable_s-i) || (suitable_s-i <= 0)) containAll=false;
                 }
             }
@@ -639,8 +651,10 @@ public class Score {
     public ArrayList<Integer> allThePos (HashMap<Integer,ArrayList<Integer>> posList){
         ArrayList<Integer> result = new ArrayList<>();
         for (Map.Entry<Integer,ArrayList<Integer>> in : posList.entrySet()){
+            System.out.println("Key: " + in.getKey() + " " + in.getValue());
             result.addAll(in.getValue());
         }
+        Collections.sort(result);
         return result;
     }
 
@@ -763,7 +777,9 @@ public class Score {
         //System.out.print(Score.sortByValue(h));
 
         //System.out.print(score.getTheKeyReverseOrder(Score.sortByValue(h)));
-        System.out.println(score.ranking("\"Researchers Awarded\""));
+        System.out.println(score.ranking("\"School of Engine\""));
+        //System.out.println(contentPos);
+        //PageUrltoPageID pageUrltoPageID = new PageUrltoPageID("db/db_PageUrlToPageID");
 
 
 

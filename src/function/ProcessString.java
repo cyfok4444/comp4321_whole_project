@@ -1,8 +1,9 @@
 package function;
 
-import java.util.ArrayList;
+import java.util.*;
 import java.util.HashMap;
 import java.util.LinkedHashMap;
+
 
 public class ProcessString {
 
@@ -47,10 +48,10 @@ public class ProcessString {
     public static HashMap<String,ArrayList<Integer>> stopWordRemovePos(HashMap<String,ArrayList<Integer>> input){
         StopStem stopStem = new StopStem("stopword.txt");
         ArrayList<String> delete = new ArrayList<>();
-        for (HashMap.Entry<String,ArrayList<Integer>> entry: input.entrySet()){
-            System.out.print(entry.toString());
+        for (Map.Entry<String,ArrayList<Integer>> entry : input.entrySet()){
+            //System.out.println(entry.getKey());
             if (stopStem.isStopWord(entry.getKey())){
-                //input.remove(entry.getKey());
+                //System.out.println(entry.getKey());
                 delete.add(entry.getKey());
             }
         }
@@ -113,17 +114,33 @@ public class ProcessString {
     public static void main (String [] args){
         ArrayList<String> k = new ArrayList<>();
 
-        k.add("love");
-        k.add("ABCD");
-        k.add("loves");
-        k.add("loving");
+        //k.add("love");
+        //k.add("ABCD");
+        //k.add("loves");
+        k.add("School");
+        k.add("of");
+        k.add("Engineering");
+
+
 
         k = removeRubbish(k);
-        k = stopWordRemoveTf(k);
-        HashMap<String,Integer> h = ProcessString.keyWordTf(k);
-        for (HashMap.Entry<String,Integer> entry : h.entrySet()) {
+        HashMap<String,ArrayList<Integer>> y = keyWordPos(k);
+        //HashMap<String,ArrayList<Integer>> i = stopWordRemovePos(y);
+        //System.out.println(i);
+        for (HashMap.Entry<String,ArrayList<Integer>> entry : y.entrySet()) {
             System.out.println(entry.getKey() + " " + entry.getValue());
         }
+
+        System.out.println("");
+
+        HashMap<String,ArrayList<Integer>> l = stopWordRemovePos(y);
+        for (HashMap.Entry<String,ArrayList<Integer>> entry : l.entrySet()) {
+            System.out.println(entry.getKey() + " " + entry.getValue());
+        }
+        /*HashMap<String,Integer> h = ProcessString.keyWordTf(k);
+        for (HashMap.Entry<String,Integer> entry : h.entrySet()) {
+            System.out.println(entry.getKey() + " " + entry.getValue());
+        }*/
         /*HashMap<String, ArrayList<Integer>> a = keyWordPos(k);
         for (HashMap.Entry<String, ArrayList<Integer>> entry : a.entrySet()) {
             String key = entry.getKey();
