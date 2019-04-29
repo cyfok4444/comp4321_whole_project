@@ -162,7 +162,7 @@ public class PageIDtoPageObject {
         for (Map.Entry<Integer,PageObject> entry : pageIDtoPageObject.getHashMapTable().entrySet()){
             System.out.println(entry.getKey().toString()+"     "+entry.getValue().toString());
         }
-        HashMap<Integer,PageObject> a = pageIDtoPageObject.getHashMapTable();
-        System.out.println(a.get(51).toString());
+        //HashMap<Integer,PageObject> a = pageIDtoPageObject.getHashMapTable();
+        //System.out.println(a.get(15).toString());
     }
 }

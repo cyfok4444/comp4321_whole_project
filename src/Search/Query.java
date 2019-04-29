@@ -21,19 +21,7 @@ public class Query {
          }
 
     }
-    /*public Query() throws RocksDBException{
-        //////Comment if have database
-        ///////////////////////////
-        word_ID = new HashMap<>();
-        word_ID.put("love",1);
-        word_ID.put("hong",2);
-        word_ID.put("kong",3);
-        word_ID.put("ust",4);
-        word_ID.put("cool",5);
-        //////////////////////////
-        //WordtoWordID wordtoWordID = new WordtoWordID("db/db_WordtoWordID");
-        //word_ID = wordtoWordID.getHashMapTable();
-    }*/
+
     /**
      * Only for non-phrase
      * @param query
@@ -67,22 +55,6 @@ public class Query {
      * denoted as the wordID of each of the query term
      * @param query
      */
-
-    /*public LinkedHashMap<Integer, ArrayList<Integer>> convertToWordIDPhrase (String query){
-        ArrayList<String> wordlist = new ArrayList<>();
-        LinkedHashMap<Integer, ArrayList<Integer>> idlist = new LinkedHashMap<>();
-        StringTokenizer st = new StringTokenizer(query);
-        while (st.hasMoreTokens()) {
-            wordlist.add(st.nextToken());
-        }
-        wordlist = ProcessString.removeRubbish(wordlist);
-        HashMap<String,ArrayList<Integer>> word = ProcessString.keyWordPos(wordlist);
-        for (Map.Entry<String,ArrayList<Integer>>item : word.entrySet()){
-            if (word_ID.containsKey(item.getKey())) idlist.put(word_ID.get(item.getKey()),item.getValue());
-
-        }
-        return idlist;
-    }*/
 
     public ArrayList<Integer> convertToWordIDPhrase (String query){
         ArrayList<String> wordlist = new ArrayList<>();

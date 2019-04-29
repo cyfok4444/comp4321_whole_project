@@ -48,6 +48,7 @@ public class Spider {
                     if (keywordsTf.isEmpty()){
                         continue;
                     }
+                    System.out.println(keywordsTf);
                     keywordsTf = ProcessString.removeRubbish(keywordsTf);
                     ArrayList<String> keywordsPos = new ArrayList<>();
                     keywordsPos.addAll(keywordsTf);

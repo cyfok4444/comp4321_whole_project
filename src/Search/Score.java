@@ -75,75 +75,7 @@ public class Score {
            e.printStackTrace();
        }
    }
-    /**
-     * Constructor
-     */
-    /**
-     * Need to modified after having database
-     */
-    /*public Score() throws RocksDBException {
-        //** Comment this part if have databse
-        pageIdTable = new HashMap<>();
-        pageIdTable.put("page A",1);
-        pageIdTable.put("page B",2);
-        pageIdTable.put("page C",3);
-        pageIdTable.put("page D",4);
-        int a = pageIdTable.size();
-        N = (double) a;
-        contentPos = new HashMap<>();
-        /*HashMap<Integer,ArrayList<Integer>> keyPos = new HashMap<>();
-        ArrayList<Integer> pos_1 = new ArrayList<>();
-        pos_1.add(1);
-        ArrayList<Integer> pos_2 = new ArrayList<>();
-        pos_2.add(4); pos_2.add(5);
-        keyPos.put(1,pos_1); keyPos.put(2,pos_2);*/
-        /*HashMap<Integer,ArrayList<Integer>> keyPos2 = new HashMap<>();
-        ArrayList<Integer> pos_3 = new ArrayList<>();
-        pos_3.add(1);
-        pos_3.add(6);
-        keyPos2.put(2,pos_3);
-        ArrayList<Integer> pos_4 = new ArrayList<>();
-        pos_4.add(8);
-        keyPos2.put(3,pos_4);
-        HashMap<Integer,ArrayList<Integer>> keyPos3 = new HashMap<>();
-        ArrayList<Integer> pos_5 = new ArrayList<>();
-        pos_5.add(2);
-        pos_5.add(5);
-        pos_5.add(10);
-        keyPos3.put(2,pos_5);
 
-        ArrayList<Integer> pos_6 = new ArrayList<>();
-        pos_6.add(2);
-        pos_6.add(7);
-        keyPos3.put(3,pos_6);
-
-        contentPos.put(1,keyPos2);
-        contentPos.put(2,keyPos3);
-
-
-        /*contentPos.put(1,keyPos);
-        contentPos.put(2,keyPos);
-        contentPos.put(3,keyPos);*/
-        /*inverted_table_content = new HashMap<>();
-        HashMap<Integer,Integer> word1 = new HashMap<>();
-        HashMap<Integer,Integer> word2 = new HashMap<>();
-        HashMap<Integer,Integer> word3 = new HashMap<>();
-        word3.put(1,1);
-        word3.put(2,100);
-        word2.put(3,1);
-        word2.put(1,10);
-        word2.put(2,100);
-        word1.put(1,3);
-        word1.put(2,3);
-        word1.put(3,3);
-        //inverted_table_content.put(1,word1);
-        inverted_table_content.put(2,word3);
-        inverted_table_content.put(3,word3);
-        inverted_table_content.put(4,word1);
-        //System.out.println(inverted_table_content.toString());
-        ////////////////////////////////////////////////////////
-
-    }*/
     /**
      * Dunno the size of the document a HashMapInput will be the best
      * Hard code of dsize
@@ -736,54 +668,13 @@ public class Score {
 
     public static void main (String [] a) throws RocksDBException{
        Score score = new Score();
-       //System.out.println(score.findPossiblePageID("loving love love love love hong hong hong loves").toString());
-       /*Integer[] p = score.findPossiblePageID("hong kong");
-       for (Integer b : p) System.out.println(b);
-       ArrayList<Integer> arr = new ArrayList<>();
-       arr.add(-1);
-       arr.add(-1);
-       arr.add(-1);
-       arr.add(1);
-       arr.add(2);
-       arr.add(3);
-       arr.add(3);
-       arr.add(-1);
-       arr.add(3);
-       arr.add(-1);
-       arr.add(-1);
-       arr.add(-1);
-       arr.add(-1);
 
-      //System.out.println(score.trimStopStartEnd(arr).toString());
-      System.out.println(score.stopNumStart(arr).toString());
-      System.out.println(score.stopNumEnd(arr).toString());
-      System.out.println(score.pageHavePhraseContent("On hong in kong in"));
-      HashMap<Integer,Double> k = score.allInOneComputePhraseScoreContent("On hong in kong in");
-      System.out.println(score.computeScorePhraseContent(score.pageHavePhraseContent("On hong in kong in"),"On hong in kong in"));
-      System.out.println(score.allInOneComputePhraseScoreContent("On hong in kong in love"));
-      System.out.println("Hello " + k);
-      Integer[] l = score.findPossiblePageID("hong kong cool");
-      for (Integer b : l) System.out.println(b);
-      System.out.println(l.length);
-
-      //System.out.println("Hello " + score.allInOneComputePhraseScoreContent("On hong in kong in"));
-      /*ArrayList<Integer> b = new ArrayList<>();
-      b.add(-1);
-      b.add(2);
-      b.add(-1);
-      b.add(3);
-      b.add(-1);
-      System.out.println(score.trimStopStartEnd(b));*/
       HashMap<Integer,Double> h = new HashMap<>();
-      h.put(1,10.888);
-      h.put(7,1000000.0);
-      h.put(8,9.9);
-        //System.out.print(Score.sortByValue(h));
 
-        //System.out.print(score.getTheKeyReverseOrder(Score.sortByValue(h)));
-        System.out.println(score.ranking("\"School of Engine\""));
-        //System.out.println(contentPos);
-        //PageUrltoPageID pageUrltoPageID = new PageUrltoPageID("db/db_PageUrlToPageID");
+      ArrayList<Integer> p = score.ranking("Hong Kong University of Science and Technology");
+      Collections.sort(p);
+      System.out.println(p);
+
 
 
 
