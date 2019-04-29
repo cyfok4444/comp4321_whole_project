@@ -674,7 +674,7 @@ public class Score {
 
 
 
-    public HashMap<Integer,Double> ranking (String query) throws RocksDBException{
+    public ArrayList<Integer> ranking (String query) throws RocksDBException{
         HashMap<Integer,Double> title;
         HashMap<Integer,Double> content;
         if (Query.isPhraseSearch(query)) {
@@ -698,7 +698,8 @@ public class Score {
             else
                 content.put(in.getKey(),in.getValue());
         }
-            return sortByValue(content);
+            HashMap<Integer,Double> c = sortByValue(content);
+            return getTheKeyReverseOrder(c);
     }
 
     public ArrayList<Integer> getTheKeyReverseOrder (HashMap<Integer,Double> content){
