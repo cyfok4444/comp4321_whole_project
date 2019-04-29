@@ -15,7 +15,9 @@ public class Porter {
 
     private String Clean( String str ) {
         int last = str.length();
-
+        if (str.length()==0){
+            return "";
+        }
         Character ch = new Character( str.charAt(0) );
         String temp = "";
 

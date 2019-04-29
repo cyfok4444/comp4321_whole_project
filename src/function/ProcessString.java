@@ -62,6 +62,9 @@ public class ProcessString {
         HashMap<String,Integer> process = new HashMap<>();
         for (int i = 0 ; i < input.size() ; i++){
             StopStem stopStem = new StopStem("stopword.txt");
+            if (input.get(i)=="" || input.get(i).toLowerCase()==""){
+                return process;
+            }
             String word = stopStem.stem(input.get(i).toLowerCase());
             if (!process.containsKey(word)){
                 process.put(word, 1);
