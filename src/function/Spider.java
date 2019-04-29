@@ -49,7 +49,8 @@ public class Spider {
                         continue;
                     }
                     keywordsTf = ProcessString.removeRubbish(keywordsTf);
-                    ArrayList<String> keywordsPos = keywordsTf;
+                    ArrayList<String> keywordsPos = new ArrayList<>();
+                    keywordsPos.addAll(keywordsTf);
                     keywordsTf = ProcessString.stopWordRemoveTf(keywordsTf);
                     HashMap<String,Integer> keyWordTf2 = ProcessString.keyWordTf(keywordsTf);
 
@@ -89,7 +90,8 @@ public class Spider {
                         titleTf.add(s);
                     }
                     titleTf = ProcessString.removeRubbish(titleTf);
-                    ArrayList<String> titlePos = titleTf;
+                    ArrayList<String> titlePos = new ArrayList<>();
+                    titlePos.addAll(titleTf);
                     titleTf = ProcessString.stopWordRemoveTf(titleTf);
                     HashMap<String,Integer> titleTf2 = ProcessString.keyWordTf(titleTf);
 

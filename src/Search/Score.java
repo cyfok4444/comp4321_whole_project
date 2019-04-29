@@ -402,7 +402,7 @@ public class Score {
             boolean containAll = false;
             for (int i = 0 ; i < first_Keyword.size() ; i++){
                 Integer posNum = first_Keyword.get(i);
-                System.out.println("Start:" + posNum);
+                //System.out.println("Start:" + posNum);
                 if (term.size() == 1 && distinctSetOfKeyword.size() ==1 ){
                     containAll = true;
                     suitable_s = posNum;
@@ -412,24 +412,24 @@ public class Score {
                 for (int j = 1 ; j < trimStopStartEnd.size() ; j++){
                     if (containAll) break;
                     Integer queryNextTerm = trimStopStartEnd.get(j);
-                    System.out.println("QueryNextTerm: " + queryNextTerm);
+                    //System.out.println("QueryNextTerm: " + queryNextTerm);
                     posNum = posNum+1;
-                    System.out.println("Pos: " + posNum);
+                    //System.out.println("Pos: " + posNum);
 
                     if (queryNextTerm != -1){
-                        System.out.println("queryNextTerm: " + queryNextTerm);
+                        //System.out.println("queryNextTerm: " + queryNextTerm);
                         if (!pagePos.get(queryNextTerm).contains(posNum)) break;
 
                     }
                     if (queryNextTerm == -1) {
                         if (allPos.contains(posNum)) {
-                            System.out.println("-1 term");
+                            //System.out.println("-1 term");
                             break;
                         }
                     }
 
                     if (j == trimStopStartEnd.size()-1){
-                        System.out.println("Successful");
+                        //System.out.println("Successful");
                         suitable_s = first_Keyword.get(i);
                         suitable_e = posNum;
                         containAll = true;
@@ -440,13 +440,13 @@ public class Score {
             //*where is the start*//
             if (containAll){
                 for (int i = 1 ; i <= stopNumStart; i++){
-                    System.out.println("first");
+                    //System.out.println("first");
                     if (allPos.contains(suitable_s-i) || (suitable_s-i <= 0)) containAll=false;
                 }
             }
             if (containAll){
                 for (int i = 1 ; i <= stopEndStart; i++){
-                    System.out.println("Second");
+                    //System.out.println("Second");
                     //if (allPos.contains(suitable_e+i) || (suitable_e+i > getMaxPos(pagePos))) containAll=false;
                     if (allPos.contains(suitable_e+i) ) containAll=false;
 
@@ -454,6 +454,8 @@ public class Score {
             }
 
             if (containAll) matchPage.add(page);
+            System.out.println("");
+            System.out.println("");
 
         }
         return matchPage;
@@ -471,7 +473,7 @@ public class Score {
         ArrayList<Integer> trimStopStartEnd = trimStopStartEnd(term);
         System.out.println(trimStopStartEnd);
         Integer[] possiblePage = findPossiblePageIDTitle(query);
-        for (Integer a : possiblePage) System.out.println("Possible PageObject: " + a);
+        //for (Integer a : possiblePage) System.out.println("Possible PageObject: " + a);
         for (Integer page : possiblePage){
             System.out.println("PageObject: " + page);
             HashMap<Integer,ArrayList<Integer>> pagePos = titlePos.get(page);
@@ -484,7 +486,7 @@ public class Score {
             for (int i = 0 ; i < first_Keyword.size() ; i++){
 
                 Integer posNum = first_Keyword.get(i);
-                System.out.println("Start:" + posNum);
+                //System.out.println("Start:" + posNum);
                 if (term.size() == 1 && distinctSetOfKeyword.size() ==1 ){
                     containAll = true;
                     suitable_s = posNum;
@@ -494,24 +496,24 @@ public class Score {
                 for (int j = 1 ; j < trimStopStartEnd.size() ; j++){
                     if (containAll) break;
                     Integer queryNextTerm = trimStopStartEnd.get(j);
-                    System.out.println("QueryNextTerm: " + queryNextTerm);
+                    //System.out.println("QueryNextTerm: " + queryNextTerm);
                     posNum = posNum+1;
-                    System.out.println("Pos: " + posNum);
+                    //System.out.println("Pos: " + posNum);
 
                     if (queryNextTerm != -1){
-                        System.out.println("queryNextTerm: " + queryNextTerm);
+                        //System.out.println("queryNextTerm: " + queryNextTerm);
                         if (!pagePos.get(queryNextTerm).contains(posNum)) break;
 
                     }
                     if (queryNextTerm == -1) {
                         if (allPos.contains(posNum)) {
-                            System.out.println("All pos: " + allPos);
+                            //System.out.println("All pos: " + allPos);
                             break;
                         }
                     }
 
                     if (j == trimStopStartEnd.size()-1){
-                        System.out.println("Successful");
+                        //System.out.println("Successful");
                         suitable_s = first_Keyword.get(i);
                         suitable_e = posNum;
                         containAll = true;
@@ -522,14 +524,14 @@ public class Score {
             //*where is the start*//
             if (containAll){
                 for (int i = 1 ; i <= stopNumStart; i++){
-                    System.out.println("first");
-                    System.out.println("Suitable s: "+ suitable_s);
+                    //System.out.println("first");
+                    //System.out.println("Suitable s: "+ suitable_s);
                     if (allPos.contains(suitable_s-i) || (suitable_s-i <= 0)) containAll=false;
                 }
             }
             if (containAll){
                 for (int i = 1 ; i <= stopEndStart; i++){
-                    System.out.println("Second");
+                    //System.out.println("Second");
                     //if (allPos.contains(suitable_e+i) || (suitable_e+i > getMaxPos(pagePos))) containAll=false;
                     if (allPos.contains(suitable_e+i) ) containAll = false;
 
@@ -537,6 +539,8 @@ public class Score {
             }
 
             if (containAll) matchPage.add(page);
+            System.out.println("");
+            System.out.println("");
 
         }
         return matchPage;
