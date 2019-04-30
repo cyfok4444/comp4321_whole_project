@@ -34,7 +34,7 @@ public class ProcessString {
 
     }
 
-    public static ArrayList<String> stopWordRemoveTf(ArrayList<String> input){
+    /*public static ArrayList<String> stopWordRemoveTf(ArrayList<String> input){
         StopStem stopStem = new StopStem("stopword.txt");
         for (int i = 0 ; i < input.size() ; i++){
             if (stopStem.isStopWord(input.get(i))){
@@ -43,7 +43,7 @@ public class ProcessString {
             }
         }
         return input;
-    }
+    }*/
 
     public static HashMap<String,ArrayList<Integer>> stopWordRemovePos(HashMap<String,ArrayList<Integer>> input){
         StopStem stopStem = new StopStem("stopword.txt");
@@ -59,6 +59,43 @@ public class ProcessString {
         return input;
     }
 
+    public static ArrayList<String> keyWordTf (ArrayList<String> input){
+        ArrayList<String> result = new ArrayList<>();
+        for (int i = 0 ; i < input.size() ; i++){
+            StopStem stopStem = new StopStem("stopword.txt");
+            if (input.get(i)=="" || input.get(i).toLowerCase()==""){
+                return result;
+            }
+            String word = stopStem.stem(input.get(i).toLowerCase());
+            result.add(word);
+
+
+        }
+        return result;
+    }
+    public static HashMap<String,Integer> stopWordRemoveTf (ArrayList<String> input){
+        HashMap<String,Integer> process = new HashMap<>();
+        for (int i = 0 ; i < input.size() ; i++){
+            StopStem stopStem = new StopStem("stopword.txt");
+            if (input.get(i)=="" || input.get(i).toLowerCase()==""){
+                return process;
+            }
+            if  (stopStem.isStopWord(input.get(i).toLowerCase())) continue;
+
+            else {
+                if (!process.containsKey(input.get(i).toLowerCase())) {
+                    process.put(input.get(i).toLowerCase(), 1);
+                }
+                else {
+                    process.put(input.get(i).toLowerCase(), process.get(input.get(i).toLowerCase()) + 1);
+                }
+            }
+
+        }
+        System.out.println(process);
+        return process;
+    }
+    /*
     public static HashMap<String,Integer> keyWordTf (ArrayList<String> input){
         HashMap<String,Integer> process = new HashMap<>();
         for (int i = 0 ; i < input.size() ; i++){
@@ -77,7 +114,7 @@ public class ProcessString {
 
         }
         return process;
-    }
+    }*/
 
     public static LinkedHashMap<String,ArrayList<Integer>> keyWordPos (ArrayList<String> input){
         //for (String in : input) System.out.println(in);
@@ -118,25 +155,27 @@ public class ProcessString {
         //k.add("ABCD");
         //k.add("loves");
         k.add("School");
-        k.add("of");
+        k.add("ones");
         k.add("Engineering");
 
+        ArrayList<String> a = keyWordTf(k);
+        HashMap<String,Integer> b = stopWordRemoveTf(a);
+        System.out.println(b);
 
-
-        k = removeRubbish(k);
-        HashMap<String,ArrayList<Integer>> y = keyWordPos(k);
+        //k = removeRubbish(k);
+        //HashMap<String,ArrayList<Integer>> y = keyWordPos(k);
         //HashMap<String,ArrayList<Integer>> i = stopWordRemovePos(y);
         //System.out.println(i);
-        for (HashMap.Entry<String,ArrayList<Integer>> entry : y.entrySet()) {
+        /*for (HashMap.Entry<String,ArrayList<Integer>> entry : y.entrySet()) {
             System.out.println(entry.getKey() + " " + entry.getValue());
-        }
+        }*/
 
-        System.out.println("");
+        //System.out.println("");
 
-        HashMap<String,ArrayList<Integer>> l = stopWordRemovePos(y);
+        /*HashMap<String,ArrayList<Integer>> l = stopWordRemovePos(y);
         for (HashMap.Entry<String,ArrayList<Integer>> entry : l.entrySet()) {
             System.out.println(entry.getKey() + " " + entry.getValue());
-        }
+        }*/
         /*HashMap<String,Integer> h = ProcessString.keyWordTf(k);
         for (HashMap.Entry<String,Integer> entry : h.entrySet()) {
             System.out.println(entry.getKey() + " " + entry.getValue());

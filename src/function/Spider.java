@@ -52,8 +52,8 @@ public class Spider {
                     keywordsTf = ProcessString.removeRubbish(keywordsTf);
                     ArrayList<String> keywordsPos = new ArrayList<>();
                     keywordsPos.addAll(keywordsTf);
-                    keywordsTf = ProcessString.stopWordRemoveTf(keywordsTf);
-                    HashMap<String,Integer> keyWordTf2 = ProcessString.keyWordTf(keywordsTf);
+                    keywordsTf = ProcessString.keyWordTf(keywordsTf);
+                    HashMap<String,Integer> keyWordTf2 = ProcessString.stopWordRemoveTf(keywordsTf);
 
                     HashMap<String,Integer> mostFreqWords = new HashMap<>();
                     for ( int i = 0 ; i < 5 ; i++){
@@ -93,8 +93,8 @@ public class Spider {
                     titleTf = ProcessString.removeRubbish(titleTf);
                     ArrayList<String> titlePos = new ArrayList<>();
                     titlePos.addAll(titleTf);
-                    titleTf = ProcessString.stopWordRemoveTf(titleTf);
-                    HashMap<String,Integer> titleTf2 = ProcessString.keyWordTf(titleTf);
+                    titleTf = ProcessString.keyWordTf(titleTf);
+                    HashMap<String,Integer> titleTf2 = ProcessString.stopWordRemoveTf(titleTf);
 
                     HashMap<String,ArrayList<Integer>> titlePos2 = ProcessString.keyWordPos(titlePos);
                     titlePos2 = ProcessString.stopWordRemovePos(titlePos2);

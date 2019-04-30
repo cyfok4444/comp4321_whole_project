@@ -37,14 +37,19 @@ public class Query {
         }
 
         wordlist = ProcessString.removeRubbish(wordlist);
-        wordlist = ProcessString.stopWordRemoveTf(wordlist);
+        System.out.println(wordlist);
+        wordlist = ProcessString.keyWordTf(wordlist);
+        System.out.println(wordlist);
         ArrayList<String> k = new ArrayList<>();
-        HashMap<String,Integer> keyWordTf = ProcessString.keyWordTf(wordlist);
-
+        HashMap<String,Integer> keyWordTf = ProcessString.stopWordRemoveTf(wordlist);
+        System.out.println(keyWordTf);
         for (Map.Entry<String,Integer>item : keyWordTf.entrySet()){
-           if (word_ID.containsKey(item.getKey())) idlist.put(word_ID.get(item.getKey()),item.getValue());
+           if (word_ID.containsKey(item.getKey())) {
+               idlist.put(word_ID.get(item.getKey()), item.getValue());
+           }
 
         }
+        System.out.println(word_ID);
         return idlist;
 
     }
@@ -65,10 +70,13 @@ public class Query {
         }
         wordlist = ProcessString.removeRubbish(wordlist);
         ArrayList<String> process = ProcessString.doKeywordOnly(wordlist);
-        for (int i = 0 ; i < process.size() ; i++)
+        for (int i = 0 ; i < process.size() ; i++) {
             if (word_ID.containsKey(process.get(i))) result.add(word_ID.get(process.get(i)));
             else result.add(-1);
-            return result;
+        }
+        System.out.println(result);
+        return result;
+
     }
 
     public ArrayList<Integer> getDistinctSetOfKeyword (ArrayList<Integer> term){
@@ -99,16 +107,11 @@ public class Query {
 
     public static void main (String [] args) throws RocksDBException{
         Query query = new Query();
-        query.word_ID = new HashMap<>();
-        query.word_ID.put("love",1);
-        query.word_ID.put("hong",2);
-        query.word_ID.put("kong",3);
-        query.word_ID.put("yeah",5);
-        HashMap<Integer,Integer> h = query.convertToWordID("I Loves in Kong hong hong ");
-        ArrayList<Integer> h2 = query.convertToWordIDPhrase("I I I Loves Kong in hong hong KOng Loving in YeAh at at");
+        System.out.println(query.qLength(query.convertToWordID("school")));
+        //ArrayList<Integer> h2 = query.convertToWordIDPhrase("I I I Loves Kong in hong hong KOng Loving in YeAh at at");
 
-        System.out.println(query.isPhraseSearch("\"hi\""));
-        System.out.println(h2);
+        //System.out.println(query.isPhraseSearch("\"hi\""));
+        //System.out.println(h);
         //System.out.println(query.getDistinctSetOfKeyword(h2));
 
 
